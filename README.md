@@ -19,13 +19,14 @@ Give your user permissions!
 ```sudo adduser yourusername sudo```  
 ```sudo adduser yourusername www-data```  
 
-Note: If you are having permission issues, you can also do the following. I do not believe this method is recommended  
+>Note: If you are having permission issues, you can also do the following. I do not believe this method is recommended   
 ```sudo visudo``` 
 Using the arrow keys scroll down until you see # User privilege specification  
 Place cursor under: root ALL=(ALL:ALL) ALL  
 Add: yourusername ALL=(ALL:ALL) ALL  
 esc  
 :wq  
+
 
 Create Lamp Stack http://www.krizna.com/ubuntu/install-lamp-server-ubuntu-14-04/
 
