@@ -28,30 +28,36 @@ esc
 :wq  
 
 
-Create Lamp Stack http://www.krizna.com/ubuntu/install-lamp-server-ubuntu-14-04/
+###Create Lamp Stack  
+http://www.krizna.com/ubuntu/install-lamp-server-ubuntu-14-04/
 
 ```sudo apt-get install apache2```  
 ```sudo nano /etc/apache2/apache2.conf```  
+
 Use the arrow key to scroll down to the end of the file and type in:  
-ServerName localhost
-ctrl o (saves)
-enter 
-ctrl x (exit)
-You can check to make sure that it saved with 
-cat /etc/apache2/apache2.conf
-Restart apache 
-sudo service apache2 restart
-sudo chown yourusername:www-data /var/www/html -R
-You can check to make sure it works properly by opening the browser and typing /var/www/html 
+```ServerName localhost```  
+ctrl o (saves)  
+enter   
+ctrl x (exit)  
 
-Install mysql server
+You can check to make sure that it saved with   
+```cat /etc/apache2/apache2.conf```  
 
-sudo apt-get install mysql-server
-It will ask you to create a password. Generally for localhost it is root/root. 
-Check the service status with 
-sudo /etc/init.d/mysql status
-If your prompt is mysql> after checking the status, you can escape with:  
-exit
+Restart apache  
+```sudo service apache2 restart```    
+```sudo chown YOURUSERNAME:www-data /var/www/html -R```  
+You can check to make sure it works properly by opening the browser and typing   ```/var/www/html```  
+
+###Install mysql server###
+
+```sudo apt-get install mysql-server```  
+
+You will be asked to create a password. Generally for localhost it is root/root.   
+Check the service status with  
+```sudo /etc/init.d/mysql status```  
+
+>If your prompt is ```mysql>``` after checking the status, you can escape with
+``exit``
 
 Install php
 sudo apt-get install php5 php5-mysql
