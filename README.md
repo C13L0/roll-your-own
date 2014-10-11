@@ -3,28 +3,23 @@
 
 Complete Ubuntu 14.04 local setup guide for Drupal 7 &amp; 8. Includes lamp, git, composer, drush, and rvm  
 
-LOCAL set up only!  Ubuntu 14.04 / LAMP / Drupal sites setup
-
 **LOCAL set up only!**  Ubuntu 14.04 / LAMP / Drupal sites setup
 
-1. Create a bootable install disk or usb drive, follow directions and install Ubuntu
+1. Create a bootable install disk or usb drive, follow directions and install Ubuntu  
+2. It is very important to write down or remember your username and pw. You will use these on a regular basis  
+3. Open a terminal. Click on the top left icon and type *terminal*.  
+4. Run updates (don’t bother with the software updater) This takes a while.  
 
-2. It is very important to write down or remember your username and pw. You will use these on a regular basis
+```sudo apt-get update```  
 
-3. Open a terminal. Click on the top left icon and type *terminal*.
-
-4. Run updates (don’t bother with the software updater) This takes a while.
-sudo apt-get update && sudo apt-get dist-upgrade
-
-5. If you want to use a text editor, it is called gedit. Open it the same way as the terminal. Once it is in the sidebar launcher, you can left click and lock. 
-
-6. You can also remove most of the other annoying icons from the launcher so they are not in your way.
+5. If you want to use a text editor, it is called gedit. Open it the same way as the terminal. Once it is in the sidebar launcher, you can left click and lock.  
+6. You can also remove most of the other annoying icons from the launcher so they are not in your way.  
 
 **Give your user permissions!**
 
-1. ```sudo adduser **yourusername** sudo```
+1. ```sudo adduser yourusername sudo```
 
-2. ```sudo adduser **yourusername** www-data```
+2. ```sudo adduser yourusername www-data```
 
 * Note: If you are having permission issues, you can also do the following. I do not believe this method is recommended
 
