@@ -15,23 +15,23 @@ Run updates (don’t bother with the software updater) This takes a while.
 If you want to use a text editor, it is called gedit. Open it the same way as the terminal. Once it is in the sidebar launcher, you can left click and lock. 
 You can also remove most of the other annoying icons from the launcher so they are not in your way.
 
-Give your user permissions!
-```sudo adduser yourusername sudo```
-```sudo adduser yourusername www-data```
+Give your user permissions!  
+```sudo adduser yourusername sudo```  
+```sudo adduser yourusername www-data```  
 
-Note: If you are having permission issues, you can also do the following. I do not believe this method is recommended
-sudo visudo
-Using the arrow keys scroll down until you see # User privilege specification
-Place cursor under: root ALL=(ALL:ALL) ALL
-Add: yourusername ALL=(ALL:ALL) ALL
-esc
-:wq
+Note: If you are having permission issues, you can also do the following. I do not believe this method is recommended  
+```sudo visudo``` 
+Using the arrow keys scroll down until you see # User privilege specification  
+Place cursor under: root ALL=(ALL:ALL) ALL  
+Add: yourusername ALL=(ALL:ALL) ALL  
+esc  
+:wq  
 
 Create Lamp Stack http://www.krizna.com/ubuntu/install-lamp-server-ubuntu-14-04/
 
-sudo apt-get install apache2
-sudo nano /etc/apache2/apache2.conf
-Use the arrow key to scroll down to the end of the file and type in:
+```sudo apt-get install apache2```  
+```sudo nano /etc/apache2/apache2.conf```  
+Use the arrow key to scroll down to the end of the file and type in:  
 ServerName localhost
 ctrl o (saves)
 enter 
