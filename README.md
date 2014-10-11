@@ -5,7 +5,7 @@ Complete Ubuntu 14.04 local setup guide for Drupal 7 &amp; 8. Includes lamp, git
 
 LOCAL set up only!  Ubuntu 14.04 / LAMP / Drupal sites setup
 
-**LOCAL set up only!****  Ubuntu 14.04 / LAMP / Drupal sites setup**
+**LOCAL set up only!**  Ubuntu 14.04 / LAMP / Drupal sites setup
 
 1. Create a bootable install disk or usb drive, follow directions and install Ubuntu
 
@@ -22,13 +22,13 @@ sudo apt-get update && sudo apt-get dist-upgrade
 
 **Give your user permissions!**
 
-1. sudo adduser **yourusername** sudo
+1. ```sudo adduser **yourusername** sudo```
 
-2. sudo adduser **yourusername** www-data
+2. ```sudo adduser **yourusername** www-data```
 
 * Note: If you are having permission issues, you can also do the following. I do not believe this method is recommended
 
-1. sudo visudo
+1. ```sudo visudo```
 
 2. Using the arrow keys scroll down until you see # User privilege specification
 
@@ -43,9 +43,9 @@ sudo apt-get update && sudo apt-get dist-upgrade
 **Create Lamp Stack** [http://www.krizna.com/ubuntu/install-lamp-server-ubuntu-14-04/
 ](http://www.krizna.com/ubuntu/install-lamp-server-ubuntu-14-04/)
 
-1. sudo apt-get install apache2
+1. ```sudo apt-get install apache2```
 
-2. sudo nano /etc/apache2/apache2.conf
+2. ```sudo nano /etc/apache2/apache2.conf```
 
 3. Use the arrow key to scroll down to the end of the file and type in:
 ServerName localhost
@@ -57,33 +57,33 @@ ServerName localhost
 6. ctrl x (exit)
 
 7. You can check to make sure that it saved with 
-cat /etc/apache2/apache2.conf
+```cat /etc/apache2/apache2.conf```
 
 8. Restart apache 
-sudo service apache2 restart
+```sudo service apache2 restart```
 
-9. sudo chown **yourusername**:www-data /var/www/html -R
+9. ```sudo chown yourusername:www-data /var/www/html -R```
 
-10. You can check to make sure it works properly by opening the browser and typing */var/www/html* 
+10. You can check to make sure it works properly by opening the browser and typing ```/var/www/html```
 
 **Install mysql server**
 
-1. sudo apt-get install mysql-server
+1. ```sudo apt-get install mysql-server```
 
 2. It will ask you to create a password. Generally for localhost it is root/root. 
 
 3. Check the service status with 
-sudo /etc/init.d/mysql status
+```sudo /etc/init.d/mysql status```
 
-4. If your prompt is mysql> after checking the status, you can escape with:  
-exit
+4. If your prompt is ```mysql>``` after checking the status, you can escape with:  
+```exit```
 
 **Install php**
 
-1. sudo apt-get install php5 php5-mysql
+1. ```sudo apt-get install php5 php5-mysql```
 
 2. Create a php file. 
-sudo nano /var/www/html/phpinfo.php
+```sudo nano /var/www/html/phpinfo.php```
 
 3. Add the following code 
 
@@ -100,15 +100,15 @@ phpinfo();
 6. ctrl x (exit)
 
 7. restart apache2: 
-sudo service apache2 restart
+```sudo service apache2 restart```
 
 8. Open browser and navigate to: *localhost/phpinfo.php*
 
 **Install phpmyadmin **[https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-14-04](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-14-04)
 
-1. sudo apt-get install phpmyadmin
+1. ```sudo apt-get install phpmyadmin```
 
-2. Important! Hit the **spacebar** to choose apache 2. It will show an *****
+2. Important! Hit the **spacebar** to choose apache 2. It will show an *
 
 3. Tab (to move to <ok>
 
@@ -121,19 +121,19 @@ sudo service apache2 restart
 7. sudo php5enmod mcrypt
 
 8. Restart apache: 
-sudo service apache2 restart
+```sudo service apache2 restart```
 
 9. Test by navigating in the browser to: *localhost/phpmyadmin*
 
 10. You can follow the rest of the tutorial for additional securities if you want. I am not sure if this is necessary for local. Of course it would be for a cloud server
 
-Don’t **ever** do this on a live server but local is fine. Drupal php needs access.
+Don’t *ever* do this on a live server but local is fine. Drupal php needs access.
 
 1. chmod 775 /var/www/html
 
-**  Increase max limit php.ini**
+**Increase max limit php.ini**
 
-1. sudo nano /etc/php5/apache2/php.ini
+1. ```sudo nano /etc/php5/apache2/php.ini```
 
 2. ctrl w (search) memory_limit
 
@@ -147,73 +147,73 @@ Don’t **ever** do this on a live server but local is fine. Drupal php needs ac
 
 **Create SSH key** (you can replace keys with your old ones after initial set up)
 
-1. cd ~
+1. ```cd ~```
 
-2. mkdir .ssh
+2. ```mkdir .ssh```
 
-3. chmod 700 .ssh
+3. ```chmod 700 .ssh```
 
-4. ssh-keygen -t rsa
+4. ```ssh-keygen -t rsa```
 
-5. enter, enter, enter (don’t put passphrase, but you already knew that)
+5. enter, enter, enter (Enter a passphrase if you wish)
 
 6. *extra* if you want your old keys - put your old keys on a usb drive, navigate to the .ssh folder and replace them
 
 **Install git**
 
-1. cd ~
+1. ```cd ~```
 
-2. sudo apt-get install git
+2. ```sudo apt-get install git```
 
-3. git config --global user.name **your name**
+3. ```git config --global user.name yourname```
 
-4. git config --global user.email **youremail@domain.com**
+4. ```git config --global user.email youremail@domain.com```
 
-5. git config --global color.ui auto
+5. ```git config --global color.ui auto```
 
 **Install composer Note! You must install composer before installing drush**
 
-1. cd ~
+1. ```cd ~```
 
-2. sudo apt-get install curl
+2. ```sudo apt-get install curl```
 
-3. curl -sS https://getcomposer.org/installer | php
+3. ```curl -sS https://getcomposer.org/installer | php```
 
-4. sudo mv composer.phar /usr/local/bin/composer
+4. ```sudo mv composer.phar /usr/local/bin/composer```
 
-5. sed -i '1i export PATH="$HOME/.composer/vendor/bin:$PATH"' $HOME/.bashrc
+5. ```sed -i '1i export PATH="$HOME/.composer/vendor/bin:$PATH"' $HOME/.bashrc```
 
-6. source $HOME/.bashrc
+6. ```source $HOME/.bashrc```
 
 **Install Drush (must install composer first) **For new drush commands http://www.drushcommands.com/
 
-1. cd ~
+1. ```cd ~```
 
-2. composer global require drush/drush:dev-master
+2. ```composer global require drush/drush:dev-master```
 
-3. composer global update
+3. ```composer global update```
 
 **Install IDE (sublime text 3)**
 
-1. cd ~
+1. ```cd ~```
 
-2. sudo add-apt-repository ppa:webupd8team/sublime-text-3
+2. ```sudo add-apt-repository ppa:webupd8team/sublime-text-3```
 
-3. sudo apt-get update
+3. ```sudo apt-get update```
 
-4. sudo apt-get install sublime-text-installer
+4. ```sudo apt-get install sublime-text-installer```
 
 5. Add in drupal specific preferences [https://drupal.org/node/1346890](https://drupal.org/node/1346890)
 
-**Install rvm for theming**
+**Install rvm**
 
-1. \curl -sSL https://get.rvm.io | bash -s stable
+1. ```\curl -sSL https://get.rvm.io | bash -s stable```
 
-2. source ~/.rvm/scripts/rvm
+2. ```source ~/.rvm/scripts/rvm```
 
 3. Find current stable version at [www.ruby-lang.org/en/downloads/](http://www.ruby-lang.org/en/downloads/)
 
-4. rvm install 2.1.2  (install current stable version)
+4. ```rvm install 2.1.2```  (install current stable version)
 
 5. Change terminal preferences:
 edit > profile preferences
@@ -222,21 +222,21 @@ close terminal > reopen
 
 6. Find the latest version www.ruby-lang.org/en/downloads/
 
-7. rvm use 2.1.2  to verify: ruby -v
+7. ```rvm use 2.1.2```  to verify: ```ruby -v```
 
 **Install IRC**
 
-1. sudo add-apt-repository ppa:gwendal-lebihan-dev/hexchat-stable
+1. ```sudo add-apt-repository ppa:gwendal-lebihan-dev/hexchat-stable```
 
-2. sudo apt-get update
+2. ```sudo apt-get update```
 
-3. sudo apt-get install hexchat
+3. ```sudo apt-get install hexchat```
 
 **—— Set up for Sites ——**
 
 **Configure apache to preference .php files over .html files**
 
-1. sudo nano /etc/apache2/mods-enabled/dir.conf
+1. ```sudo nano /etc/apache2/mods-enabled/dir.conf```
 
 2. Add a parameter reading "index.php" as the first item after "DirectoryIndex"
    
@@ -252,15 +252,15 @@ close terminal > reopen
 
 5. ctrl x (exit)
 
-6. sudo service apache2 restart
+6. ```sudo service apache2 restart```
 
 **Enable global site clean url’s**
 
-1.  sudo a2enmod rewrite 
+1.  ```sudo a2enmod rewrite```
 
-2.  sudo service apache2 restart
+2.  ```sudo service apache2 restart```
 
-3.  sudo nano /etc/apache2/apache2.conf
+3.  ```sudo nano /etc/apache2/apache2.conf```
 
 4. Scroll down until you find  
 <Directory /var/www/>
@@ -285,14 +285,14 @@ close terminal > reopen
 
 </Directory>
 
-    5.   sudo service apache2 restart
+    5.   ```sudo service apache2 restart```
 
 **Create vhost site configuration files** [http://ben-it.org/content/ubuntu-1204-apache-2-edit-default-virtualhost-enable-modrewrite-module-drupal-clean-urls](http://ben-it.org/content/ubuntu-1204-apache-2-edit-default-virtualhost-enable-modrewrite-module-drupal-clean-urls)
 
-1. cd /etc/apache2/sites-available
+1. ```cd /etc/apache2/sites-available```
 
 2. Create a new vhost config file just for drupal
-sudo nano drupal
+```sudo nano drupal```
 
 3. Add in the following
 
@@ -314,18 +314,18 @@ NameVirtualHost *:80
 
 Symlink the drupal file in the sites-enabled directory
 
-1. cd /etc/apache2/sites-enabled 
+1. ```cd /etc/apache2/sites-enabled```
 
-2. sudo ln -s ../sites-available/drupal .
+2. ```sudo ln -s ../sites-available/drupal . ```
 
-3. sudo service apache2 restart
+3. ```sudo service apache2 restart```
 
 **Make it easy to navigate to our sites folder by creating a symlink to /var/www/html**
 
-1. cd ~
+1. ```cd ~```
 
 2. Change "cielo" to your user. If you are unsure of the name, type pwd
-ln -s  /var/www/html /home/**cielo****/**sites
+```ln -s  /var/www/html /home/cielo/sites```
 
 3. Now you can easily cd sites and you will be directly in the html folder
 
@@ -343,9 +343,9 @@ To remove a symlink:  unlink **sites** (symlink name)
 
  **Configure Apache2 for Sites (do this with both site creation methods)**
 
-1. sudo nano /etc/hosts
+1. ```sudo nano /etc/hosts```
 
-2. Add under the last line
+2. ```Add under the last line```
 
 # Drupal sites
 127.0.0.1 example-site.dev
@@ -383,10 +383,10 @@ git clone --branch 8.x http://git.drupal.org/project/drupal.git    (drupal 8)
 3. Change the name of the cloned drupal directory to the name of the new site
 mv drupal example-site.dev
 
-4. cd example-site.dev/sites/default
+4. ```cd example-site.dev/sites/default```
 
 5. Copy default.settings.php
-cp default.settings.php settings.php
+```cp default.settings.php settings.php```
 
 **Complete Install**
 
