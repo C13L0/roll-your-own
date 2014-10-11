@@ -1,78 +1,115 @@
-###Roll-your-own Drupal setup on Ubuntu 14.04
+###Roll-Your-Own Drupal setup on Ubuntu 14.04
 =============
+
 *Note* As of 10/10/14 .. this document has not been completed or formatted. If you need it asap, I have a completed google doc. Find me on freenode #drupal-florida
 
-Complete Ubuntu 14.04 local setup guide for Drupal 7 &amp; 8. Includes lamp, git, composer, drush, and rvm  
+Complete Ubuntu 14.04 local setup guide for Drupal 7 & 8. Includes lamp, git, composer, drush, and rvm  
 
 **LOCAL set up only!**  Ubuntu 14.04 / LAMP / Drupal sites setup
 
 1. Create a bootable install disk or usb drive, follow directions and install Ubuntu  
-2. It is very important to write down or remember your username and pw. You will use these on a regular basis  
-3. Open a terminal. Click on the top left icon and type *terminal*.  
-4. Run updates (don’t bother with the software updater) This takes a while.  
-
-`sudo apt-get update`  
-
+2. It is very important to write down or remember your username and password. You will use these on a regular basis  
+3. Open a terminal, click on the top left icon and type: `terminal`
+4. Run updates (don’t bother with the software updater) This takes a while:
+```bash
+sudo apt-get update 
+```
 5. If you want to use a text editor, it is called gedit. Open it the same way as the terminal. Once it is in the sidebar launcher, you can left click and lock.  
 6. You can also remove most of the other annoying icons from the launcher so they are not in your way.  
 
-**Give your user permissions!**  
+**Give your user permissions!**
 
-1. `sudo adduser yourusername sudo`   
-2. `sudo adduser yourusername www-data`  
+1. Add your username to the sudo group:
+```bash
+sudo adduser yourusername sudo
+```
 
-* Note: If you are having permission issues, you can also do the following. I do not believe this method is recommended  
-1. `sudo visudo`  
-2. Using the arrow keys scroll down until you see # User privilege specification  
-3. Place cursor under: root ALL=(ALL:ALL) ALL  
-4. Add: yourusername ALL=(ALL:ALL) ALL   
-5. esc  
-6. :wq  
+2. Add your username to the www-data group:
+```bash
+sudo adduser yourusername www-data
+```
+
+**Permission Issues**
+
+If you are having permission issues, you can also do the following. I do not believe this method is recommended.  
+
+1. Open the /etc/sudoers file with the "vi" text editor:
+```bash
+sudo visudo
+```
+2. Using the arrow keys scroll down until you see # User privilege specification
+3. Place cursor under: `root ALL=(ALL:ALL) ALL`
+4. Add: `yourusername ALL=(ALL:ALL) ALL`
+5. Press **Esc**
+6. Type: `:wq`
 
 **Create Lamp Stack** [http://www.krizna.com/ubuntu/install-lamp-server-ubuntu-14-04/
 ](http://www.krizna.com/ubuntu/install-lamp-server-ubuntu-14-04/)
 
-1. `sudo apt-get install apache2`  
-2. `sudo nano /etc/apache2/apache2.conf`  
+1. Install Apache:
+```bash
+sudo apt-get install apache2
+``` 
+2. Open Apache main configuration file:
+```bash
+sudo nano /etc/apache2/apache2.conf
+``` 
 3. Use the arrow key to scroll down to the end of the file and type in:  
 `ServerName localhost`  
-4. ctrl o (saves)  
-5. enter   
-6. ctrl x (exit)  
-7. You can check to make sure that it saved with   
-`cat /etc/apache2/apache2.conf`  
-8. Restart apache   
-`sudo service apache2 restart`  
-9. `sudo chown yourusername:www-data /var/www/html -R`  
-10. You can check to make sure it works properly by opening the browser and typing `/var/www/html`  
-
-**Install mysql server**  
-1. `sudo apt-get install mysql-server`  
-2. It will ask you to create a password. Generally for localhost it is root/root.   
-3. Check the service status with   
-`sudo /etc/init.d/mysql status`   
-4. If your prompt is `mysql>` after checking the status, you can escape with  
-`exit`  
-
-**Install php**  
-1. `sudo apt-get install php5 php5-mysql`  
-2. Create a php file. 
-`sudo nano /var/www/html/phpinfo.php`  
-3. Add the following code 
-
+4. Press **CTRL**+**o** (to save)  
+5. Press Enter   
+6. Press **CTRL**+**x** (to exit)  
+7. You can check to make sure that it saved with
+```bash
+cat /etc/apache2/apache2.conf
 ```
+8. Restart apache:
+```bash
+sudo service apache2 restart
+```
+9. Change the ownership of /var/www/html to your username
+```bash
+sudo chown yourusername:www-data /var/www/html -R
+```
+10. You can check to make sure it works properly by opening the browser and typing: */var/www/html*
+
+**Install MySQL server**  
+1. Install MySQL:
+```bash
+sudo apt-get install mysql-server
+```
+2. It will ask you to create a password. Generally for localhost it is root/root.   
+3. Check the service status with:
+```bash
+sudo /etc/init.d/mysql status
+```
+4. If your prompt is `mysql>` after checking the status, you can escape by typing: `exit`
+
+**Install PHP**  
+1. Install PHP: 
+```bash
+sudo apt-get install php5 php5-mysql
+```  
+2. Create a PHP file. 
+```bash
+sudo nano /var/www/html/phpinfo.php
+```  
+3. Add the following code:  
+
+```php
 <?php
 
 phpinfo();
 
-?>  
+?>
 ```
-
-4. ctrl o (saves)  
-5. enter   
-6. ctrl x (exit)  
-7. restart apache2:  
-`sudo service apache2 restart`  
+4. Press **CTRL**+**o** (to save)  
+5. Press **Enter**  
+6. Press **CTRL**+**x** (to exit)  
+7. Restart Apache:  
+```bash
+sudo service apache2 restart
+```
 8. Open browser and navigate to: *localhost/phpinfo.php*  
 
 **Install phpmyadmin **[https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-14-04](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-14-04)
@@ -119,36 +156,64 @@ phpinfo();
 
 **Install composer Note! You must install composer before installing drush**
 
-1. ```cd ~```
+1.  
+```bash
+cd ~
+```
+2.  
+```bash
+sudo apt-get install curl
+```
+3.  
+```bash
+curl -sS https://getcomposer.org/installer | php
+```
+4.  
+```bash
+sudo mv composer.phar /usr/local/bin/composer
+```
+5.  
+```bash
+sed -i '1i export PATH="$HOME/.composer/vendor/bin:$PATH"' $HOME/.bashrc
+```
+6.  
+```bash
+source $HOME/.bashrc
+```
 
-2. ```sudo apt-get install curl```
+**Install Drush (must install composer first)** For new drush commands http://www.drushcommands.com/
 
-3. ```curl -sS https://getcomposer.org/installer | php```
+1. 
+```bash
+cd ~
+```
+2. 
+```bash
+composer global require drush/drush:dev-master
+```
+3.  
+```bash
+composer global update
+```
 
-4. ```sudo mv composer.phar /usr/local/bin/composer```
+**Install IDE (Sublime Text 3)**
 
-5. ```sed -i '1i export PATH="$HOME/.composer/vendor/bin:$PATH"' $HOME/.bashrc```
-
-6. ```source $HOME/.bashrc```
-
-**Install Drush (must install composer first) **For new drush commands http://www.drushcommands.com/
-
-1. ```cd ~```
-
-2. ```composer global require drush/drush:dev-master```
-
-3. ```composer global update```
-
-**Install IDE (sublime text 3)**
-
-1. ```cd ~```
-
-2. ```sudo add-apt-repository ppa:webupd8team/sublime-text-3```
-
-3. ```sudo apt-get update```
-
-4. ```sudo apt-get install sublime-text-installer```
-
+1. 
+```bash
+cd ~
+```
+2.  
+```bash
+sudo add-apt-repository ppa:webupd8team/sublime-text-3
+```
+3.  
+```bash
+sudo apt-get update
+```
+4.  
+```bash
+sudo apt-get install sublime-text-installer
+```
 5. Add in drupal specific preferences [https://drupal.org/node/1346890](https://drupal.org/node/1346890)
 
 **Install rvm**
@@ -396,18 +461,22 @@ mv drupal example-site.dev
 
 **Configure Apache2 for the old site **
 
-1. sudo nano /etc/hosts
-
+1. Open the Hosts file:
+```bash
+sudo nano /etc/hosts
+```
 2. Add under the last line
 
+    ```
 # Drupal sites
 127.0.0.1 oldsite.dev
+```
 
-3. ctrl o (saves)
+3. Press **CTRL**+**o** (to save)
 
-4. enter
+4. Press **Enter**
 
-5. ctrl x (exit)
+5. Press **CTRL**+**x** (to exit)
 
 **Place the oldsite folder in /var/www/html** (or git clone the oldsite to this folder)
 
@@ -415,17 +484,20 @@ mv drupal example-site.dev
 
 1. Navigate to /sites (or /var/www/html if you didn’t create a symlink)
 
-2. Change the name of your folder to oldsite.dev (basically we are adding .dev and making sure the name of this folder matches the oldsite.dev name in the hosts file)
+2. Change the name of your folder to **oldsite.dev** (basically we are adding .dev and making sure the name of this folder matches the oldsite.dev name in the hosts file)
 
 3. Navigate into the sites/default folder and delete any old settings.php
 
-4. Copy default.settings.php and rename it: settings.php
+4. Copy default.settings.php and rename it: **settings.php**
 
 **Manually link your oldsite to the new database**
 
 1. Open settings.php in sublime or gedit
 
-2. You can copy/paste this in settings.php around line 219. Look for $databases = array();
+2. You can copy/paste this in settings.php around line 219. Look for:
+
+```php
+$databases = array();
 
 $databases = array (
 
@@ -456,8 +528,9 @@ $databases = array (
   ),
 
 );
+```  
 
-3. Change 'database' => 'DATABASENAME', to your oldsite database name
+3. Change `'database' => 'DATABASENAME',` to your oldsite database name
 
 4. If your local phpmyadmin has a different pw than root/root then change that too
 
@@ -483,32 +556,34 @@ $databases = array (
 
 **Configure Apache2 for the old site **
 
-1. sudo nano /etc/hosts
-
+1. Open the Hosts file:
+```bash
+sudo nano /etc/hosts
+```
 2. Add under the last line
 
+    ```
 # Drupal sites
 127.0.0.1 oldsite.dev
+```
 
-3. ctrl o (saves)
+3. Press **CTRL**+**o** (to save)
 
-4. enter
+4. Press **Enter**
 
-5. ctrl x (exit)
+5. Press **CTRL**+**x** (to exit)
 
 **Place the oldsite folder in /var/www/html** (or git clone the oldsite to this folder)
 
-	
-
 1. Navigate to /sites (or /var/www/html if you didn’t create a symlink)
 
-2. Change the name of your folder to oldsite.dev (basically we are adding .dev and making sure the name of this folder matches the oldsite.dev name in the hosts file)
+2. Change the name of your folder to **oldsite.dev** (basically we are adding .dev and making sure the name of this folder matches the oldsite.dev name in the hosts file)
 
 3. Navigate into the sites/default folder and delete any old settings.php
 
-4. Copy default.settings.php and rename it: settings.php
+4. Copy default.settings.php and rename it: **settings.php**
 
-5. In your browser, navigate to localhost/oldsite.dev
+5. In your browser, navigate to *localhost/oldsite.dev*
 
 6. Complete the install process, making sure to complete the section when it asks for the database name and password.
 
@@ -526,21 +601,22 @@ $databases = array (
 
 1. Reset the admin username/password (assuming admin is the username)
 
-    1. cd to the root of your oldsite.dev
+  1. cd to the root of your oldsite.dev
 
-    2. drush user-password admin --password=**newpassword**
-
+  2. 
+```bash
+drush user-password admin --password=newpassword
+```
 2. Only the front page shows, 404 on any other nodes
 
-    3. Make sure there is an .htaccess file in the root of the site
+  1. Make sure there is an .htaccess file in the root of the site
 
-        1. If it is missing, simply copy/paste .htaccess into the root of your oldsite.dev from another drupal site
+    * If it is missing, simply copy/paste .htaccess into the root of your oldsite.dev from another drupal site
 
-
-    4. If .htaccess is there and still having issues, check for clean urls
+  2. If .htaccess is there and still having issues, check for clean urls
 
         2. In the browser, navigate to 
-localhost/oldsite.dev/?q=admin/config/search/clean-urls
+*localhost/oldsite.dev/?q=admin/config/search/clean-urls*
 
         3. There should be a checkmark and option to run clean urls
 
@@ -548,27 +624,23 @@ localhost/oldsite.dev/?q=admin/config/search/clean-urls
 
         5. In the meantime, you can still painfully navigate the site with /?q=
 
+  3. Missing images
 
-    5. Missing images
+    * If you git cloned, your files folder will be empty. Grab the files folder from the old site and place in sites/default/
 
-        6. If you git cloned, your files folder will be empty. Grab the files folder from the old site and place in sites/default/
+  4. White screen of death (WOD)
 
-    6. White screen of death (WOD)
+    ```bash
+    drush updb
+    ```
 
-        7. drush updb
+**Important drush command change**
 
-**Important drush command ****change**
-
-1. drupal 7:   drush cc all
-
-2. drupal 8:   drush cr all
-
-
-
-
-
-
-
-
-
-
+*       Drupal 7: 
+```bash
+drush cc all
+```  
+*       Drupal 8:
+```bash
+drush cr all
+```
