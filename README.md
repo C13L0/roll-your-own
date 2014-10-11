@@ -53,96 +53,68 @@ Complete Ubuntu 14.04 local setup guide for Drupal 7 &amp; 8. Includes lamp, git
 4. If your prompt is `mysql>` after checking the status, you can escape with  
 `exit`  
 
-**Install php**
+**Install php**  
 1. `sudo apt-get install php5 php5-mysql`  
 2. Create a php file. 
 `sudo nano /var/www/html/phpinfo.php`  
 3. Add the following code 
 
-```<?php
+```
+<?php
 
 phpinfo();
 
-?>
+?>  
 ```
 
-4. ctrl o (saves)
-
-5. enter 
-
-6. ctrl x (exit)
-
-7. restart apache2: 
-```sudo service apache2 restart```
-
-8. Open browser and navigate to: *localhost/phpinfo.php*
+4. ctrl o (saves)  
+5. enter   
+6. ctrl x (exit)  
+7. restart apache2:  
+`sudo service apache2 restart`  
+8. Open browser and navigate to: *localhost/phpinfo.php*  
 
 **Install phpmyadmin **[https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-14-04](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-14-04)
 
-1. ```sudo apt-get install phpmyadmin```
-
-2. Important! Hit the **spacebar** to choose apache 2. It will show an *
-
-3. Tab (to move to <ok>
-
-4. Enter
-
-5. Select Yes to configure with dbconfig-common
-
-6. Follow the rest with your pw and again root is a common password used for a local host
-
-7. sudo php5enmod mcrypt
-
-8. Restart apache: 
-```sudo service apache2 restart```
-
-9. Test by navigating in the browser to: *localhost/phpmyadmin*
-
-10. You can follow the rest of the tutorial for additional securities if you want. I am not sure if this is necessary for local. Of course it would be for a cloud server
-
-Don’t *ever* do this on a live server but local is fine. Drupal php needs access.
-
-1. chmod 775 /var/www/html
+1. `sudo apt-get install phpmyadmin`  
+2. Important! Hit the **spacebar** to choose apache 2. It will show an `*`  
+3. Tab (to move to <ok>   
+4. Enter  
+5. Select Yes to configure with dbconfig-common  
+6. Follow the rest with your pw and again root is a common password used for a local host  
+7. `sudo php5enmod mcrypt`  
+8. Restart apache:  
+`sudo service apache2 restart`  
+9. Test by navigating in the browser to: *localhost/phpmyadmin*  
+10. You can follow the rest of the tutorial for additional securities if you want. I am not sure if this is necessary for local. Of course it would be for a cloud server  
+11. Don’t *ever* do this on a live server but local is fine. Drupal php needs access.  
+`chmod 775 /var/www/html`  
 
 **Increase max limit php.ini**
 
-1. ```sudo nano /etc/php5/apache2/php.ini```
-
-2. ctrl w (search) memory_limit
-
-3. change: memory_limit = **512M**
-
-4. ctrl o (saves)
-
-5. enter 
-
-6. ctrl x (exit)
+1. `sudo nano /etc/php5/apache2/php.ini`  
+2. ctrl w (search) memory_limit  
+3. change: memory_limit = *512M*  
+4. ctrl o (saves)  
+5. enter  
+6. ctrl x (exit)  
 
 **Create SSH key** (you can replace keys with your old ones after initial set up)
 
-1. ```cd ~```
-
-2. ```mkdir .ssh```
-
-3. ```chmod 700 .ssh```
-
-4. ```ssh-keygen -t rsa```
-
-5. enter, enter, enter (Enter a passphrase if you wish)
-
-6. *extra* if you want your old keys - put your old keys on a usb drive, navigate to the .ssh folder and replace them
+1. `cd ~`  
+2. `mkdir .ssh`  
+3. `chmod 700 .ssh`  
+4. `ssh-keygen -t rsa`  
+5. enter, enter, enter (Enter a passphrase if you wish)  
+6. *extra* if you want your old keys - put your old keys on a usb drive, navigate to the .ssh folder and replace them  
 
 **Install git**
 
-1. ```cd ~```
-
-2. ```sudo apt-get install git```
-
-3. ```git config --global user.name yourname```
-
-4. ```git config --global user.email youremail@domain.com```
-
-5. ```git config --global color.ui auto```
+1. `cd ~`  
+2. `sudo apt-get install git`  
+3. `git config --global user.name yourname`  
+4. `git config --global user.email youremail@domain.com`  
+5. `git config --global color.ui auto`  
 
 **Install composer Note! You must install composer before installing drush**
 
