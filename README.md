@@ -1,5 +1,6 @@
 ###Roll-your-own Drupal setup on Ubuntu 14.04
 =============
+*Note* As of 10/10/14 .. this document has not been completed or formatted. If you need it asap, I have a completed google doc. Find me on freenode #drupal-florida
 
 Complete Ubuntu 14.04 local setup guide for Drupal 7 &amp; 8. Includes lamp, git, composer, drush, and rvm  
 
