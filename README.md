@@ -15,78 +15,57 @@ Complete Ubuntu 14.04 local setup guide for Drupal 7 &amp; 8. Includes lamp, git
 5. If you want to use a text editor, it is called gedit. Open it the same way as the terminal. Once it is in the sidebar launcher, you can left click and lock.  
 6. You can also remove most of the other annoying icons from the launcher so they are not in your way.  
 
-**Give your user permissions!**
+**Give your user permissions!**  
 
-1. ```sudo adduser yourusername sudo```
+1. ```sudo adduser yourusername sudo```   
+2. ```sudo adduser yourusername www-data```  
 
-2. ```sudo adduser yourusername www-data```
-
-* Note: If you are having permission issues, you can also do the following. I do not believe this method is recommended
-
-1. ```sudo visudo```
-
-2. Using the arrow keys scroll down until you see # User privilege specification
-
-3. Place cursor under: root ALL=(ALL:ALL) ALL
-
-4. Add: yourusername ALL=(ALL:ALL) ALL
-
-5. esc
-
-6. :wq
+* Note: If you are having permission issues, you can also do the following. I do not believe this method is recommended  
+1. ```sudo visudo```  
+2. Using the arrow keys scroll down until you see # User privilege specification  
+3. Place cursor under: root ALL=(ALL:ALL) ALL  
+4. Add: yourusername ALL=(ALL:ALL) ALL   
+5. esc  
+6. :wq  
 
 **Create Lamp Stack** [http://www.krizna.com/ubuntu/install-lamp-server-ubuntu-14-04/
 ](http://www.krizna.com/ubuntu/install-lamp-server-ubuntu-14-04/)
 
-1. ```sudo apt-get install apache2```
+1. ```sudo apt-get install apache2```  
+2. ```sudo nano /etc/apache2/apache2.conf```  
+3. Use the arrow key to scroll down to the end of the file and type in:  
+```ServerName localhost```  
+4. ctrl o (saves)  
+5. enter   
+6. ctrl x (exit)  
+7. You can check to make sure that it saved with   
+```cat /etc/apache2/apache2.conf```  
+8. Restart apache   
+```sudo service apache2 restart```  
+9. ```sudo chown yourusername:www-data /var/www/html -R```  
+10. You can check to make sure it works properly by opening the browser and typing ```/var/www/html```  
 
-2. ```sudo nano /etc/apache2/apache2.conf```
-
-3. Use the arrow key to scroll down to the end of the file and type in:
-ServerName localhost
-
-4. ctrl o (saves)
-
-5. enter 
-
-6. ctrl x (exit)
-
-7. You can check to make sure that it saved with 
-```cat /etc/apache2/apache2.conf```
-
-8. Restart apache 
-```sudo service apache2 restart```
-
-9. ```sudo chown yourusername:www-data /var/www/html -R```
-
-10. You can check to make sure it works properly by opening the browser and typing ```/var/www/html```
-
-**Install mysql server**
-
-1. ```sudo apt-get install mysql-server```
-
-2. It will ask you to create a password. Generally for localhost it is root/root. 
-
-3. Check the service status with 
-```sudo /etc/init.d/mysql status```
-
-4. If your prompt is ```mysql>``` after checking the status, you can escape with:  
-```exit```
+**Install mysql server**  
+1. ```sudo apt-get install mysql-server```  
+2. It will ask you to create a password. Generally for localhost it is root/root.   
+3. Check the service status with   
+```sudo /etc/init.d/mysql status```   
+4. If your prompt is ```mysql>``` after checking the status, you can escape with  
+```exit```  
 
 **Install php**
-
-1. ```sudo apt-get install php5 php5-mysql```
-
+1. ```sudo apt-get install php5 php5-mysql```  
 2. Create a php file. 
-```sudo nano /var/www/html/phpinfo.php```
-
+```sudo nano /var/www/html/phpinfo.php```  
 3. Add the following code 
 
+```
 <?php
 
 phpinfo();
 
 ?>
+```
 
 4. ctrl o (saves)
 
