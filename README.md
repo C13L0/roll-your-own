@@ -425,7 +425,7 @@ $ sudo nano /etc/apache2/mods-enabled/dir.conf
     ```PHP
     <IfModule mod_dir.c>
     
-              DirectoryIndex **index.php** index.html index.cgi index.pl index.php index.xhtml index.htm
+              DirectoryIndex index.php index.html index.cgi index.pl index.php index.xhtml index.htm
     
     </IfModule>
     ```
@@ -777,39 +777,23 @@ $ sudo nano /etc/hosts
 
 ####Manually link your oldsite to the new database
 1. Open settings.php in sublime or gedit
-2. You can copy/paste this in settings.php around line 219. Look for:
+2. You can copy/paste this in settings.php around line 219. Look for: `$databases = array();`
 
     ```php
-    $databases = array();
-    
     $databases = array (
-    
       'default' =>
-    
       array (
-    
         'default' =>
-    
         array (
-    
         'database' => 'DATABASENAME',
-    
         'username' => 'root',
-    
         'password' => 'root',
-    
         'host' => 'localhost',
-    
         'port' => '',
-    
         'driver' => 'mysql',
-    
         'prefix' => '',
-    
        ),
-    
      ),
-    
    );
    ```  
 
