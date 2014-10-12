@@ -50,8 +50,7 @@ $ sudo visudo
 6. Type: `:wq`
 
 ###Create Lamp Stack
-####[http://www.krizna.com/ubuntu/install-lamp-server-ubuntu-14-04/
-](http://www.krizna.com/ubuntu/install-lamp-server-ubuntu-14-04/)
+####[http://www.krizna.com/ubuntu/install-lamp-server-ubuntu-14-04/](http://www.krizna.com/ubuntu/install-lamp-server-ubuntu-14-04/)
 
 1. Install Apache:
 
@@ -854,14 +853,14 @@ $ drush user-password admin --password=newpassword
     ```
 
 ####Important drush command change
-*       Drupal 7: 
+*	Drupal 7:
 
-    ```bash
-$ drush cc all
-```  
+	```bash
+	$ drush cc all
+	```
 
 *       Drupal 8:
 
-    ```bash
-$ drush cr all
-```
+	```bash
+	$ drush cr all
+	```
