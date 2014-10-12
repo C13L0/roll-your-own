@@ -1,9 +1,11 @@
 #Roll-Your-Own Drupal setup on Ubuntu 14.04
-By @C13L0
+By @C13L0 
 
-*Note* As of 10/10/14 .. this document has not been completed or formatted. If you need it asap, I have a completed google doc. Find me on freenode #drupal-florida
+![alt text](http://drupal.org/files/images/DrupalDiver.png "Florida Drupal Users Group")
+[Florida Drupal Users Group](https://groups.drupal.org/florida)
+**IRC**: Freenode.org #drupal-florida
 
-Complete Ubuntu 14.04 local setup guide for Drupal 7 & 8. Includes lamp, git, composer, drush, and rvm  
+Complete Ubuntu 14.04 local setup guide for Drupal 7 & 8. Includes LAMP, git, Composer, Drush, and RVM  
 
 **LOCAL set up only!**  Ubuntu 14.04 / LAMP / Drupal sites setup
 
@@ -49,6 +51,7 @@ $ sudo visudo
 5. Press **Esc**
 6. Type: `:wq`
 
+___
 ###Create Lamp Stack
 ####[http://www.krizna.com/ubuntu/install-lamp-server-ubuntu-14-04/](http://www.krizna.com/ubuntu/install-lamp-server-ubuntu-14-04/)
 
@@ -89,6 +92,8 @@ $ sudo chown yourusername:www-data /var/www/html -R
 
 10. You can check to make sure it works properly by opening the browser and typing: */var/www/html*
 
+---
+
 ####Install MySQL server
 1. Install MySQL:
 
@@ -104,6 +109,8 @@ $ sudo /etc/init.d/mysql status
 ```
 
 4. If your prompt is `mysql>` after checking the status, you can escape by typing: `exit`
+
+---
 
 ####Install PHP
 1. Install PHP: 
@@ -138,6 +145,8 @@ $ sudo service apache2 restart
 ```
 
 8. Open browser and navigate to: *localhost/phpinfo.php*  
+
+---
 
 ####Install phpmyadmin
 ####[https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-14-04](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-14-04)
@@ -185,6 +194,8 @@ $ sudo nano /etc/php5/apache2/php.ini
 5. Press **Enter**   
 6. Press **CTRL**+**x** (to exit)  
 
+---
+
 ####Create SSH key
 #####(you can replace keys with your old ones after initial set up)
 1. Change to root directory:
@@ -213,6 +224,8 @@ $ ssh-keygen -t rsa
 
 5. Press **Enter** three times (type a passphrase if you wish)  
 6. *Extra* - If you want your old keys - put your old keys on a usb drive, navigate to the .ssh folder and replace them  
+
+---
 
 ###Install git
 
@@ -245,6 +258,8 @@ $ git config --global user.email youremail@domain.com
     ```Bash
 $ git config --global color.ui auto
 ```
+
+---
 
 ###Install Composer
 ####Note! You must install composer before installing drush
@@ -285,6 +300,8 @@ $ sed -i '1i export PATH="$HOME/.composer/vendor/bin:$PATH"' $HOME/.bashrc
 source $HOME/.bashrc
 ```
 
+---
+
 ###Install Drush (must install composer first) 
 ####For new drush commands http://www.drushcommands.com/
 1. Change to root directory:
@@ -304,6 +321,8 @@ $ composer global require drush/drush:dev-master
     ```bash
 $ composer global update
 ```
+
+---
 
 ###Install IDE (Sublime Text 3)
 1. Change to root directory:
@@ -331,6 +350,8 @@ $ sudo apt-get install sublime-text-installer
 ```
 
 5. Add in drupal specific preferences [https://drupal.org/node/1346890](https://drupal.org/node/1346890)
+
+---
 
 ###Install RVM
 1. ?
@@ -368,6 +389,8 @@ $ rvm use 2.1.2
 $ ruby -v
 ```
 
+---
+
 ###Install IRC (HexChat)
 1. Add the HexChat PPA:
     
@@ -386,6 +409,8 @@ $ sudo apt-get update
     ```Bash
 $ sudo apt-get install hexchat
 ```
+
+---
 
 #Set up for Sites
 ####Configure Apache to preference .php files over .html files
@@ -413,6 +438,8 @@ $ sudo nano /etc/apache2/mods-enabled/dir.conf
     ```Bash
 $ sudo service apache2 restart
 ```
+
+---
 
 ####Enable global site clean url’s
 1. Enable the rewrite module for Apache:
@@ -467,6 +494,8 @@ $ sudo nano /etc/apache2/apache2.conf
 & sudo service apache2 restart
 ```
 
+---
+
 ###Create Virtual Host (vhost) Site Configuration Files
 [http://ben-it.org/content/ubuntu-1204-apache-2-edit-default-virtualhost-enable-modrewrite-module-drupal-clean-urls](http://ben-it.org/content/ubuntu-1204-apache-2-edit-default-virtualhost-enable-modrewrite-module-drupal-clean-urls)
 
@@ -520,6 +549,8 @@ $ sudo ln -s ../sites-available/drupal .
 $ sudo service apache2 restart
 ```
 
+---
+
 ####Make it easy to navigate to our sites folder by creating a symlink to /var/www/html
 
 1. Change to root directory:
@@ -547,6 +578,8 @@ $ ln -s /what/is/being/linked /where/symlink/goes/nameofsymlink
 ```
 
 To remove a symlink: unlink **sites** (symlink name)
+
+---
 
 ##Create A Drupal Site (or Two) ---- Works Great For Drupal 8 too!
 ###Configure Apache For Sites (do this with both site creation methods)
@@ -577,6 +610,8 @@ $ sudo nano /etc/hosts
 
 127.0.0.1 newsite3.dev
 ```
+
+---
 
 ###Create Database and Site via gui/git (scroll down for cl/drush alternate)
 ####Create database
@@ -620,12 +655,15 @@ $ cd example-site.dev/sites/default
 $ cp default.settings.php settings.php
 ```
 
+---
 
 ####Complete Install
 1. Open browser and navigate to *localhost/example-site.dev*
 2. Complete install, making sure to fill in database name and password
 
 *Rinse and repeat this page for any __new__ drupal sites*
+
+---
 
 ###Alternate database and site creation using command line and drush
 ####Create database
@@ -636,6 +674,8 @@ $ mysqladmin -u root -p create database_name
 ```
 
 2. Enter your MySQL root password at the prompt.
+
+---
 
 ####Create database user for site via command line
 1. Open the mySQL client using root:
@@ -670,6 +710,8 @@ mysql> FLUSH PRIVILEGES;
 mysql> quit
 ```
 
+---
+
 ###Create site via drush (works with Drupal 7, but still needs testing on Drupal 8)
 1. Download Drupal:
 
@@ -694,6 +736,8 @@ $ cd site_directory_name
     ```Bash
 $ drush si standard --account-name=admin --account-pass=admin --db-url=mysql://database_user_name:database_user_password@localhost/database_name
 ```
+
+---
 
 ###Get an old site up and running
 ####You will need:
@@ -776,6 +820,8 @@ $ sudo nano /etc/hosts
 1. Navigate to localhost/oldsite.dev
 2. You will need your old username/password as it is stored in the database to log in
 
+---
+
 ###Specific Install for using backup_migrate module
 ####You will need:
 1. All of the files or ability to git clone the files of the old site 
@@ -827,6 +873,8 @@ $ drush en backup_migrate
 
 4. Log into your site, go to configuration management, and restore backup_migrate database as usual
 
+---
+
 ###Common troubleshooting stuff when working with older sites
 1. Reset the admin username/password (assuming admin is the username)
   1. cd to the root of your oldsite.dev
@@ -851,6 +899,8 @@ $ drush user-password admin --password=newpassword
         ```bash
     $ drush updb
     ```
+
+---
 
 ####Important drush command change
 *	Drupal 7:
