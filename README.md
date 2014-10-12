@@ -370,17 +370,16 @@ $ source ~/.rvm/scripts/rvm
 4. Install current stable version of RVM:
 
     ```Bash
-$ rvm install 2.1.2
+$ rvm install 2.1.3
 ```
 
 5. Change terminal preferences by going to: Edit > Profile Preferences Title and Command
 6. Check the box to **Run command as a login shell**.
 7. Close terminal and reopen.
-8. Find the latest version www.ruby-lang.org/en/downloads/
-9. Switch to Ruby 2.1.2:
+8. Switch to Ruby 2.1.3:
 
     ```bash
-$ rvm use 2.1.2
+$ rvm use 2.1.3
 ```
 
 10. Verify Ruby version:
