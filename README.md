@@ -274,13 +274,13 @@ $ curl -sS https://getcomposer.org/installer | php
 $ sudo mv composer.phar /usr/local/bin/composer
 ```
 
-5. ?
+5. Adds the proper path to the .bashrc file:
     
     ```bash
 $ sed -i '1i export PATH="$HOME/.composer/vendor/bin:$PATH"' $HOME/.bashrc
 ```
 
-6. Source ./bashrc:
+6. Reloading/Rrefreshing the .bashrc file:
 
     ```bash
 source $HOME/.bashrc
@@ -859,6 +859,7 @@ $ drush user-password admin --password=newpassword
     ```bash
 $ drush cc all
 ```  
+
 *       Drupal 8:
 
     ```bash
