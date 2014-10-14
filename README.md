@@ -712,25 +712,19 @@ mysql> quit
 ---
 
 ###Create site via drush (works with Drupal 7, but still needs testing on Drupal 8)
-1. Download Drupal:
+1. Download Drupal (can also do drupal-8.x):
 
     ```Bash
-$ drush dl drupal-7.x (can also do drupal-8.x)
+$ drush dl drupal --drupal-project-rename=site_directory_name
 ```
 
-2. Rename the drupal-7.x-dev directory to site name:
-
-    ```Bash
-$ mv drupal-7.x-dev site_directory_name
-```
-
-3. Change to the site_directory_name
+2. Change to the site_directory_name
     
     ```Bash
 $ cd site_directory_name
 ```
 
-4. Drupal Site Install:
+3. Drupal Site Install:
     
     ```Bash
 $ drush si standard --account-name=admin --account-pass=admin --db-url=mysql://database_user_name:database_user_password@localhost/database_name
