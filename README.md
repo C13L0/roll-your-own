@@ -694,7 +694,7 @@ mysql> CREATE USER 'name_of_new_user'@'localhost' IDENTIFIED BY 'password_of_new
 4. Grant *name_of_new_user* privileges to *database_name*:
     
     ```mySQL
-mysql> GRANT ALL PRIVILEGES ON 'database_name'.* TO 'name_of_new_user'@'localhost';
+mysql> GRANT ALL PRIVILEGES ON database_name.* TO 'name_of_new_user'@'localhost';
 ```
 
 5. Reload the grant tables:
