@@ -189,7 +189,7 @@ $ sudo nano /etc/php5/apache2/php.ini
 ```
 
 2. Press **CTRL**+**w** (to search) and type `memory_limit`  
-3. Change to: `memory-limit = 512M`
+3. Change to: `memory_limit = 512M`
 4. Press **CTRL**+**o** (to save)  
 5. Press **Enter**   
 6. Press **CTRL**+**x** (to exit)  
@@ -386,7 +386,7 @@ Install RVM:
 $ gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3
 ```
 
-2. ?
+2. Download RVM
 
     ```Bash
 $ curl -sSL https://get.rvm.io | bash -s stable
