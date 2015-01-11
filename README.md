@@ -733,7 +733,7 @@ mysql> FLUSH PRIVILEGES;
 6. Exit mySQL
     
     ```mySQL
-mysql> quit
+$mysql> quit
 ```
 
 ---
