@@ -369,13 +369,8 @@ $ sudo apt-get install sublime-text-installer
 
 ###Install RVM
 
-RVM (“Ruby Version Manager”)
+RVM (“Ruby Version Manager”) Required for theming with sass/compass
 RVM allows you to install and manage multiple installations of Ruby on your system. It can also manage different gemsets. It is available for OS X, Linux, or other UNIX-like operating systems.
-
-Added the following command as the new first step: $ gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3
-Found the information on this here: http://rvm.io/ 
-
-NOTE:  Received this error when executing just the "curl -sSL https://get.rvm.io | bash -s stable" command as the first step: Can’t check signature:  public key not found.  Warming RVM 1.26.0 introduces signed releases and automated check of signatures when GPG software found.  Then some messages about signature verification failed for the tgz and try downloading signatures.
 
 
 Install RVM:
@@ -422,7 +417,7 @@ $ ruby -v
 
 ---
 
-###Install IRC (HexChat)
+###Install IRC (HexChat) Optional
 1. Add the HexChat PPA:
     
     ```Bash
