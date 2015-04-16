@@ -188,7 +188,7 @@ $ chmod 775 /var/www/html
 $ sudo nano /etc/php5/apache2/php.ini
 ```
 
-2. Press **CTRL**+**w** (to search) and type `memory_limit`  
+2. Press **CTRL**+**w** (to search) and type `memory_limit`
 3. Change to: `memory_limit = 512M`
 4. Press **CTRL**+**o** (to save)  
 5. Press **Enter**   
@@ -223,7 +223,19 @@ $ ssh-keygen -t rsa
 ```
 
 5. Press **Enter** three times (type a passphrase if you wish)  
-6. *Extra* - If you want your old keys - put your old keys on a usb drive, navigate to the .ssh folder and replace them  
+
+Note: You will see the following messages to which you can just press enter:
+```sh
+Enter file in which to save the key (/Users/you/.ssh/id_rsa): [Press enter]
+```
+```sh
+Enter passphrase (empty for no passphrase): [Type a passphrase]
+```
+```sh
+Enter same passphrase again: [Type passphrase again]
+```
+
+*Extra* - If you want your old keys - put your old keys on a usb drive, navigate to the .ssh folder and replace them  
 
 ---
 
@@ -246,6 +258,7 @@ $ sudo apt-get install git
     ```Bash
 $ git config --global user.name yourname
 ```
+NOTE: Yourname may be entered as “firstname lastname”, use apostrophes around yourname if using a space between first and last names.  Example:  `$ git config –global user.name “Jane Smith” `
 
 4. Set your email for git identity:
 
@@ -259,6 +272,10 @@ $ git config --global user.email youremail@domain.com
 $ git config --global color.ui auto
 ```
 
+6. See all current values:
+    ```Bash
+$ git config --list
+```
 ---
 
 ###Install Composer
@@ -325,6 +342,9 @@ $ composer global update
 ---
 
 ###Install IDE (Sublime Text 3)
+
+Sublime Text is a sophisticated text editor for code, html and prose. 
+
 1. Change to root directory:
 
     ```bash
@@ -354,36 +374,46 @@ $ sudo apt-get install sublime-text-installer
 ---
 
 ###Install RVM
-1. ?
+
+RVM (“Ruby Version Manager”) Required for theming with sass/compass
+RVM allows you to install and manage multiple installations of Ruby on your system. It can also manage different gemsets. It is available for OS X, Linux, or other UNIX-like operating systems.
+
+1. Download signatures:
+
+    ```Bash
+$ gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3
+```
+
+2. Download RVM
 
     ```Bash
 $ curl -sSL https://get.rvm.io | bash -s stable
 ```
 
-2. Source ~/.rvm/scripts/rvm:
+3. Source ~/.rvm/scripts/rvm:
 
     ```Bash
 $ source ~/.rvm/scripts/rvm
 ```
 
-3. Find current stable version at [www.ruby-lang.org/en/downloads/](http://www.ruby-lang.org/en/downloads/)
-4. Install current stable version of RVM:
+4. Find current stable version at [www.ruby-lang.org/en/downloads/](http://www.ruby-lang.org/en/downloads/)
+5. Install current stable version of RVM:
 
     ```Bash
-$ rvm install 2.1.2
+$ rvm install 2.1.5
 ```
 
-5. Change terminal preferences by going to: Edit > Profile Preferences Title and Command
-6. Check the box to **Run command as a login shell**.
-7. Close terminal and reopen.
-8. Find the latest version www.ruby-lang.org/en/downloads/
-9. Switch to Ruby 2.1.2:
+6. Change terminal preferences by going to: Edit > Profile Preferences Title and Command
+7. Check the box to **Run command as a login shell**.
+8. Close terminal and reopen.
+9. Find the latest version www.ruby-lang.org/en/downloads/
+10. Switch to Ruby 2.1.2:
 
     ```bash
 $ rvm use 2.1.2
 ```
 
-10. Verify Ruby version:
+11. Verify Ruby version:
     
     ```Bash
 $ ruby -v
@@ -425,7 +455,7 @@ $ sudo nano /etc/apache2/mods-enabled/dir.conf
     ```PHP
     <IfModule mod_dir.c>
     
-              DirectoryIndex **index.php** index.html index.cgi index.pl index.php index.xhtml index.htm
+              DirectoryIndex **index.php** index.html index.cgi index.pl index.xhtml index.htm
     
     </IfModule>
     ```
@@ -713,19 +743,25 @@ mysql> quit
 ---
 
 ###Create site via drush (works with Drupal 7, but still needs testing on Drupal 8)
-1. Download Drupal (can also do drupal-8.x):
+1. Change to your sites directory: (Hopefully you created a symlink. If you didn’t then use $ cd /var/www/html):
+
+    ```Bash
+$ cd sites
+```
+
+2. Download Drupal (can also do drupal-8.x):
 
     ```Bash
 $ drush dl drupal --drupal-project-rename=site_directory_name
 ```
 
-2. Change to the site_directory_name
+3. Change to the site_directory_name
     
     ```Bash
 $ cd site_directory_name
 ```
 
-3. Drupal Site Install:
+4. Drupal Site Install. This will also create your settings.php file:
     
     ```Bash
 $ drush si standard --account-name=admin --account-pass=admin --db-url=mysql://database_user_name:database_user_password@localhost/database_name
