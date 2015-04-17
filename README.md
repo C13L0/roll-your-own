@@ -188,7 +188,7 @@ $ chmod 775 /var/www/html
 $ sudo nano /etc/php5/apache2/php.ini
 ```
 
-2. Press **CTRL**+**w** (to search) and type `memory_limit`
+2. Press **CTRL**+**w** (to search) and type `memory_limit`  
 3. Change to: `memory_limit = 512M`
 4. Press **CTRL**+**o** (to save)  
 5. Press **Enter**   
@@ -222,20 +222,14 @@ $ chmod 700 .ssh
 $ ssh-keygen -t rsa
 ```
 
-5. Press **Enter** three times (type a passphrase if you wish)  
+5. Press **Enter** three times (type a passphrase if you wish).
 
-Note: You will see the following messages to which you can just press enter:
-```sh
-Enter file in which to save the key (/Users/you/.ssh/id_rsa): [Press enter]
-```
-```sh
-Enter passphrase (empty for no passphrase): [Type a passphrase]
-```
-```sh
-Enter same passphrase again: [Type passphrase again]
-```
-
-*Extra* - If you want your old keys - put your old keys on a usb drive, navigate to the .ssh folder and replace them  
+	Note: You will see the following messages to which you can just press enter:
+	a. Enter file in which to save the key (/home/linda/.ssh/id_rsa):
+	b. Enter passphrase (empty for no passphrase):
+	c. Enter same passphrase again:
+	
+6. *Extra* - If you want your old keys - put your old keys on a usb drive, navigate to the .ssh folder and replace them  
 
 ---
 
@@ -258,7 +252,7 @@ $ sudo apt-get install git
     ```Bash
 $ git config --global user.name yourname
 ```
-NOTE: Yourname may be entered as “firstname lastname”, use apostrophes around yourname if using a space between first and last names.  Example:  `$ git config –global user.name “Jane Smith” `
+NOTE: Yourname may be entered as “firstname lastname”, use apostrophes around yourname if using a space between first and last names.  Example:  $ git config –global user.name “Linda Green”
 
 4. Set your email for git identity:
 
@@ -378,6 +372,9 @@ $ sudo apt-get install sublime-text-installer
 RVM (“Ruby Version Manager”) Required for theming with sass/compass
 RVM allows you to install and manage multiple installations of Ruby on your system. It can also manage different gemsets. It is available for OS X, Linux, or other UNIX-like operating systems.
 
+
+Install RVM:
+
 1. Download signatures:
 
     ```Bash
@@ -406,14 +403,13 @@ $ rvm install 2.1.5
 6. Change terminal preferences by going to: Edit > Profile Preferences Title and Command
 7. Check the box to **Run command as a login shell**.
 8. Close terminal and reopen.
-9. Find the latest version www.ruby-lang.org/en/downloads/
-10. Switch to Ruby 2.1.2:
+9. Switch to Ruby 2.1.5:
 
     ```bash
-$ rvm use 2.1.2
+$ rvm use 2.1.5
 ```
 
-11. Verify Ruby version:
+10. Verify Ruby version:
     
     ```Bash
 $ ruby -v
@@ -421,7 +417,7 @@ $ ruby -v
 
 ---
 
-###Install IRC (HexChat)
+###Install IRC (HexChat) Optional
 1. Add the HexChat PPA:
     
     ```Bash
@@ -455,7 +451,7 @@ $ sudo nano /etc/apache2/mods-enabled/dir.conf
     ```PHP
     <IfModule mod_dir.c>
     
-              DirectoryIndex **index.php** index.html index.cgi index.pl index.xhtml index.htm
+              DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm
     
     </IfModule>
     ```
@@ -725,7 +721,7 @@ mysql> CREATE USER 'name_of_new_user'@'localhost' IDENTIFIED BY 'password_of_new
 4. Grant *name_of_new_user* privileges to *database_name*:
     
     ```mySQL
-mysql> GRANT ALL PRIVILEGES ON 'database_name'.* TO 'name_of_new_user'@'localhost';
+mysql> GRANT ALL PRIVILEGES ON database_name.* TO 'name_of_new_user'@'localhost';
 ```
 
 5. Reload the grant tables:
@@ -737,7 +733,7 @@ mysql> FLUSH PRIVILEGES;
 6. Exit mySQL
     
     ```mySQL
-mysql> quit
+$mysql> quit
 ```
 
 ---
@@ -766,6 +762,9 @@ $ cd site_directory_name
     ```Bash
 $ drush si standard --account-name=admin --account-pass=admin --db-url=mysql://database_user_name:database_user_password@localhost/database_name
 ```
+
+Note: When you see the following message, type y and Enter to continute:
+You are about to create a /home/user/site_directory_name/sites/default/settings.php file and DROP all tables in your ‘datebase_name’ database.  Do you want to continue? (y/n): 
 
 ---
 
@@ -807,39 +806,23 @@ $ sudo nano /etc/hosts
 
 ####Manually link your oldsite to the new database
 1. Open settings.php in sublime or gedit
-2. You can copy/paste this in settings.php around line 219. Look for:
+2. You can copy/paste this in settings.php around line 219. Look for: `$databases = array();`
 
     ```php
-    $databases = array();
-    
     $databases = array (
-    
       'default' =>
-    
       array (
-    
         'default' =>
-    
         array (
-    
         'database' => 'DATABASENAME',
-    
         'username' => 'root',
-    
         'password' => 'root',
-    
         'host' => 'localhost',
-    
         'port' => '',
-    
         'driver' => 'mysql',
-    
         'prefix' => '',
-    
        ),
-    
      ),
-    
    );
    ```  
 
