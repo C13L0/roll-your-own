@@ -1,25 +1,25 @@
 #Roll-Your-Own Drupal setup on Ubuntu 14.04
-By @C13L0
+By @C13L0 
 
 ![alt text](http://drupal.org/files/images/DrupalDiver.png "Florida Drupal Users Group")
 [Florida Drupal Users Group](https://groups.drupal.org/florida)
 **IRC**: Freenode.org #drupal-florida
 
-Complete Ubuntu 14.04 local setup guide for Drupal 7 & 8. Includes LAMP, git, Composer, Drush, and RVM
+Complete Ubuntu 14.04 local setup guide for Drupal 7 & 8. Includes LAMP, git, Composer, Drush, and RVM  
 
 **LOCAL set up only!**  Ubuntu 14.04 / LAMP / Drupal sites setup
 
-1. Create a bootable install disk or usb drive, follow directions and install Ubuntu
-2. It is very important to write down or remember your username and password. You will use these on a regular basis
+1. Create a bootable install disk or usb drive, follow directions and install Ubuntu  
+2. It is very important to write down or remember your username and password. You will use these on a regular basis  
 3. Open a terminal, click on the top left icon and type: `terminal`
 4. Run updates (don’t bother with the software updater). This takes a while:
 
-  ```bash
+	```bash
 $ sudo apt-get update
 ```
 
-5. If you want to use a text editor, it is called gedit. Open it the same way as the terminal. Once it is in the sidebar launcher, you can left click and lock.
-6. You can also remove most of the other annoying icons from the launcher so they are not in your way.
+5. If you want to use a text editor, it is called gedit. Open it the same way as the terminal. Once it is in the sidebar launcher, you can left click and lock.  
+6. You can also remove most of the other annoying icons from the launcher so they are not in your way.  
 
 ####Give your user permissions!
 
@@ -37,7 +37,7 @@ $ sudo adduser yourusername www-data
 
 ####Permission Issues
 
-If you are having permission issues, you can also do the following. I do not believe this method is recommended.
+If you are having permission issues, you can also do the following. I do not believe this method is recommended.  
 
 1. Open the /etc/sudoers file with the "vi" text editor:
 
@@ -59,7 +59,7 @@ ___
 
     ```bash
 $ sudo apt-get install apache2
-```
+``` 
 
 2. Open Apache main configuration file:
 
@@ -67,11 +67,11 @@ $ sudo apt-get install apache2
 $ sudo nano /etc/apache2/apache2.conf
 ```
 
-3. Use the arrow key to scroll down to the end of the file and type in:
-`ServerName localhost`
-4. Press **CTRL**+**o** (to save)
-5. Press **Enter**
-6. Press **CTRL**+**x** (to exit)
+3. Use the arrow key to scroll down to the end of the file and type in: 
+`ServerName localhost`  
+4. Press **CTRL**+**o** (to save)  
+5. Press **Enter**   
+6. Press **CTRL**+**x** (to exit)  
 7. You can check to make sure that it saved with
 
     ```bash
@@ -101,7 +101,7 @@ $ sudo chown yourusername:www-data /var/www/html -R
 $ sudo apt-get install mysql-server
 ```
 
-2. It will ask you to create a password. Generally for localhost it is root/root.
+2. It will ask you to create a password. Generally for localhost it is root/root.   
 3. Check the service status with:
 
     ```bash
@@ -113,38 +113,38 @@ $ sudo /etc/init.d/mysql status
 ---
 
 ####Install PHP
-1. Install PHP:
+1. Install PHP: 
 
     ```bash
 $ sudo apt-get install php5 php5-mysql
-```
+```  
 
-2. Create a PHP file.
+2. Create a PHP file. 
 
     ```bash
 $ sudo nano /var/www/html/phpinfo.php
 ```
 
-3. Add the following code:
+3. Add the following code:  
 
     ```PHP
-    <?php
-
+    <?php  
+    
     phpinfo();
-
+    
     ?>
     ```
 
-4. Press **CTRL**+**o** (to save)
-5. Press **Enter**
-6. Press **CTRL**+**x** (to exit)
-7. Restart Apache:
+4. Press **CTRL**+**o** (to save)  
+5. Press **Enter**  
+6. Press **CTRL**+**x** (to exit)  
+7. Restart Apache:  
 
     ```bash
 $ sudo service apache2 restart
 ```
 
-8. Open browser and navigate to: *localhost/phpinfo.php*
+8. Open browser and navigate to: *localhost/phpinfo.php*  
 
 ---
 
@@ -156,10 +156,10 @@ $ sudo service apache2 restart
 $ sudo apt-get install phpmyadmin
 ```
 
-2. **Important!** Press the **spacebar** to choose Apache 2. An ***** will display.
-3. Press **Tab** (to navigate down the menu to <ok>)
-4. Press **Enter**
-5. Select *Yes* to configure with dbconfig-common
+2. **Important!** Press the **spacebar** to choose Apache 2. An ***** will display.   
+3. Press **Tab** (to navigate down the menu to <ok>)   
+4. Press **Enter**  
+5. Select *Yes* to configure with dbconfig-common  
 6. Follow the rest with your password, and again *root* is a common password used for a local host
 7. Activate the mcrpyt module:
 
@@ -173,8 +173,8 @@ $ sudo php5enmod mcrypt
 $ sudo service apache2 restart
 ```
 
-9. Test by navigating in the browser to: *localhost/phpmyadmin*
-10. You can follow the rest of the tutorial for additional securities if you want. I am not sure if this is necessary for local. Of course it would be for a cloud server
+9. Test by navigating in the browser to: *localhost/phpmyadmin*  
+10. You can follow the rest of the tutorial for additional securities if you want. I am not sure if this is necessary for local. Of course it would be for a cloud server  
 11. Don’t *ever* do this on a live server but local is fine. Drupal php needs access:
 
     ```Bash
@@ -183,16 +183,16 @@ $ chmod 775 /var/www/html
 
 ####Increase max limit php.ini
 1. Open the PHP configuration file:
-
+    
     ```Bash
 $ sudo nano /etc/php5/apache2/php.ini
 ```
 
 2. Press **CTRL**+**w** (to search) and type `memory_limit`
 3. Change to: `memory_limit = 512M`
-4. Press **CTRL**+**o** (to save)
-5. Press **Enter**
-6. Press **CTRL**+**x** (to exit)
+4. Press **CTRL**+**o** (to save)  
+5. Press **Enter**   
+6. Press **CTRL**+**x** (to exit)  
 
 ---
 
@@ -205,7 +205,7 @@ $ cd ~
 ```
 
 2. Creat .ssh directory:
-
+    
     ```Bash
 $ mkdir .ssh
 ```
@@ -222,14 +222,20 @@ $ chmod 700 .ssh
 $ ssh-keygen -t rsa
 ```
 
-5. Press **Enter** three times (type a passphrase if you wish).
+5. Press **Enter** three times (type a passphrase if you wish)  
 
-  Note: You will see the following messages to which you can just press enter:
-  a. Enter file in which to save the key (/home/linda/.ssh/id_rsa):
-  b. Enter passphrase (empty for no passphrase):
-  c. Enter same passphrase again:
+Note: You will see the following messages to which you can just press enter:
+```sh
+Enter file in which to save the key (/Users/you/.ssh/id_rsa): [Press enter]
+```
+```sh
+Enter passphrase (empty for no passphrase): [Type a passphrase]
+```
+```sh
+Enter same passphrase again: [Type passphrase again]
+```
 
-6. *Extra* - If you want your old keys - put your old keys on a usb drive, navigate to the .ssh folder and replace them
+*Extra* - If you want your old keys - put your old keys on a usb drive, navigate to the .ssh folder and replace them  
 
 ---
 
@@ -239,20 +245,20 @@ $ ssh-keygen -t rsa
 
     ```Bash
 $ cd ~
-```
+``` 
 
 2. Install git:
-
+    
     ```Bash
 $ sudo apt-get install git
 ```
 
 3. Set your name for git identity:
-
+    
     ```Bash
 $ git config --global user.name yourname
 ```
-NOTE: Yourname may be entered as “firstname lastname”, use apostrophes around yourname if using a space between first and last names.  Example:  $ git config –global user.name “Linda Green”
+NOTE: Yourname may be entered as “firstname lastname”, use apostrophes around yourname if using a space between first and last names.  Example:  `$ git config –global user.name “Jane Smith” `
 
 4. Set your email for git identity:
 
@@ -276,31 +282,31 @@ $ git config --list
 ####Note! You must install composer before installing drush
 
 1. Change to root directory:
-
+    
     ```bash
 $ cd ~
 ```
 
 2. Install cURL:
-
+    
     ```bash
 $ sudo apt-get install curl
 ```
 
 3. Download Composer:
-
+    
     ```bash
 $ curl -sS https://getcomposer.org/installer | php
 ```
 
 4. Move composer.phar to /usr/loca/bin composer"
-
+    
     ```bash
 $ sudo mv composer.phar /usr/local/bin/composer
 ```
 
 5. Adds the proper path to the .bashrc file:
-
+    
     ```bash
 $ sed -i '1i export PATH="$HOME/.composer/vendor/bin:$PATH"' $HOME/.bashrc
 ```
@@ -313,7 +319,7 @@ source $HOME/.bashrc
 
 ---
 
-###Install Drush (must install composer first)
+###Install Drush (must install composer first) 
 ####For new drush commands http://www.drushcommands.com/
 1. Change to root directory:
 
@@ -337,7 +343,7 @@ $ composer global update
 
 ###Install IDE (Sublime Text 3)
 
-Sublime Text is a sophisticated text editor for code, html and prose.
+Sublime Text is a sophisticated text editor for code, html and prose. 
 
 1. Change to root directory:
 
@@ -346,7 +352,7 @@ $ cd ~
 ```
 
 2. Add the WebUpd8 Sublime Text 3 (beta) PPA:
-
+    
     ```bash
 $ sudo add-apt-repository ppa:webupd8team/sublime-text-3
 ```
@@ -358,7 +364,7 @@ $ sudo apt-get update
 ```
 
 4. Install Sublime Text 3:
-
+    
     ```bash
 $ sudo apt-get install sublime-text-installer
 ```
@@ -371,9 +377,6 @@ $ sudo apt-get install sublime-text-installer
 
 RVM (“Ruby Version Manager”) Required for theming with sass/compass
 RVM allows you to install and manage multiple installations of Ruby on your system. It can also manage different gemsets. It is available for OS X, Linux, or other UNIX-like operating systems.
-
-
-Install RVM:
 
 1. Download signatures:
 
@@ -403,35 +406,36 @@ $ rvm install 2.1.5
 6. Change terminal preferences by going to: Edit > Profile Preferences Title and Command
 7. Check the box to **Run command as a login shell**.
 8. Close terminal and reopen.
-9. Switch to Ruby 2.1.5:
+9. Find the latest version www.ruby-lang.org/en/downloads/
+10. Switch to Ruby 2.1.2:
 
     ```bash
-$ rvm use 2.1.5
+$ rvm use 2.1.2
 ```
 
-10. Verify Ruby version:
-
+11. Verify Ruby version:
+    
     ```Bash
 $ ruby -v
 ```
 
 ---
 
-###Install IRC (HexChat) Optional
+###Install IRC (HexChat)
 1. Add the HexChat PPA:
-
+    
     ```Bash
 $ sudo add-apt-repository ppa:gwendal-lebihan-dev/hexchat-stable
 ```
 
 2. Download the package lists from the repositories and "update" them to get information on the newest versions of packages and their dependencies. It will do this for all repositories and PPAs
-
+    
     ```Bash
 $ sudo apt-get update
 ```
 
 3. Install HexChat:
-
+    
     ```Bash
 $ sudo apt-get install hexchat
 ```
@@ -450,17 +454,17 @@ $ sudo nano /etc/apache2/mods-enabled/dir.conf
 
     ```PHP
     <IfModule mod_dir.c>
-
-              DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm
-
+    
+              DirectoryIndex **index.php** index.html index.cgi index.pl index.xhtml index.htm
+    
     </IfModule>
     ```
 
-3. Press **CTRL**+**o** (to save)
-4. Press **Enter**
+3. Press **CTRL**+**o** (to save)  
+4. Press **Enter**   
 5. Press **CTRL**+**x** (to exit)
 6. Restart Apache:
-
+    
     ```Bash
 $ sudo service apache2 restart
 ```
@@ -475,7 +479,7 @@ $ sudo a2enmod rewrite
 ```
 
 2. Restart Apache:
-
+    
     ```Bash
 $ sudo service apache2 restart
 ```
@@ -490,13 +494,13 @@ $ sudo nano /etc/apache2/apache2.conf
 
     ```Apache
     <Directory /var/www/>
-
-        Options Indexes FollowSymLinks
-
-        AllowOverride None
-
-        Require all granted
-
+    
+		    Options Indexes FollowSymLinks
+    
+	    	AllowOverride None
+        
+	    	Require all granted
+    
     </Directory>
     ```
 
@@ -505,12 +509,12 @@ $ sudo nano /etc/apache2/apache2.conf
     ```Apache
     <Directory /var/www/>
 
-        Options Indexes FollowSymLinks
-
-        AllowOverride All
-
-        Require all granted
-
+	    	Options Indexes FollowSymLinks
+    
+		    AllowOverride All
+    
+		    Require all granted
+    
     </Directory>
     ```
 
@@ -532,7 +536,7 @@ $ cd /etc/apache2/sites-available
 ```
 
 2. Create and open a new vhost config file just for drupal:
-
+    
     ```Bash
 $ sudo nano drupal
 ```
@@ -541,24 +545,24 @@ $ sudo nano drupal
 
     ```Apache
     NameVirtualHost *:80
-
+    
     <VirtualHost *:80>
-
+    
        DocumentRoot /var/www
-
+    
        ServerName localhost
-
+    
     </VirtualHost>
     ```
 
-3. Press **CTRL**+**o** (to save)
-4. Press **Enter**
+3. Press **CTRL**+**o** (to save)  
+4. Press **Enter**   
 5. Press **CTRL**+**x** (to exit)
 
 Create Symlinks for the drupal file in the sites-enabled directory
 
 1. Change to the /etc/apache2/sites-enabled directory:
-
+    
     ```Bash
 $ cd /etc/apache2/sites-enabled
 ```
@@ -570,7 +574,7 @@ $ sudo ln -s ../sites-available/drupal .
 ```
 
 3. Restart Apache
-
+    
     ```Bash
 $ sudo service apache2 restart
 ```
@@ -586,7 +590,7 @@ $ cd ~
 ```
 
 2. Change "foo" to your user. (If you are unsure of the name, type `pwd` in the command line):
-
+    
     ```Bash
 $ ln -s  /var/www/html /home/foo/sites
 ```
@@ -598,7 +602,7 @@ Now you can easily cd sites and you will be directly in the html folder
 * The second path is **where** the link will be
 
 Example:
-
+    
 ```Bash
 $ ln -s /what/is/being/linked /where/symlink/goes/nameofsymlink
 ```
@@ -616,14 +620,14 @@ $ sudo nano /etc/hosts
 ```
 
 2. Add the follow to the last line:
-
+    
     ```
 # Drupal sites
 127.0.0.1 example-site.dev
 ```
 
-3. Press **CTRL**+**o** (to save)
-4. Press **Enter**
+3. Press **CTRL**+**o** (to save)  
+4. Press **Enter**   
 5. Press **CTRL**+**x** (to exit)
 
 **Future note**: You will edit this file for every additional site so it will look like this:
@@ -652,31 +656,31 @@ $ cd sites
 ```
 
 2. Clone Drupal 7:
-
+    
     ```Bash
 $ git clone --branch 7.x http://git.drupal.org/project/drupal.git
 ```
 
     For Drupal 8:
-
+    
     ```Bash
 $ git clone --branch 8.x http://git.drupal.org/project/drupal.git
 ```
 
 3. Change the name of the cloned drupal directory to the name of the new site:
-
+    
     ```Bash
 $ mv drupal example-site.dev
 ```
 
 4. Change to example-site.dev/sites/default directory:
-
+    
     ```
 $ cd example-site.dev/sites/default
 ```
 
 5. Copy default.settings.php
-
+    
     ```Bash
 $ cp default.settings.php settings.php
 ```
@@ -694,7 +698,7 @@ $ cp default.settings.php settings.php
 ###Alternate database and site creation using command line and drush
 ####Create database
 1. Create a database, Replace database_name with the name of your choice.
-
+    
     ```Bash
 $ mysqladmin -u root -p create database_name
 ```
@@ -705,7 +709,7 @@ $ mysqladmin -u root -p create database_name
 
 ####Create database user for site via command line
 1. Open the mySQL client using root:
-
+    
     ```Bash
 mysql -u root -p
 ```
@@ -719,21 +723,21 @@ mysql> CREATE USER 'name_of_new_user'@'localhost' IDENTIFIED BY 'password_of_new
 ```
 
 4. Grant *name_of_new_user* privileges to *database_name*:
-
+    
     ```mySQL
-mysql> GRANT ALL PRIVILEGES ON database_name.* TO 'name_of_new_user'@'localhost';
+mysql> GRANT ALL PRIVILEGES ON 'database_name'.* TO 'name_of_new_user'@'localhost';
 ```
 
 5. Reload the grant tables:
-
+    
     ```mySQL
 mysql> FLUSH PRIVILEGES;
 ```
 
 6. Exit mySQL
-
+    
     ```mySQL
-$mysql> quit
+mysql> quit
 ```
 
 ---
@@ -752,26 +756,23 @@ $ drush dl drupal --drupal-project-rename=site_directory_name
 ```
 
 3. Change to the site_directory_name
-
+    
     ```Bash
 $ cd site_directory_name
 ```
 
 4. Drupal Site Install. This will also create your settings.php file:
-
+    
     ```Bash
 $ drush si standard --account-name=admin --account-pass=admin --db-url=mysql://database_user_name:database_user_password@localhost/database_name
 ```
-
-Note: When you see the following message, type y and Enter to continute:
-You are about to create a /home/user/site_directory_name/sites/default/settings.php file and DROP all tables in your ‘datebase_name’ database.  Do you want to continue? (y/n):
 
 ---
 
 ###Get an old site up and running
 ####You will need:
 1. Compressed database dump from old site in (mysql.zip or mysql.gz)
-2. All of the files or ability to git clone the files of the old site
+2. All of the files or ability to git clone the files of the old site 
 ** If you are not able to get a db dump and need to use backup and migrate module, Please follow a different set of directions, posted on page 10.
 
 ####Create database
@@ -806,25 +807,41 @@ $ sudo nano /etc/hosts
 
 ####Manually link your oldsite to the new database
 1. Open settings.php in sublime or gedit
-2. You can copy/paste this in settings.php around line 219. Look for: `$databases = array();`
+2. You can copy/paste this in settings.php around line 219. Look for:
 
     ```php
+    $databases = array();
+    
     $databases = array (
+    
       'default' =>
+    
       array (
+    
         'default' =>
+    
         array (
+    
         'database' => 'DATABASENAME',
+    
         'username' => 'root',
+    
         'password' => 'root',
+    
         'host' => 'localhost',
+    
         'port' => '',
+    
         'driver' => 'mysql',
+    
         'prefix' => '',
+    
        ),
+    
      ),
+    
    );
-   ```
+   ```  
 
 3. Change `'database' => 'DATABASENAME',` to your oldsite database name
 4. If your local phpmyadmin has a different pw than root/root then change that too
@@ -837,7 +854,7 @@ $ sudo nano /etc/hosts
 
 ###Specific Install for using backup_migrate module
 ####You will need:
-1. All of the files or ability to git clone the files of the old site
+1. All of the files or ability to git clone the files of the old site 
 2. Backup of the oldsite using backup_migrate module
 
 ####Create an empty database
@@ -879,7 +896,7 @@ $ drush dl backup_migrate
 ```
 
 3. Enable the backup_migrate module:
-
+    
     ```Bash
 $ drush en backup_migrate
 ```
@@ -891,7 +908,7 @@ $ drush en backup_migrate
 ###Common troubleshooting stuff when working with older sites
 1. Reset the admin username/password (assuming admin is the username)
   1. cd to the root of your oldsite.dev
-  2. Set username and password:
+  2. Set username and password: 
 
     ```bash
 $ drush user-password admin --password=newpassword
@@ -916,14 +933,14 @@ $ drush user-password admin --password=newpassword
 ---
 
 ####Important drush command change
-* Drupal 7:
+*	Drupal 7:
 
-  ```bash
-  $ drush cc all
-  ```
+	```bash
+	$ drush cc all
+	```
 
 *       Drupal 8:
 
-  ```bash
-  $ drush cr all
-  ```
+	```bash
+	$ drush cr all
+	```
