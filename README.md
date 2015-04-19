@@ -879,7 +879,7 @@ $ sudo nano /etc/hosts
 4. Press **Enter**
 5. Press **CTRL**+**x** (to exit)
 
-####Place the oldsite folder in /var/www/html** (or git clone the oldsite to this folder)
+####Place the oldsite folder in /var/www/html (or git clone the oldsite to this folder)
 1. Navigate to /sites (or /var/www/html if you didn’t create a symlink)
 2. Change the name of your folder to **oldsite.dev** (basically we are adding .dev and making sure the name of this folder matches the oldsite.dev name in the hosts file)
 3. Navigate into the sites/default folder and delete any old settings.php
@@ -929,6 +929,11 @@ $ drush user-password admin --password=newpassword
         ```bash
     $ drush updb
     ```
+
+---
+
+####PHPStorm
+**[Setting up PhpStorm for Drupal's Coding Standards](https://www.drupal.org/node/1962108)**
 
 ---
 
