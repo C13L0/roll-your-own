@@ -4,10 +4,11 @@
 [Florida Drupal Users Group](https://groups.drupal.org/florida)
 **IRC**: Freenode.org #drupal-florida
 
-Complete Ubuntu 14.04 local setup guide for Drupal 7 & 8. Includes LAMP, git, Composer, Drush, and RVM  
+Complete Ubuntu 14.04 local setup guide for Drupal 7 & 8. Includes LAMP, git, Composer, Drush, and RVM. Also, a few optional applications are included. (Sublime Text 3, Node.js, Gulp.js and HexChat) 
 
-**LOCAL set up only!**  Ubuntu 14.04 / LAMP / Drupal sites setup
+**LOCAL set up only!**  Ubuntu 14.04 / LAMP / Drupal Sites Setup
 
+#Ubuntu 14.04 Install
 1. Create a bootable install disk or usb drive, follow directions and install Ubuntu  
 2. It is very important to write down or remember your username and password. You will use these on a regular basis  
 3. Open a terminal, click on the top left icon and type: `terminal`
@@ -20,7 +21,7 @@ $ sudo apt-get update
 5. If you want to use a text editor, it is called gedit. Open it the same way as the terminal. Once it is in the sidebar launcher, you can left click and lock.  
 6. You can also remove most of the other annoying icons from the launcher so they are not in your way.  
 
-####Give your user permissions!
+####Give Your User Permissions!
 
 1. Add your username to the sudo group:
 
@@ -51,7 +52,7 @@ $ sudo visudo
 6. Type: `:wq`
 
 ___
-###Create Lamp Stack
+#Create Lamp Stack
 * **[How to install Lamp server on ubuntu 14.04 by Krizna.com](http://www.krizna.com/ubuntu/install-lamp-server-ubuntu-14-04/)**
 
 1. Install Apache:
@@ -93,7 +94,7 @@ $ sudo chown yourusername:www-data /var/www/html -R
 
 ---
 
-####Install MySQL server
+###Install MySQL server
 1. Install MySQL:
 
     ```bash
@@ -111,7 +112,7 @@ $ sudo /etc/init.d/mysql status
 
 ---
 
-####Install PHP
+###Install PHP
 1. Install PHP: 
 
     ```bash
@@ -147,8 +148,8 @@ $ sudo service apache2 restart
 
 ---
 
-####Install phpmyadmin
-* **[https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-14-04](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-14-04)**
+###Install phpMyAdmin
+* **[How To Install and Secure phpMyAdmin on Ubuntu 14.04 by Digital Ocean](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-14-04)**
 
 1. Install phpMyAdmin:
 
@@ -181,7 +182,7 @@ $ sudo service apache2 restart
 $ chmod 775 /var/www/html
 ```
 
-####Increase max limit php.ini
+####Increase Max Limit In php.ini
 1. Open the PHP configuration file:
     
     ```Bash
@@ -196,8 +197,8 @@ $ sudo nano /etc/php5/apache2/php.ini
 
 ---
 
-####Create SSH key
-#####(you can replace keys with your old ones after initial set up)
+###Create SSH key
+**(you can replace keys with your old ones after initial set up)**
 1. Change to root directory:
 
     ```Bash
@@ -239,6 +240,7 @@ Enter same passphrase again: [Type passphrase again]
 
 ---
 
+#Server Applications Setup 
 ###Install git
 
 1. Change to root directory:
@@ -342,37 +344,6 @@ $ composer global update
 
 ---
 
-###Install IDE (Sublime Text 3)
-Sublime Text is a sophisticated text editor for code, html and prose. 
-
-1. Change to root directory:
-
-    ```bash
-$ cd ~
-```
-
-2. Add the WebUpd8 Sublime Text 3 (beta) PPA:
-    
-    ```bash
-$ sudo add-apt-repository ppa:webupd8team/sublime-text-3
-```
-
-3. Download the package lists from the repositories and "update" them to get information on the newest versions of packages and their dependencies. It will do this for all repositories and PPAs.
-
-    ```bash
-$ sudo apt-get update
-```
-
-4. Install Sublime Text 3:
-    
-    ```bash
-$ sudo apt-get install sublime-text-installer
-```
-
-5. Add in drupal specific preferences [https://drupal.org/node/1346890](https://drupal.org/node/1346890)
-
----
-
 ###Install RVM
 
 RVM (“Ruby Version Manager”) Required for theming with sass/compass
@@ -421,29 +392,8 @@ $ ruby -v
 
 ---
 
-###Install IRC (HexChat)
-1. Add the HexChat PPA:
-    
-    ```Bash
-$ sudo add-apt-repository ppa:gwendal-lebihan-dev/hexchat-stable
-```
-
-2. Download the package lists from the repositories and "update" them to get information on the newest versions of packages and their dependencies. It will do this for all repositories and PPAs
-    
-    ```Bash
-$ sudo apt-get update
-```
-
-3. Install HexChat:
-    
-    ```Bash
-$ sudo apt-get install hexchat
-```
-
----
-
-#Set up for Sites
-####Configure Apache to preference .php files over .html files
+#Apache Configuration
+###Configure Apache To Preference .php Files Over .html Files
 1. Open /etc/apache2/mods-enabled/dir.conf for editing:
 
     ```Bash
@@ -471,7 +421,7 @@ $ sudo service apache2 restart
 
 ---
 
-####Enable global site clean url’s
+###Enable Global Site Clean URL’s
 1. Enable the rewrite module for Apache:
 
     ```Bash
@@ -526,7 +476,7 @@ $ sudo nano /etc/apache2/apache2.conf
 
 ---
 
-###Create Virtual Host (vhost) Site Configuration Files
+#vhost Setup and Configuration
 
 1. Change to the /etc/apache2/sites-available directory:
 
@@ -580,7 +530,7 @@ $ sudo service apache2 restart
 
 ---
 
-####Make it easy to navigate to our sites folder by creating a symlink to /var/www/html
+###Easy Navigate To Sites Directory By Creating A Symlink To /var/www/html
 
 1. Change to root directory:
 
@@ -609,9 +559,8 @@ $ ln -s /what/is/being/linked /where/symlink/goes/nameofsymlink
 To remove a symlink: unlink **sites** (symlink name)
 
 ---
-
-##Create A Drupal Site (or Two) ---- Works Great For Drupal 8 too!
-###Configure Apache For Sites (do this with both site creation methods)
+#Hosts File Configuration
+Configure Apache For Sites **(Follow this for either site creation methods.)**
 1. Open /etc/hosts file for editing:
 
     ```Bash
@@ -642,8 +591,9 @@ $ sudo nano /etc/hosts
 
 ---
 
-###Create Database and Site via gui/git (scroll down for cl/drush alternate)
-####Create database
+#Database Creation And Drupal Installation
+###Create Database And Site Via GUI/git (Scroll down for cli/Drush alternate.)
+####Create Database
 1. Open browser and navigate to *localhost/phpmyadmin*
 2. Create new database called **example_site**
 
@@ -694,8 +644,8 @@ $ cp default.settings.php settings.php
 
 ---
 
-###Alternate database and site creation using command line and drush
-####Create database
+###Alternate Database And Site Creation Using Command Line And Drush
+####Create Database
 1. Create a database, Replace database_name with the name of your choice.
     
     ```Bash
@@ -946,7 +896,46 @@ $ drush updb
 
 ---
 
-##Optional Applications
+#IDE Installation
+
+###Install IDE (Sublime Text 3)
+Sublime Text is a sophisticated text editor for code, html and prose. 
+
+1. Change to root directory:
+
+    ```bash
+$ cd ~
+```
+
+2. Add the WebUpd8 Sublime Text 3 (beta) PPA:
+    
+    ```bash
+$ sudo add-apt-repository ppa:webupd8team/sublime-text-3
+```
+
+3. Download the package lists from the repositories and "update" them to get information on the newest versions of packages and their dependencies. It will do this for all repositories and PPAs.
+
+    ```bash
+$ sudo apt-get update
+```
+
+4. Install Sublime Text 3:
+    
+    ```bash
+$ sudo apt-get install sublime-text-installer
+```
+
+5. Add in drupal specific preferences [https://drupal.org/node/1346890](https://drupal.org/node/1346890)
+
+---
+
+###Configuration Information For PhpStorm Users
+* **[Setting up PhpStorm for Drupal's Coding Standards (Drupal.org)](https://www.drupal.org/node/1962108)**
+* **[Drupal Development using PhpStorm (PhpStorm Documentation)](https://confluence.jetbrains.com/display/PhpStorm/Drupal+Development+using+PhpStorm#DrupalDevelopmentusingPhpStorm-CoderandPHPCodeSnifferIntegration)**
+
+---
+
+#Optional Applications
 
 ###Install Node.js
 * **[http://www.hostingadvice.com/how-to/install-nodejs-ubuntu-14-04/#ubuntu-package-manager](http://www.hostingadvice.com/how-to/install-nodejs-ubuntu-14-04/#ubuntu-package-manager)**
@@ -1116,6 +1105,21 @@ The gulp community is growing, with new plugins being added daily. See the [main
 
 ---
 
-###Configuring PhpStorm
-* **[Setting up PhpStorm for Drupal's Coding Standards (Drupal.org)](https://www.drupal.org/node/1962108)**
-* **[Drupal Development using PhpStorm (PhpStorm Documentation)](https://confluence.jetbrains.com/display/PhpStorm/Drupal+Development+using+PhpStorm#DrupalDevelopmentusingPhpStorm-CoderandPHPCodeSnifferIntegration)**
+###Install IRC (HexChat)
+1. Add the HexChat PPA:
+    
+    ```Bash
+$ sudo add-apt-repository ppa:gwendal-lebihan-dev/hexchat-stable
+```
+
+2. Download the package lists from the repositories and "update" them to get information on the newest versions of packages and their dependencies. It will do this for all repositories and PPAs
+    
+    ```Bash
+$ sudo apt-get update
+```
+
+3. Install HexChat:
+    
+    ```Bash
+$ sudo apt-get install hexchat
+```
