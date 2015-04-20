@@ -1116,6 +1116,6 @@ The gulp community is growing, with new plugins being added daily. See the [main
 
 ---
 
-###Configuring PhpPStorm
+###Configuring PhpStorm
 * **[Setting up PhpStorm for Drupal's Coding Standards (Drupal.org)](https://www.drupal.org/node/1962108)**
 * **[Drupal Development using PhpStorm (PhpStorm Documentation)](https://confluence.jetbrains.com/display/PhpStorm/Drupal+Development+using+PhpStorm#DrupalDevelopmentusingPhpStorm-CoderandPHPCodeSnifferIntegration)**
