@@ -472,7 +472,7 @@ $ sudo nano /etc/apache2/apache2.conf
 5. Restart Apache:
 
     ```Bash
-& sudo service apache2 restart
+$ sudo service apache2 restart
 ```
 
 ---
@@ -661,7 +661,7 @@ $ mysqladmin -u root -p create database_name
 1. Open the mySQL client using root:
     
     ```Bash
-mysql -u root -p
+$ mysql -u root -p
 ```
 
 2. Enter your MySQL root password at the prompt.
@@ -992,19 +992,19 @@ The process below is described here, too.
 1. Add the Node.js maintained repositories to your Ubuntu package source list with this command:
 
     ```bash
-curl -sL https://deb.nodesource.com/setup | sudo bash -
+$ curl -sL https://deb.nodesource.com/setup | sudo bash -
 ```
 
 2. Then install Node.js with apt-get:
 
     ```bash
-sudo apt-get install nodejs
+$ sudo apt-get install nodejs
 ```
 
 3. Optionally we can create a symbolic link for “node” (for reasons mentioned earlier):
 
     ```bash
-sudo ln -s /usr/bin/nodejs /usr/bin/node
+$ sudo ln -s /usr/bin/nodejs /usr/bin/node
 ```
 
 4. Using this install option, we end up with newer versions of “nodejs” and “npm”:
@@ -1067,7 +1067,7 @@ node                                            install
 If you found the old “node” package installed, run this command to completely remove it:
 
 ```bash
-sudo apt-get remove --purge node
+$ sudo apt-get remove --purge node
 ```
 
 ---
