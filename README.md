@@ -1,10 +1,10 @@
 #Roll-Your-Own Drupal setup on Ubuntu 14.04
 
 ![alt text](http://drupal.org/files/images/DrupalDiver.png "Florida Drupal Users Group")
-[Florida Drupal Users Group](https://groups.drupal.org/florida)
-**IRC**: Freenode.org #drupal-florida
+**[Florida Drupal Users Group](https://groups.drupal.org/florida)**
+**IRC**: Freenode.org **#drupal-florida**
 
-Complete Ubuntu 14.04 local setup guide for Drupal 7 & 8. Includes LAMP, git, Composer, Drush, and RVM. Also, a few optional applications are included. (Sublime Text 3, Node.js, Gulp.js and HexChat) 
+Complete Ubuntu 14.04 local setup guide for Drupal 7 & 8. Includes LAMP, git, Composer, Drush, and RVM. Also, a few optional applications are included. (Sublime Text 3, PhpStorm, Node.js, Gulp.js and HexChat) 
 
 **LOCAL set up only!**  Ubuntu 14.04 / LAMP / Drupal Sites Setup
 
@@ -199,6 +199,7 @@ $ sudo nano /etc/php5/apache2/php.ini
 
 ###Create SSH key
 **(you can replace keys with your old ones after initial set up)**
+
 1. Change to root directory:
 
     ```Bash
@@ -561,6 +562,7 @@ To remove a symlink: unlink **sites** (symlink name)
 ---
 #Hosts File Configuration
 Configure Apache For Sites **(Follow this for either site creation methods.)**
+
 1. Open /etc/hosts file for editing:
 
     ```Bash
@@ -592,9 +594,10 @@ $ sudo nano /etc/hosts
 ---
 
 #Database Creation And Drupal Installation
-###Create Database And Site Via GUI/git (Scroll down for cli/Drush alternate.)
+###Create Database And Site Via GUI/git
+**(Scroll down for cli/Drush alternate.)**
 ####Create Database
-1. Open browser and navigate to *localhost/phpmyadmin*
+1. Open browser and navigate to *localhost/phpMyAdmin*
 2. Create new database called **example_site**
 
 ####Git Clone Site
@@ -634,13 +637,11 @@ $ cd example-site.dev/sites/default
 $ cp default.settings.php settings.php
 ```
 
----
-
 ####Complete Install
 1. Open browser and navigate to *localhost/example-site.dev*
 2. Complete install, making sure to fill in database name and password
 
-*Rinse and repeat this page for any __new__ drupal sites*
+*Rinse and repeat this section for __new__ drupal sites you may create*
 
 ---
 
@@ -725,7 +726,7 @@ $ drush si standard --account-name=admin --account-pass=admin --db-url=mysql://d
 ** If you are not able to get a db dump and need to use backup and migrate module, Please follow a different set of directions, posted on page 10.
 
 ####Create database
-1. Open browser and navigate to localhost/phpmyadmin
+1. Open browser and navigate to localhost/phpMyAdmin
 2. Create new database for your site. Example: oldsite or old_site
 3. Click on the newly created database
 4. Choose import, navigate to the compressed db file (mysql.gz) and click go
@@ -745,7 +746,9 @@ $ sudo nano /etc/hosts
 ```
 
 3. Press **CTRL**+**o** (to save)
+
 4. Press **Enter**
+
 5. Press **CTRL**+**x** (to exit)
 
 ####Place the oldsite folder in /var/www/html (or git clone the oldsite to this folder)
@@ -755,8 +758,13 @@ $ sudo nano /etc/hosts
 4. Copy default.settings.php and rename it: **settings.php**
 
 ####Manually link your oldsite to the new database
-1. Open settings.php in sublime or gedit
-2. You can copy/paste this in settings.php around line 219. Look for:
+1. Open the settings.php file:
+
+    ```bash
+$ sudo nano sites/default/settings.php
+```
+
+2. You can copy/paste this into settings.php around line 219. Look for:
 
     ```php
     $databases = array();
@@ -793,7 +801,10 @@ $ sudo nano /etc/hosts
    ```  
 
 3. Change `'database' => 'DATABASENAME',` to your oldsite database name
-4. If your local phpmyadmin has a different pw than root/root then change that too
+4. If your local phpMyAdmin has a different pw than root/root then change that too
+5. Press **CTRL**+**o** (to save)
+6. Press **Enter**
+7. Press **CTRL**+**x** (to exit)
 
 ####Hope for the best! We all know that getting an old site up and running locally can be challenging
 1. Navigate to localhost/oldsite.dev
