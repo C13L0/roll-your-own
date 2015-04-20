@@ -52,7 +52,7 @@ $ sudo visudo
 
 ___
 ###Create Lamp Stack
-####[http://www.krizna.com/ubuntu/install-lamp-server-ubuntu-14-04/](http://www.krizna.com/ubuntu/install-lamp-server-ubuntu-14-04/)
+* **[How to install Lamp server on ubuntu 14.04 by Krizna.com](http://www.krizna.com/ubuntu/install-lamp-server-ubuntu-14-04/)**
 
 1. Install Apache:
 
@@ -148,7 +148,8 @@ $ sudo service apache2 restart
 ---
 
 ####Install phpmyadmin
-####[https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-14-04](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-14-04)
+* **[https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-14-04](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-14-04)**
+
 1. Install phpMyAdmin:
 
     ```Bash
@@ -257,7 +258,7 @@ $ sudo apt-get install git
     ```Bash
 $ git config --global user.name yourname
 ```
-NOTE: Yourname may be entered as “firstname lastname”, use apostrophes around yourname if using a space between first and last names.  Example:  `$ git config –global user.name “Jane Smith” `
+**NOTE: Yourname may be entered as “firstname lastname”, use apostrophes around yourname if using a space between first and last names.  Example:  `$ git config –global user.name “Jane Smith” `**
 
 4. Set your email for git identity:
 
@@ -278,7 +279,7 @@ $ git config --list
 ---
 
 ###Install Composer
-####Note! You must install composer before installing drush
+**Note! You must install composer before installing drush**
 
 1. Change to root directory:
     
@@ -319,7 +320,8 @@ source $HOME/.bashrc
 ---
 
 ###Install Drush (must install composer first) 
-####For new drush commands http://www.drushcommands.com/
+**For additional drush commands visit [www.drushcommands.com](http://www.drushcommands.com)**
+
 1. Change to root directory:
 
     ```bash
@@ -341,7 +343,6 @@ $ composer global update
 ---
 
 ###Install IDE (Sublime Text 3)
-
 Sublime Text is a sophisticated text editor for code, html and prose. 
 
 1. Change to root directory:
@@ -526,7 +527,6 @@ $ sudo nano /etc/apache2/apache2.conf
 ---
 
 ###Create Virtual Host (vhost) Site Configuration Files
-[http://ben-it.org/content/ubuntu-1204-apache-2-edit-default-virtualhost-enable-modrewrite-module-drupal-clean-urls](http://ben-it.org/content/ubuntu-1204-apache-2-edit-default-virtualhost-enable-modrewrite-module-drupal-clean-urls)
 
 1. Change to the /etc/apache2/sites-available directory:
 
@@ -949,7 +949,9 @@ $ drush updb
 ##Optional Applications
 
 ###Install Node.js
-**[http://www.hostingadvice.com/how-to/install-nodejs-ubuntu-14-04/#ubuntu-package-manager](http://www.hostingadvice.com/how-to/install-nodejs-ubuntu-14-04/#ubuntu-package-manager)**
+* **[http://www.hostingadvice.com/how-to/install-nodejs-ubuntu-14-04/#ubuntu-package-manager](http://www.hostingadvice.com/how-to/install-nodejs-ubuntu-14-04/#ubuntu-package-manager)**
+
+Install Options
 
 * Option 1 is the recommended method for the masses, as it should be stable and secure. 
 * Options 2, 3, and 4 have the advantage of keeping your node and npm packages the most curren
@@ -985,7 +987,6 @@ v0.10.25
 ```
 
 ####Option 2: Install from Debian/Ubuntu packages created by the Node.js (associated) team.
-
 The process below is described here, too.
 
 1. Add the Node.js maintained repositories to your Ubuntu package source list with this command:
@@ -1016,7 +1017,6 @@ $ npm -v
 ```
 
 ####Option 3: Install Node.js manually from standard binary packages on the official website.
-
 Go to the official Node.js download page and download either the 32-bit or 64-bit Linux binary file, depending on your system type.
 
 1. You can check what CPU architecture your server has with these commands:
@@ -1027,6 +1027,7 @@ $ getconf LONG_BIT
 $ uname -p
 x86_64
 ```
+
 2. You can download this file from the browser or from the console. The latter is shown below (note: the specific Node.js version might be different for you):
 
     ```bash
@@ -1038,6 +1039,7 @@ $ wget http://nodejs.org/dist/v0.12.0/node-v0.12.0-linux-x64.tar.gz
     ```bash
 $ sudo tar -C /usr/local --strip-components 1 -xzf node-v0.10.34-linux-x86.tar.gz
 ```
+
 4. You should now have both node and npm installed in “/usr/local/bin”. You can check this typing:
 
     ```bash
@@ -1046,7 +1048,6 @@ $ ls -l /usr/local/bin/npm
 ```
 
 ####Option 4: Install Node.js from the [Github source repository](https://github.com/joyent/node).
-
 ####Useful Note Regarding Older "node" Packages When Updating
 
 On Ubuntu, the “nodejs” package has a similar name to the older one named “node”. The old one is an amateur packet radio program you can more than likely remove.
@@ -1071,5 +1072,50 @@ sudo apt-get remove --purge node
 
 ---
 
-###Configuring PHPStorm
-**[Setting up PhpStorm for Drupal's Coding Standards](https://www.drupal.org/node/1962108)**
+###Gulp.js Streaming Build System
+* **[Gulp Documentation on GitHub](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md)**
+* **[Automated Theming Workflow With Gulp](http://www.blinkreaction.com/blog/automated-theming-workflow-with-gulp)**
+
+1. Install gulp globally:
+
+    ```sh
+$ npm install --global gulp
+```
+
+2. Install gulp in your project devDependencies:
+
+    ```sh
+$ npm install --save-dev gulp
+```
+
+3. Create a `gulpfile.js` at the root of your project:
+
+    ```js
+var gulp = require('gulp');
+
+gulp.task('default', function() {
+  // place code for your default task here
+});
+```
+
+4. Run gulp:
+
+    ```sh
+$ gulp
+```
+
+The default task will run and do nothing.
+To run individual tasks, use `gulp <task> <othertask>`.
+
+#### Where do I go now?
+You have an empty gulpfile and everything is installed. How do you REALLY get started? Check out the [recipes](https://github.com/gulpjs/gulp/blob/master/docs/recipes) and the [list of articles](https://github.com/gulpjs/gulp/blob/master/docs/README.md#articles) for more information.
+#### .src, .watch, .dest, CLI args - How do I use these things?
+For API specific documentation you can check out the [documentation for that](https://github.com/gulpjs/gulp/blob/master/docs/API.md).
+#### Available Plugins
+The gulp community is growing, with new plugins being added daily. See the [main website](http://gulpjs.com/plugins/) for a complete list.
+
+---
+
+###Configuring PhpPStorm
+* **[Setting up PhpStorm for Drupal's Coding Standards (Drupal.org)](https://www.drupal.org/node/1962108)**
+* **[Drupal Development using PhpStorm (PhpStorm Documentation)](https://confluence.jetbrains.com/display/PhpStorm/Drupal+Development+using+PhpStorm#DrupalDevelopmentusingPhpStorm-CoderandPHPCodeSnifferIntegration)**
