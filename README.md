@@ -8,7 +8,19 @@ Complete Ubuntu 14.04 local development environment setup guide for Drupal 7 & 8
 
 **LOCAL set up only!**  Ubuntu 14.04 / LAMP / Drupal Sites Setup
 
-#Ubuntu 14.04 Install
+1. Ubuntu 14.04 Install
+2. Lamp Stack Installation
+3. Server Applications Setup
+4. Apache Configuration
+5. vhost Setup and Configuration
+6. Hosts File Configuration
+7. Database Creation And Drupal Installation
+8. IDE Installation
+9. Optional Applications
+
+---
+
+#1. Ubuntu 14.04 Install
 1. Create a bootable install disk or usb drive, follow directions and install Ubuntu  
 2. It is very important to write down or remember your username and password. You will use these on a regular basis  
 3. Open a terminal, click on the top left icon and type: `terminal`
@@ -52,7 +64,7 @@ $ sudo visudo
 6. Type: `:wq`
 
 ___
-#Create Lamp Stack
+#2. Lamp Stack Installation
 * **[How to install Lamp server on ubuntu 14.04 by Krizna.com](http://www.krizna.com/ubuntu/install-lamp-server-ubuntu-14-04/)**
 
 1. Install Apache:
@@ -241,7 +253,7 @@ Enter same passphrase again: [Type passphrase again]
 
 ---
 
-#Server Applications Setup 
+#3. Server Applications Setup 
 ###Install git
 
 1. Change to root directory:
@@ -393,7 +405,7 @@ $ ruby -v
 
 ---
 
-#Apache Configuration
+#4. Apache Configuration
 ###Configure Apache To Preference .php Files Over .html Files
 1. Open /etc/apache2/mods-enabled/dir.conf for editing:
 
@@ -477,7 +489,7 @@ $ sudo service apache2 restart
 
 ---
 
-#vhost Setup and Configuration
+#5. vhost Setup and Configuration
 
 1. Change to the /etc/apache2/sites-available directory:
 
@@ -560,7 +572,7 @@ $ ln -s /what/is/being/linked /where/symlink/goes/nameofsymlink
 To remove a symlink: unlink **sites** (symlink name)
 
 ---
-#Hosts File Configuration
+#6. Hosts File Configuration
 Configure Apache For Sites **(Follow this for either site creation methods.)**
 
 1. Open /etc/hosts file for editing:
@@ -593,7 +605,7 @@ $ sudo nano /etc/hosts
 
 ---
 
-#Database Creation And Drupal Installation
+#7. Database Creation And Drupal Installation
 ###Create Database And Site Via GUI/git
 **(Scroll down for cli/Drush alternate.)**
 ####Create Database
@@ -907,7 +919,7 @@ $ drush updb
 
 ---
 
-#IDE Installation
+#8. IDE Installation
 
 ###Install IDE (Sublime Text 3)
 Sublime Text is a sophisticated text editor for code, html and prose. 
@@ -946,7 +958,7 @@ $ sudo apt-get install sublime-text-installer
 
 ---
 
-#Optional Applications
+#9. Optional Applications
 
 ###Install Node.js
 * **[http://www.hostingadvice.com/how-to/install-nodejs-ubuntu-14-04/#ubuntu-package-manager](http://www.hostingadvice.com/how-to/install-nodejs-ubuntu-14-04/#ubuntu-package-manager)**
