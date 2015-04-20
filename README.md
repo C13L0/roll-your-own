@@ -1,14 +1,14 @@
 #Roll-Your-Own Drupal setup on Ubuntu 14.04
-By @C13L0 
 
 ![alt text](http://drupal.org/files/images/DrupalDiver.png "Florida Drupal Users Group")
-[Florida Drupal Users Group](https://groups.drupal.org/florida)
-**IRC**: Freenode.org #drupal-florida
+**[Florida Drupal Users Group](https://groups.drupal.org/florida)**
+**IRC**: Freenode.org **#drupal-florida**
 
-Complete Ubuntu 14.04 local setup guide for Drupal 7 & 8. Includes LAMP, git, Composer, Drush, and RVM  
+Complete Ubuntu 14.04 local setup guide for Drupal 7 & 8. Includes LAMP, git, Composer, Drush, and RVM. Also, a few optional applications are included. (Sublime Text 3, PhpStorm, Node.js, Gulp.js and HexChat) 
 
-**LOCAL set up only!**  Ubuntu 14.04 / LAMP / Drupal sites setup
+**LOCAL set up only!**  Ubuntu 14.04 / LAMP / Drupal Sites Setup
 
+#Ubuntu 14.04 Install
 1. Create a bootable install disk or usb drive, follow directions and install Ubuntu  
 2. It is very important to write down or remember your username and password. You will use these on a regular basis  
 3. Open a terminal, click on the top left icon and type: `terminal`
@@ -21,7 +21,7 @@ $ sudo apt-get update
 5. If you want to use a text editor, it is called gedit. Open it the same way as the terminal. Once it is in the sidebar launcher, you can left click and lock.  
 6. You can also remove most of the other annoying icons from the launcher so they are not in your way.  
 
-####Give your user permissions!
+####Give Your User Permissions!
 
 1. Add your username to the sudo group:
 
@@ -52,8 +52,8 @@ $ sudo visudo
 6. Type: `:wq`
 
 ___
-###Create Lamp Stack
-####[http://www.krizna.com/ubuntu/install-lamp-server-ubuntu-14-04/](http://www.krizna.com/ubuntu/install-lamp-server-ubuntu-14-04/)
+#Create Lamp Stack
+* **[How to install Lamp server on ubuntu 14.04 by Krizna.com](http://www.krizna.com/ubuntu/install-lamp-server-ubuntu-14-04/)**
 
 1. Install Apache:
 
@@ -94,7 +94,7 @@ $ sudo chown yourusername:www-data /var/www/html -R
 
 ---
 
-####Install MySQL server
+###Install MySQL server
 1. Install MySQL:
 
     ```bash
@@ -112,7 +112,7 @@ $ sudo /etc/init.d/mysql status
 
 ---
 
-####Install PHP
+###Install PHP
 1. Install PHP: 
 
     ```bash
@@ -148,8 +148,9 @@ $ sudo service apache2 restart
 
 ---
 
-####Install phpmyadmin
-####[https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-14-04](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-14-04)
+###Install phpMyAdmin
+* **[How To Install and Secure phpMyAdmin on Ubuntu 14.04 by Digital Ocean](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-14-04)**
+
 1. Install phpMyAdmin:
 
     ```Bash
@@ -181,7 +182,7 @@ $ sudo service apache2 restart
 $ chmod 775 /var/www/html
 ```
 
-####Increase max limit php.ini
+####Increase Max Limit In php.ini
 1. Open the PHP configuration file:
     
     ```Bash
@@ -196,8 +197,9 @@ $ sudo nano /etc/php5/apache2/php.ini
 
 ---
 
-####Create SSH key
-#####(you can replace keys with your old ones after initial set up)
+###Create SSH key
+**(you can replace keys with your old ones after initial set up)**
+
 1. Change to root directory:
 
     ```Bash
@@ -239,6 +241,7 @@ Enter same passphrase again: [Type passphrase again]
 
 ---
 
+#Server Applications Setup 
 ###Install git
 
 1. Change to root directory:
@@ -258,7 +261,7 @@ $ sudo apt-get install git
     ```Bash
 $ git config --global user.name yourname
 ```
-NOTE: Yourname may be entered as “firstname lastname”, use apostrophes around yourname if using a space between first and last names.  Example:  `$ git config –global user.name “Jane Smith” `
+**NOTE: Yourname may be entered as “firstname lastname”, use apostrophes around yourname if using a space between first and last names.  Example:  `$ git config –global user.name “Jane Smith” `**
 
 4. Set your email for git identity:
 
@@ -279,7 +282,7 @@ $ git config --list
 ---
 
 ###Install Composer
-####Note! You must install composer before installing drush
+**Note! You must install composer before installing drush**
 
 1. Change to root directory:
     
@@ -320,7 +323,8 @@ source $HOME/.bashrc
 ---
 
 ###Install Drush (must install composer first) 
-####For new drush commands http://www.drushcommands.com/
+**For additional drush commands visit [www.drushcommands.com](http://www.drushcommands.com)**
+
 1. Change to root directory:
 
     ```bash
@@ -338,38 +342,6 @@ $ composer global require drush/drush:dev-master
     ```bash
 $ composer global update
 ```
-
----
-
-###Install IDE (Sublime Text 3)
-
-Sublime Text is a sophisticated text editor for code, html and prose. 
-
-1. Change to root directory:
-
-    ```bash
-$ cd ~
-```
-
-2. Add the WebUpd8 Sublime Text 3 (beta) PPA:
-    
-    ```bash
-$ sudo add-apt-repository ppa:webupd8team/sublime-text-3
-```
-
-3. Download the package lists from the repositories and "update" them to get information on the newest versions of packages and their dependencies. It will do this for all repositories and PPAs.
-
-    ```bash
-$ sudo apt-get update
-```
-
-4. Install Sublime Text 3:
-    
-    ```bash
-$ sudo apt-get install sublime-text-installer
-```
-
-5. Add in drupal specific preferences [https://drupal.org/node/1346890](https://drupal.org/node/1346890)
 
 ---
 
@@ -421,29 +393,8 @@ $ ruby -v
 
 ---
 
-###Install IRC (HexChat)
-1. Add the HexChat PPA:
-    
-    ```Bash
-$ sudo add-apt-repository ppa:gwendal-lebihan-dev/hexchat-stable
-```
-
-2. Download the package lists from the repositories and "update" them to get information on the newest versions of packages and their dependencies. It will do this for all repositories and PPAs
-    
-    ```Bash
-$ sudo apt-get update
-```
-
-3. Install HexChat:
-    
-    ```Bash
-$ sudo apt-get install hexchat
-```
-
----
-
-#Set up for Sites
-####Configure Apache to preference .php files over .html files
+#Apache Configuration
+###Configure Apache To Preference .php Files Over .html Files
 1. Open /etc/apache2/mods-enabled/dir.conf for editing:
 
     ```Bash
@@ -471,7 +422,7 @@ $ sudo service apache2 restart
 
 ---
 
-####Enable global site clean url’s
+###Enable Global Site Clean URL’s
 1. Enable the rewrite module for Apache:
 
     ```Bash
@@ -521,13 +472,12 @@ $ sudo nano /etc/apache2/apache2.conf
 5. Restart Apache:
 
     ```Bash
-& sudo service apache2 restart
+$ sudo service apache2 restart
 ```
 
 ---
 
-###Create Virtual Host (vhost) Site Configuration Files
-[http://ben-it.org/content/ubuntu-1204-apache-2-edit-default-virtualhost-enable-modrewrite-module-drupal-clean-urls](http://ben-it.org/content/ubuntu-1204-apache-2-edit-default-virtualhost-enable-modrewrite-module-drupal-clean-urls)
+#vhost Setup and Configuration
 
 1. Change to the /etc/apache2/sites-available directory:
 
@@ -581,7 +531,7 @@ $ sudo service apache2 restart
 
 ---
 
-####Make it easy to navigate to our sites folder by creating a symlink to /var/www/html
+###Easy Navigate To Sites Directory By Creating A Symlink To /var/www/html
 
 1. Change to root directory:
 
@@ -610,9 +560,9 @@ $ ln -s /what/is/being/linked /where/symlink/goes/nameofsymlink
 To remove a symlink: unlink **sites** (symlink name)
 
 ---
+#Hosts File Configuration
+Configure Apache For Sites **(Follow this for either site creation methods.)**
 
-##Create A Drupal Site (or Two) ---- Works Great For Drupal 8 too!
-###Configure Apache For Sites (do this with both site creation methods)
 1. Open /etc/hosts file for editing:
 
     ```Bash
@@ -643,9 +593,11 @@ $ sudo nano /etc/hosts
 
 ---
 
-###Create Database and Site via gui/git (scroll down for cl/drush alternate)
-####Create database
-1. Open browser and navigate to *localhost/phpmyadmin*
+#Database Creation And Drupal Installation
+###Create Database And Site Via GUI/git
+**(Scroll down for cli/Drush alternate.)**
+####Create Database
+1. Open browser and navigate to *localhost/phpMyAdmin*
 2. Create new database called **example_site**
 
 ####Git Clone Site
@@ -685,18 +637,16 @@ $ cd example-site.dev/sites/default
 $ cp default.settings.php settings.php
 ```
 
----
-
 ####Complete Install
 1. Open browser and navigate to *localhost/example-site.dev*
 2. Complete install, making sure to fill in database name and password
 
-*Rinse and repeat this page for any __new__ drupal sites*
+*Rinse and repeat this section for __new__ drupal sites you may create*
 
 ---
 
-###Alternate database and site creation using command line and drush
-####Create database
+###Alternate Database And Site Creation Using Command Line And Drush
+####Create Database
 1. Create a database, Replace database_name with the name of your choice.
     
     ```Bash
@@ -711,7 +661,7 @@ $ mysqladmin -u root -p create database_name
 1. Open the mySQL client using root:
     
     ```Bash
-mysql -u root -p
+$ mysql -u root -p
 ```
 
 2. Enter your MySQL root password at the prompt.
@@ -776,7 +726,7 @@ $ drush si standard --account-name=admin --account-pass=admin --db-url=mysql://d
 ** If you are not able to get a db dump and need to use backup and migrate module, Please follow a different set of directions, posted on page 10.
 
 ####Create database
-1. Open browser and navigate to localhost/phpmyadmin
+1. Open browser and navigate to localhost/phpMyAdmin
 2. Create new database for your site. Example: oldsite or old_site
 3. Click on the newly created database
 4. Choose import, navigate to the compressed db file (mysql.gz) and click go
@@ -796,7 +746,9 @@ $ sudo nano /etc/hosts
 ```
 
 3. Press **CTRL**+**o** (to save)
+
 4. Press **Enter**
+
 5. Press **CTRL**+**x** (to exit)
 
 ####Place the oldsite folder in /var/www/html (or git clone the oldsite to this folder)
@@ -806,8 +758,13 @@ $ sudo nano /etc/hosts
 4. Copy default.settings.php and rename it: **settings.php**
 
 ####Manually link your oldsite to the new database
-1. Open settings.php in sublime or gedit
-2. You can copy/paste this in settings.php around line 219. Look for:
+1. Open the settings.php file:
+
+    ```bash
+$ sudo nano sites/default/settings.php
+```
+
+2. You can copy/paste this into settings.php around line 219. Look for:
 
     ```php
     $databases = array();
@@ -844,7 +801,10 @@ $ sudo nano /etc/hosts
    ```  
 
 3. Change `'database' => 'DATABASENAME',` to your oldsite database name
-4. If your local phpmyadmin has a different pw than root/root then change that too
+4. If your local phpMyAdmin has a different pw than root/root then change that too
+5. Press **CTRL**+**o** (to save)
+6. Press **Enter**
+7. Press **CTRL**+**x** (to exit)
 
 ####Hope for the best! We all know that getting an old site up and running locally can be challenging
 1. Navigate to localhost/oldsite.dev
@@ -879,7 +839,7 @@ $ sudo nano /etc/hosts
 4. Press **Enter**
 5. Press **CTRL**+**x** (to exit)
 
-####Place the oldsite folder in /var/www/html** (or git clone the oldsite to this folder)
+####Place the oldsite folder in /var/www/html (or git clone the oldsite to this folder)
 1. Navigate to /sites (or /var/www/html if you didn’t create a symlink)
 2. Change the name of your folder to **oldsite.dev** (basically we are adding .dev and making sure the name of this folder matches the oldsite.dev name in the hosts file)
 3. Navigate into the sites/default folder and delete any old settings.php
@@ -926,21 +886,251 @@ $ drush user-password admin --password=newpassword
     * If you git cloned, your files folder will be empty. Grab the files folder from the old site and place in sites/default/
   4. White screen of death (WOD):
 
-        ```bash
-    $ drush updb
-    ```
+	```bash
+$ drush updb
+```
 
 ---
 
-####Important drush command change
-*	Drupal 7:
+###Important drush command change
+####Drupal 7:
 
-	```bash
+```bash
 	$ drush cc all
-	```
+```
 
-*       Drupal 8:
+####Drupal 8:
 
-	```bash
+```bash
 	$ drush cr all
-	```
+```
+
+---
+
+#IDE Installation
+
+###Install IDE (Sublime Text 3)
+Sublime Text is a sophisticated text editor for code, html and prose. 
+
+1. Change to root directory:
+
+    ```bash
+$ cd ~
+```
+
+2. Add the WebUpd8 Sublime Text 3 (beta) PPA:
+    
+    ```bash
+$ sudo add-apt-repository ppa:webupd8team/sublime-text-3
+```
+
+3. Download the package lists from the repositories and "update" them to get information on the newest versions of packages and their dependencies. It will do this for all repositories and PPAs.
+
+    ```bash
+$ sudo apt-get update
+```
+
+4. Install Sublime Text 3:
+    
+    ```bash
+$ sudo apt-get install sublime-text-installer
+```
+
+5. Add in drupal specific preferences [https://drupal.org/node/1346890](https://drupal.org/node/1346890)
+
+---
+
+###Configuration Information For PhpStorm Users
+* **[Setting up PhpStorm for Drupal's Coding Standards (Drupal.org)](https://www.drupal.org/node/1962108)**
+* **[Drupal Development using PhpStorm (PhpStorm Documentation)](https://confluence.jetbrains.com/display/PhpStorm/Drupal+Development+using+PhpStorm#DrupalDevelopmentusingPhpStorm-CoderandPHPCodeSnifferIntegration)**
+
+---
+
+#Optional Applications
+
+###Install Node.js
+* **[http://www.hostingadvice.com/how-to/install-nodejs-ubuntu-14-04/#ubuntu-package-manager](http://www.hostingadvice.com/how-to/install-nodejs-ubuntu-14-04/#ubuntu-package-manager)**
+
+Install Options
+
+* Option 1 is the recommended method for the masses, as it should be stable and secure. 
+* Options 2, 3, and 4 have the advantage of keeping your node and npm packages the most curren
+
+####Option 1: Install the standard Debian/Ubuntu packages for “node” and “npm”.
+1. To install Node.js, open a terminal and type the following command:
+
+    ```bash
+$ sudo apt-get install nodejs
+```
+
+2. Then install the Node package manager called “npm”:
+
+    ```bash
+$ sudo apt-get install npm
+```
+3. Create a symbolic link for “node” as many Node.js tools use this name to execute.
+
+    ```bash
+$ sudo ln -s /usr/bin/nodejs /usr/bin/node
+```
+
+4. Now we should have both the node and npm commands working:
+
+   ```bash
+$ node -v
+v0.10.25
+```
+
+   ```bash
+   $ npm -v
+   1.3.10
+```
+
+####Option 2: Install from Debian/Ubuntu packages created by the Node.js (associated) team.
+The process below is described here, too.
+
+1. Add the Node.js maintained repositories to your Ubuntu package source list with this command:
+
+    ```bash
+$ curl -sL https://deb.nodesource.com/setup | sudo bash -
+```
+
+2. Then install Node.js with apt-get:
+
+    ```bash
+$ sudo apt-get install nodejs
+```
+
+3. Optionally we can create a symbolic link for “node” (for reasons mentioned earlier):
+
+    ```bash
+$ sudo ln -s /usr/bin/nodejs /usr/bin/node
+```
+
+4. Using this install option, we end up with newer versions of “nodejs” and “npm”:
+
+    ```bash
+$ node -v
+v0.10.35
+$ npm -v
+1.4.28
+```
+
+####Option 3: Install Node.js manually from standard binary packages on the official website.
+Go to the official Node.js download page and download either the 32-bit or 64-bit Linux binary file, depending on your system type.
+
+1. You can check what CPU architecture your server has with these commands:
+
+    ```bash
+$ getconf LONG_BIT
+64
+$ uname -p
+x86_64
+```
+
+2. You can download this file from the browser or from the console. The latter is shown below (note: the specific Node.js version might be different for you):
+
+    ```bash
+$ wget http://nodejs.org/dist/v0.12.0/node-v0.12.0-linux-x64.tar.gz
+```
+
+3. From a console window, go to the directory where the Node.js binary was downloaded to, and then execute the following command to install the Node.js binary package in “/usr/local/”:
+
+    ```bash
+$ sudo tar -C /usr/local --strip-components 1 -xzf node-v0.10.34-linux-x86.tar.gz
+```
+
+4. You should now have both node and npm installed in “/usr/local/bin”. You can check this typing:
+
+    ```bash
+$ ls -l /usr/local/bin/node
+$ ls -l /usr/local/bin/npm
+```
+
+####Option 4: Install Node.js from the [Github source repository](https://github.com/joyent/node).
+####Useful Note Regarding Older "node" Packages When Updating
+
+On Ubuntu, the “nodejs” package has a similar name to the older one named “node”. The old one is an amateur packet radio program you can more than likely remove.
+
+If you already have “node” installed, you might want to remove it. Some Node.js tools might execute Node.js as “node” instead of “nodejs” causing conflicts.
+
+You can look for and remove the “node” package by executing these commands in a terminal. To access a terminal, navigate the desktop menu to: **Applications -> Accessories -> Terminal**.
+
+Run this command and if it says “install” in the right column, “node” is on your system:
+
+```bash
+$ dpkg --get-selections | grep node
+ax25-node                                       install
+node                                            install
+```
+
+If you found the old “node” package installed, run this command to completely remove it:
+
+```bash
+$ sudo apt-get remove --purge node
+```
+
+---
+
+###Gulp.js Streaming Build System
+* **[Gulp Documentation on GitHub](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md)**
+* **[Automated Theming Workflow With Gulp](http://www.blinkreaction.com/blog/automated-theming-workflow-with-gulp)**
+
+1. Install gulp globally:
+
+    ```sh
+$ npm install --global gulp
+```
+
+2. Install gulp in your project devDependencies:
+
+    ```sh
+$ npm install --save-dev gulp
+```
+
+3. Create a `gulpfile.js` at the root of your project:
+
+    ```js
+var gulp = require('gulp');
+
+gulp.task('default', function() {
+  // place code for your default task here
+});
+```
+
+4. Run gulp:
+
+    ```sh
+$ gulp
+```
+
+The default task will run and do nothing.
+To run individual tasks, use `gulp <task> <othertask>`.
+
+#### Where do I go now?
+You have an empty gulpfile and everything is installed. How do you REALLY get started? Check out the [recipes](https://github.com/gulpjs/gulp/blob/master/docs/recipes) and the [list of articles](https://github.com/gulpjs/gulp/blob/master/docs/README.md#articles) for more information.
+#### .src, .watch, .dest, CLI args - How do I use these things?
+For API specific documentation you can check out the [documentation for that](https://github.com/gulpjs/gulp/blob/master/docs/API.md).
+#### Available Plugins
+The gulp community is growing, with new plugins being added daily. See the [main website](http://gulpjs.com/plugins/) for a complete list.
+
+---
+
+###Install IRC (HexChat)
+1. Add the HexChat PPA:
+    
+    ```Bash
+$ sudo add-apt-repository ppa:gwendal-lebihan-dev/hexchat-stable
+```
+
+2. Download the package lists from the repositories and "update" them to get information on the newest versions of packages and their dependencies. It will do this for all repositories and PPAs
+    
+    ```Bash
+$ sudo apt-get update
+```
+
+3. Install HexChat:
+    
+    ```Bash
+$ sudo apt-get install hexchat
+```
