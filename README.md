@@ -1,10 +1,10 @@
-#Roll-Your-Own Drupal setup on Ubuntu 14.04
+#Roll-Your-Own Local Drupal Development Environment On Ubuntu 14.04
 
 ![alt text](http://drupal.org/files/images/DrupalDiver.png "Florida Drupal Users Group")
 **[Florida Drupal Users Group](https://groups.drupal.org/florida)**
 **IRC**: Freenode.org **#drupal-florida**
 
-Complete Ubuntu 14.04 local setup guide for Drupal 7 & 8. Includes LAMP, git, Composer, Drush, and RVM. Also, a few optional applications are included. (Sublime Text 3, PhpStorm, Node.js, Gulp.js and HexChat) 
+Complete Ubuntu 14.04 local development environment setup guide for Drupal 7 & 8. Includes LAMP, git, Composer, Drush, and RVM. Also, a few optional applications are included. (Sublime Text 3, PhpStorm, Node.js, Gulp.js and HexChat) 
 
 **LOCAL set up only!**  Ubuntu 14.04 / LAMP / Drupal Sites Setup
 
