@@ -1,5 +1,4 @@
 #Roll-Your-Own Drupal setup on Ubuntu 14.04
-By @C13L0 
 
 ![alt text](http://drupal.org/files/images/DrupalDiver.png "Florida Drupal Users Group")
 [Florida Drupal Users Group](https://groups.drupal.org/florida)
@@ -926,26 +925,151 @@ $ drush user-password admin --password=newpassword
     * If you git cloned, your files folder will be empty. Grab the files folder from the old site and place in sites/default/
   4. White screen of death (WOD):
 
-        ```bash
-    $ drush updb
-    ```
-
----
-
-####PHPStorm
-**[Setting up PhpStorm for Drupal's Coding Standards](https://www.drupal.org/node/1962108)**
-
----
-
-####Important drush command change
-*	Drupal 7:
-
 	```bash
+$ drush updb
+```
+
+---
+
+###Important drush command change
+####Drupal 7:
+
+```bash
 	$ drush cc all
-	```
+```
 
-*       Drupal 8:
+####Drupal 8:
 
-	```bash
+```bash
 	$ drush cr all
-	```
+```
+
+---
+
+##Optional Applications
+
+###Install Node.js
+**[http://www.hostingadvice.com/how-to/install-nodejs-ubuntu-14-04/#ubuntu-package-manager](http://www.hostingadvice.com/how-to/install-nodejs-ubuntu-14-04/#ubuntu-package-manager)**
+
+* Option 1 is the recommended method for the masses, as it should be stable and secure. 
+* Options 2, 3, and 4 have the advantage of keeping your node and npm packages the most curren
+
+####Option 1: Install the standard Debian/Ubuntu packages for “node” and “npm”.
+1. To install Node.js, open a terminal and type the following command:
+
+    ```bash
+$ sudo apt-get install nodejs
+```
+
+2. Then install the Node package manager called “npm”:
+
+    ```bash
+$ sudo apt-get install npm
+```
+3. Create a symbolic link for “node” as many Node.js tools use this name to execute.
+
+    ```bash
+$ sudo ln -s /usr/bin/nodejs /usr/bin/node
+```
+
+4. Now we should have both the node and npm commands working:
+
+   ```bash
+$ node -v
+v0.10.25
+```
+
+   ```bash
+   $ npm -v
+   1.3.10
+```
+
+####Option 2: Install from Debian/Ubuntu packages created by the Node.js (associated) team.
+
+The process below is described here, too.
+
+1. Add the Node.js maintained repositories to your Ubuntu package source list with this command:
+
+    ```bash
+curl -sL https://deb.nodesource.com/setup | sudo bash -
+```
+
+2. Then install Node.js with apt-get:
+
+    ```bash
+sudo apt-get install nodejs
+```
+
+3. Optionally we can create a symbolic link for “node” (for reasons mentioned earlier):
+
+    ```bash
+sudo ln -s /usr/bin/nodejs /usr/bin/node
+```
+
+4. Using this install option, we end up with newer versions of “nodejs” and “npm”:
+
+    ```bash
+$ node -v
+v0.10.35
+$ npm -v
+1.4.28
+```
+
+####Option 3: Install Node.js manually from standard binary packages on the official website.
+
+Go to the official Node.js download page and download either the 32-bit or 64-bit Linux binary file, depending on your system type.
+
+1. You can check what CPU architecture your server has with these commands:
+
+    ```bash
+$ getconf LONG_BIT
+64
+$ uname -p
+x86_64
+```
+2. You can download this file from the browser or from the console. The latter is shown below (note: the specific Node.js version might be different for you):
+
+    ```bash
+$ wget http://nodejs.org/dist/v0.12.0/node-v0.12.0-linux-x64.tar.gz
+```
+
+3. From a console window, go to the directory where the Node.js binary was downloaded to, and then execute the following command to install the Node.js binary package in “/usr/local/”:
+
+    ```bash
+$ sudo tar -C /usr/local --strip-components 1 -xzf node-v0.10.34-linux-x86.tar.gz
+```
+4. You should now have both node and npm installed in “/usr/local/bin”. You can check this typing:
+
+    ```bash
+$ ls -l /usr/local/bin/node
+$ ls -l /usr/local/bin/npm
+```
+
+####Option 4: Install Node.js from the [Github source repository](https://github.com/joyent/node).
+
+####Useful Note Regarding Older "node" Packages When Updating
+
+On Ubuntu, the “nodejs” package has a similar name to the older one named “node”. The old one is an amateur packet radio program you can more than likely remove.
+
+If you already have “node” installed, you might want to remove it. Some Node.js tools might execute Node.js as “node” instead of “nodejs” causing conflicts.
+
+You can look for and remove the “node” package by executing these commands in a terminal. To access a terminal, navigate the desktop menu to: **Applications -> Accessories -> Terminal**.
+
+Run this command and if it says “install” in the right column, “node” is on your system:
+
+```bash
+$ dpkg --get-selections | grep node
+ax25-node                                       install
+node                                            install
+```
+
+If you found the old “node” package installed, run this command to completely remove it:
+
+```bash
+sudo apt-get remove --purge node
+```
+
+---
+
+###Configuring PHPStorm
+**[Setting up PhpStorm for Drupal's Coding Standards](https://www.drupal.org/node/1962108)**
