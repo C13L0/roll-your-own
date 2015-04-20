@@ -573,7 +573,7 @@ $ sudo nano /etc/hosts
     
     ```
 # Drupal sites
-127.0.0.1 example-site.dev
+127.0.0.1 newsite.dev
 ```
 
 3. Press **CTRL**+**o** (to save)  
@@ -584,7 +584,7 @@ $ sudo nano /etc/hosts
 
 ```
 # Drupal sites
-127.0.0.1 example-site.dev
+127.0.0.1 newsite.dev
 
 127.0.0.1 newsite2.dev
 
@@ -598,7 +598,7 @@ $ sudo nano /etc/hosts
 **(Scroll down for cli/Drush alternate.)**
 ####Create Database
 1. Open browser and navigate to *localhost/phpMyAdmin*
-2. Create new database called **example_site**
+2. Create new database called **newsite**
 
 ####Git Clone Site
 1. Change to your sites directory: (Hopefully you created a symlink. If you didn’t then use `$ cd /var/www/html`):
@@ -622,13 +622,13 @@ $ git clone --branch 8.x http://git.drupal.org/project/drupal.git
 3. Change the name of the cloned drupal directory to the name of the new site:
     
     ```Bash
-$ mv drupal example-site.dev
+$ mv drupal newsite.dev
 ```
 
-4. Change to example-site.dev/sites/default directory:
+4. Change to newsite.dev/sites/default directory:
     
     ```
-$ cd example-site.dev/sites/default
+$ cd newsite.dev/sites/default
 ```
 
 5. Copy default.settings.php
@@ -638,7 +638,7 @@ $ cp default.settings.php settings.php
 ```
 
 ####Complete Install
-1. Open browser and navigate to *localhost/example-site.dev*
+1. Open browser and navigate to *localhost/newsite.dev*
 2. Complete install, making sure to fill in database name and password
 
 *Rinse and repeat this section for __new__ drupal sites you may create*
