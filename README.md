@@ -365,7 +365,7 @@ RVM allows you to install and manage multiple installations of Ruby on your syst
 1. Download signatures:
 
     ```Bash
-$ gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3
+$ gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
 ```
 
 2. Download RVM
