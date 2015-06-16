@@ -51,13 +51,14 @@ $ sudo adduser yourusername www-data
 
 If you are having permission issues, you can also do the following. I do not believe this method is recommended.  
 
-1. Open the /etc/sudoers file with the "vi" text editor:
+1. Edit the sudoers file with the "visudo" text editor:
+**(This is much safer than editing the `/etc/sudoers` file manually).**
 
     ```bash
 $ sudo visudo
 ```
 
-2. Using the arrow keys scroll down until you see # User privilege specification
+2. Using the arrow keys, or the 'j' key,  scroll down until you see # User privilege specification
 3. Place cursor under: `root ALL=(ALL:ALL) ALL`
 4. Add: `yourusername ALL=(ALL:ALL) ALL`
 5. Press **Esc**
