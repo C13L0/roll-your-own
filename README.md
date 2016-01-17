@@ -1,14 +1,14 @@
-#Roll-Your-Own Local Drupal Development Environment On Ubuntu 14.04 and 15.04
+#Roll-Your-Own Local Drupal Development Environment On Ubuntu 15.04
 
 ![alt text](http://drupal.org/files/images/DrupalDiver.png "Florida Drupal Users Group")
 **[Florida Drupal Users Group](https://groups.drupal.org/florida)**
 **IRC**: Freenode.org **#drupal-florida**
 
-Complete Ubuntu 14.04 local development environment setup guide for Drupal 7 & 8. Includes LAMP, git, Composer, Drush, and RVM. Also, a few optional applications are included. (Sublime Text 3, PhpStorm, Node.js, Gulp.js and HexChat) 
+Complete Ubuntu 15.04 local development environment setup guide for Drupal 8. Includes LAMP, git, Composer, Drush, and RVM. Also, a few optional applications are included. (Sublime Text 3, PhpStorm, Node.js, Gulp.js and HexChat) 
 
-**LOCAL set up only!**  Ubuntu 14.04 / LAMP / Drupal Sites Setup
+**LOCAL set up only!**  Ubuntu 15.04 / LAMP / Drupal Sites Setup
 
-1. Ubuntu 14.04 Install
+1. Ubuntu 15.04 Install
 2. Lamp Stack Installation
 3. Server Applications Setup
 4. Apache Configuration
@@ -20,9 +20,9 @@ Complete Ubuntu 14.04 local development environment setup guide for Drupal 7 & 8
 
 ---
 
-#1. Ubuntu 14.04 Install
-1. Create a bootable install disk or usb drive, follow directions and install Ubuntu  
-2. It is very important to write down or remember your username and password. You will use these on a regular basis  
+#1. Ubuntu 15.04 Install
+1. Create a bootable install disk or usb drive, follow directions and install Ubuntu.
+2. It is very important to write down or remember your username and password. You will use these on a regular basis.
 3. Open a terminal, click on the top left icon and type: `terminal`
 4. Run updates (don’t bother with the software updater). This takes a while:
 
@@ -66,7 +66,7 @@ $ sudo visudo
 
 ___
 #2. Lamp Stack Installation
-* **[How to install Lamp server on ubuntu 14.04 by Krizna.com](http://www.krizna.com/ubuntu/install-lamp-server-ubuntu-14-04/)**
+* **[How to install Lamp server on ubuntu 15.04 by Krizna.com](http://www.krizna.com/ubuntu/install-lamp-server-ubuntu-14-04/)**
 
 1. Install Apache:
 
@@ -111,7 +111,7 @@ $ sudo chown yourusername:www-data /var/www/html -R
 1. Install MySQL:
 
     ```bash
-$ sudo apt-get install mysql-server
+$ sudo apt-get install mysql-server mysql-client
 ```
 
 2. It will ask you to create a password. Generally for localhost it is root/root.   
@@ -158,11 +158,16 @@ $ sudo service apache2 restart
 ```
 
 8. Open browser and navigate to: *localhost/phpinfo.php*  
+   Or enter the following in Terminal:
+
+    ```bash
+$ sudo systemctl status mysql
+```
 
 ---
 
 ###Install phpMyAdmin
-* **[How To Install and Secure phpMyAdmin on Ubuntu 14.04 by Digital Ocean](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-14-04)**
+* **[How To Install and Secure phpMyAdmin on Ubuntu 15.04 by Digital Ocean](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-14-04)**
 
 1. Install phpMyAdmin:
 
@@ -171,7 +176,7 @@ $ sudo apt-get install phpmyadmin
 ```
 
 2. **Important!** Press the **spacebar** to choose Apache 2. An ***** will display.   
-3. Press **Tab** (to navigate down the menu to <ok>)   
+3. Press **Tab** (to navigate down the menu to ok)   
 4. Press **Enter**  
 5. Select *Yes* to configure with dbconfig-common  
 6. Follow the rest with your password, and again *root* is a common password used for a local host
@@ -358,54 +363,6 @@ $ composer global update
 
 ---
 
-###Install RVM
-
-RVM (“Ruby Version Manager”) Required for theming with sass/compass
-RVM allows you to install and manage multiple installations of Ruby on your system. It can also manage different gemsets. It is available for OS X, Linux, or other UNIX-like operating systems.
-
-1. Download signatures:
-
-    ```Bash
-$ gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
-```
-
-2. Download RVM
-
-    ```Bash
-$ curl -sSL https://get.rvm.io | bash -s stable
-```
-
-3. Source ~/.rvm/scripts/rvm:
-
-    ```Bash
-$ source ~/.rvm/scripts/rvm
-```
-
-4. Find current stable version at [www.ruby-lang.org/en/downloads/](http://www.ruby-lang.org/en/downloads/)
-5. Install current stable version of RVM:
-
-    ```Bash
-$ rvm install 2.2.2
-```
-
-6. Change terminal preferences by going to: Edit > Profile Preferences Title and Command
-7. Check the box to **Run command as a login shell**.
-8. Close terminal and reopen.
-9. Find the latest version www.ruby-lang.org/en/downloads/
-10. Switch to Ruby 2.2.2:
-
-    ```bash
-$ rvm use 2.2.2
-```
-
-11. Verify Ruby version:
-    
-    ```Bash
-$ ruby -v
-```
-
----
-
 #4. Apache Configuration
 ###Configure Apache To Preference .php Files Over .html Files
 1. Open /etc/apache2/mods-enabled/dir.conf for editing:
@@ -419,7 +376,7 @@ $ sudo nano /etc/apache2/mods-enabled/dir.conf
     ```PHP
     <IfModule mod_dir.c>
     
-              DirectoryIndex **index.php** index.html index.cgi index.pl index.xhtml index.htm
+              DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm
     
     </IfModule>
     ```
@@ -620,16 +577,10 @@ $ sudo nano /etc/hosts
 $ cd sites
 ```
 
-2. Clone Drupal 7:
+2. Clone Drupal 8:
     
     ```Bash
-$ git clone --branch 7.x http://git.drupal.org/project/drupal.git
-```
-
-    For Drupal 8:
-    
-    ```Bash
-$ git clone --branch 8.x http://git.drupal.org/project/drupal.git
+$ git clone --branch 8.0.x http://git.drupal.org/project/drupal.git
 ```
 
 3. Change the name of the cloned drupal directory to the name of the new site:
@@ -650,58 +601,27 @@ $ cd newsite.dev/sites/default
 $ cp default.settings.php settings.php
 ```
 
+6. Create the Directory Files
+    
+    ```Bash
+$ mkdir
+```
+
+7. Change file permissions
+    
+    ```Bash
+$ chmod 777 files
+```
+    
+    ```Bash
+$ chmod 777 settings.php
+```
+
 ####Complete Install
 1. Open browser and navigate to *localhost/newsite.dev*
 2. Complete install, making sure to fill in database name and password
 
 *Rinse and repeat this section for __new__ drupal sites you may create*
-
----
-
-###Alternate Database And Site Creation Using Command Line And Drush
-####Create Database
-1. Create a database, Replace database_name with the name of your choice.
-    
-    ```Bash
-$ mysqladmin -u root -p create database_name
-```
-
-2. Enter your MySQL root password at the prompt.
-
----
-
-####Create database user for site via command line
-1. Open the mySQL client using root:
-    
-    ```Bash
-$ mysql -u root -p
-```
-
-2. Enter your MySQL root password at the prompt.
-
-3. Create a user:
-
-    ```mySQL
-mysql> CREATE USER 'name_of_new_user'@'localhost' IDENTIFIED BY 'password_of_new_user';
-```
-
-4. Grant *name_of_new_user* privileges to *database_name*:
-    
-    ```mySQL
-mysql> GRANT ALL PRIVILEGES ON 'database_name'.* TO 'name_of_new_user'@'localhost';
-```
-
-5. Reload the grant tables:
-    
-    ```mySQL
-mysql> FLUSH PRIVILEGES;
-```
-
-6. Exit mySQL
-    
-    ```mySQL
-mysql> quit
-```
 
 ---
 
@@ -959,7 +879,128 @@ $ sudo apt-get install sublime-text-installer
 
 ---
 
-#9. Optional Applications
+#9. Optional Applications/Information
+
+###Install Terminator
+
+1. Change to root directory:
+
+    ```bash
+$ cd ~
+```
+
+2. Add the Terminator Nightly Builds PPA:
+    
+    ```bash
+$ sudo add-apt-repository ppa:gnome-terminator/nightly
+```
+
+3. Download the package lists from the repositories and "update" them to get information on the newest versions of packages and their dependencies. It will do this for all repositories and PPAs.
+
+    ```bash
+$ sudo apt-get update
+```
+
+4. Install Terminator:
+    
+    ```bash
+$ sudo apt-get install terminator
+```
+
+###Alternate Database And Site Creation Using Command Line And Drush
+####Create Database
+1. Create a database, Replace database_name with the name of your choice.
+    
+    ```Bash
+$ mysqladmin -u root -p create database_name
+```
+
+2. Enter your MySQL root password at the prompt.
+
+---
+
+####Create database user for site via command line
+1. Open the mySQL client using root:
+    
+    ```Bash
+$ mysql -u root -p
+```
+
+2. Enter your MySQL root password at the prompt.
+
+3. Create a user:
+
+    ```mySQL
+mysql> CREATE USER 'name_of_new_user'@'localhost' IDENTIFIED BY 'password_of_new_user';
+```
+
+4. Grant *name_of_new_user* privileges to *database_name*:
+    
+    ```mySQL
+mysql> GRANT ALL PRIVILEGES ON 'database_name'.* TO 'name_of_new_user'@'localhost';
+```
+
+5. Reload the grant tables:
+    
+    ```mySQL
+mysql> FLUSH PRIVILEGES;
+```
+
+6. Exit mySQL
+    
+    ```mySQL
+mysql> quit
+```
+
+---
+
+###Install RVM
+
+RVM (“Ruby Version Manager”) Required for theming with sass/compass
+RVM allows you to install and manage multiple installations of Ruby on your system. It can also manage different gemsets. It is available for OS X, Linux, or other UNIX-like operating systems.
+
+1. Download signatures:
+
+    ```Bash
+$ gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+```
+
+2. Download RVM
+
+    ```Bash
+$ curl -sSL https://get.rvm.io | bash -s stable
+```
+
+3. Source ~/.rvm/scripts/rvm:
+
+    ```Bash
+$ source ~/.rvm/scripts/rvm
+```
+
+4. Find current stable version at [www.ruby-lang.org/en/downloads/](http://www.ruby-lang.org/en/downloads/)
+5. Install current stable version of RVM:
+
+    ```Bash
+$ rvm install 2.2.2
+```
+
+6. Change terminal preferences by going to: Edit > Profile Preferences Title and Command
+7. Check the box to **Run command as a login shell**.
+8. Close terminal and reopen.
+9. Find the latest version www.ruby-lang.org/en/downloads/
+10. Switch to Ruby 2.2.2:
+
+    ```bash
+$ rvm use 2.2.2
+```
+
+11. Verify Ruby version:
+    
+    ```Bash
+$ ruby -v
+```
+
+---
 
 ###Install Node.js
 * **[http://www.hostingadvice.com/how-to/install-nodejs-ubuntu-14-04/#ubuntu-package-manager](http://www.hostingadvice.com/how-to/install-nodejs-ubuntu-14-04/#ubuntu-package-manager)**
