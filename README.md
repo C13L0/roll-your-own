@@ -25,7 +25,7 @@ Complete Ubuntu 15.04 local development environment setup guide for Drupal 8. In
 
 [8. IDE Installation](#8-ide-installation)
 
-[9. Optional Applications](#9-optional-applications/information)
+[9. Optional Applications](#9-optional-applicationsinformation)
 
 ---
 
