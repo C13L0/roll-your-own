@@ -8,15 +8,23 @@ Complete Ubuntu 15.04 local development environment setup guide for Drupal 8. In
 
 **LOCAL set up only!**  Ubuntu 15.04 / LAMP / Drupal Sites Setup
 
-1. Ubuntu 15.04 Install
-2. Lamp Stack Installation
-3. Server Applications Setup
-4. Apache Configuration
-5. vhost Setup and Configuration
-6. Hosts File Configuration
-7. Database Creation And Drupal Installation
-8. IDE Installation
-9. Optional Applications
+[1. Ubuntu 15.04 Install](#1-ubuntu-1504-install)
+
+[2. Lamp Stack Installation](#2-lamp-stack-installation)
+
+[3. Server Applications Setup](#3-server-applications-setup)
+
+[4. Apache Configuration](#4-apache-configuration)
+
+[5. vhost Setup and Configuration](#5-vhost-setup-and-configuration)
+
+[6. Hosts File Configuration](#6-hosts-file-configuration)
+
+[7. Database Creation And Drupal Installation](#7-database-creation-and-drupal-installation)
+
+[8. IDE Installation](#8-ide-installation)
+
+[9. Optional Applications](#9-optional-applicationsinformation)
 
 ---
 
