@@ -567,7 +567,7 @@ $ sudo nano /etc/hosts
 ###Create Database And Site Via GUI/git
 **(Scroll down for cli/Drush alternate.)**
 ####Create Database
-1. Open browser and navigate to *localhost/phpMyAdmin*
+1. Open browser and navigate to *http://localhost/phpMyAdmin*
 2. Create new database called **newsite**
 
 ####Git Clone Site
