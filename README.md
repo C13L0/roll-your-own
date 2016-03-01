@@ -1,14 +1,14 @@
-#Roll-Your-Own Local Drupal Development Environment On Ubuntu 15.04
+#Roll-Your-Own Local Drupal Development Environment On Ubuntu 15.10
 
 ![alt text](http://drupal.org/files/images/DrupalDiver.png "Florida Drupal Users Group")
 **[Florida Drupal Users Group](https://groups.drupal.org/florida)**
 **IRC**: Freenode.org **#drupal-florida**
 
-Complete Ubuntu 15.04 local development environment setup guide for Drupal 8. Includes LAMP, git, Composer, Drush, and RVM. Also, a few optional applications are included. (Sublime Text 3, PhpStorm, Node.js, Gulp.js and HexChat) 
+Complete Ubuntu 15.10 local development environment setup guide for Drupal 8. Includes LAMP, git, Composer, Drush, and RVM. Also, a few optional applications are included. (Sublime Text 3, PhpStorm, Node.js, Gulp.js and HexChat) 
 
-**LOCAL set up only!**  Ubuntu 15.04 / LAMP / Drupal Sites Setup
+**LOCAL set up only!**  Ubuntu 15.10 / LAMP / Drupal Sites Setup
 
-1. Ubuntu 15.04 Install
+1. Ubuntu 15.10 Install
 2. Lamp Stack Installation
 3. Server Applications Setup
 4. Apache Configuration
@@ -20,7 +20,7 @@ Complete Ubuntu 15.04 local development environment setup guide for Drupal 8. In
 
 ---
 
-#1. Ubuntu 15.04 Install
+#1. Ubuntu 15.10 Install
 1. Create a bootable install disk or usb drive, follow directions and install Ubuntu.
 2. It is very important to write down or remember your username and password. You will use these on a regular basis.
 3. Open a terminal, click on the top left icon and type: `terminal`
@@ -66,7 +66,7 @@ $ sudo visudo
 
 ___
 #2. Lamp Stack Installation
-* **[How to install Lamp server on ubuntu 15.04 by Krizna.com](http://www.krizna.com/ubuntu/install-lamp-server-ubuntu-14-04/)**
+* **[How to install Lamp server on ubuntu 15.10 by Krizna.com](http://www.krizna.com/ubuntu/install-lamp-server-ubuntu-14-04/)**
 
 1. Install Apache:
 
@@ -167,7 +167,7 @@ $ sudo systemctl status mysql
 ---
 
 ###Install phpMyAdmin
-* **[How To Install and Secure phpMyAdmin on Ubuntu 15.04 by Digital Ocean](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-14-04)**
+* **[How To Install and Secure phpMyAdmin on Ubuntu 15.10 by Digital Ocean](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-14-04)**
 
 1. Install phpMyAdmin:
 
