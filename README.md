@@ -9,9 +9,9 @@ Complete Ubuntu 15.04 local development environment setup guide for Drupal 8. In
 **LOCAL set up only!**  Ubuntu 15.04 / LAMP / Drupal Sites Setup
 
 
-[1. Ubuntu 15.04 Install](#1.Ubuntu_15.04_Install)
+[1. Ubuntu 15.04 Install](#1Ubuntu_15.04_Install)
 
-[2. Lamp Stack Installation](#2. Lamp Stack Installation)
+[2. Lamp Stack Installation](#2-lamp-stack-installation)
 
 [3. Server Applications Setup](#3. Server Applications Setup)
 
@@ -29,7 +29,7 @@ Complete Ubuntu 15.04 local development environment setup guide for Drupal 8. In
 
 ---
 
-#1.Ubuntu_15.04_Install
+#1. Ubuntu 15.04 Install
 1. Create a bootable install disk or usb drive, follow directions and install Ubuntu.
 2. It is very important to write down or remember your username and password. You will use these on a regular basis.
 3. Open a terminal, click on the top left icon and type: `terminal`
