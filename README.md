@@ -604,7 +604,7 @@ $ cp default.settings.php settings.php
 6. Create the Directory Files
     
     ```Bash
-$ mkdir
+$ mkdir files
 ```
 
 7. Change file permissions
