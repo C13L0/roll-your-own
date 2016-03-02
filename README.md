@@ -8,10 +8,6 @@ Complete Ubuntu 15.10 local development environment setup guide for Drupal 8. In
 
 **LOCAL set up only!**  Ubuntu 15.10 / LAMP / Drupal Sites Setup
 
-<<<<<<< HEAD
-=======
-
->>>>>>> f0564a8ff1086802aef728bac83f8f584ea319ab
 [1. Ubuntu 15.10 Install](#1-ubuntu-1510-install)
 
 [2. Lamp Stack Installation](#2-lamp-stack-installation)
