@@ -1,14 +1,14 @@
-#Roll-Your-Own Local Drupal Development Environment On Ubuntu 15.10
+#Roll-Your-Own Local Drupal Development Environment On Ubuntu 16.4
 
 ![alt text](http://drupal.org/files/images/DrupalDiver.png "Florida Drupal Users Group")
 **[Florida Drupal Users Group](https://groups.drupal.org/florida)**
 **IRC**: Freenode.org **#drupal-florida**
 
-Complete Ubuntu 15.10 local development environment setup guide for Drupal 8. Includes LAMP, git, Composer, Drush, and RVM. Also, a few optional applications are included. (Sublime Text 3, PhpStorm, Node.js, Gulp.js and HexChat) 
+Complete Ubuntu 16.4 local development environment setup guide for Drupal 8. Includes LAMP, git, Composer, Drush, and RVM. Also, a few optional applications are included. (Sublime Text 3, PhpStorm, Node.js, Gulp.js and HexChat) 
 
-**LOCAL set up only!**  Ubuntu 15.10 / LAMP / Drupal Sites Setup
+**LOCAL set up only!**  Ubuntu 16.4 / LAMP / Drupal Sites Setup
 
-[1. Ubuntu 15.10 Install](#1-ubuntu-1510-install)
+[1. Ubuntu 16.4 Install](#1-ubuntu-16.4-install)
 
 [2. Lamp Stack Installation](#2-lamp-stack-installation)
 
@@ -28,8 +28,8 @@ Complete Ubuntu 15.10 local development environment setup guide for Drupal 8. In
 
 ---
 
-#1. Ubuntu 15.10 Install
-1. Create a bootable install disk or usb drive, follow directions and install Ubuntu. [Need help installing Ubuntu?](https://github.com/Ky1e/Clean-Install-Ubuntu-15-Guide)
+#1. Ubuntu 16.4 Install
+1. Create a bootable install disk or usb drive, follow directions and install Ubuntu. [Need help installing Ubuntu?](https://github.com/Lucius1024/Clean-Install-Ubuntu-15-Guide/edit/master/README.md)
 2. It is very important to write down or remember your username and password. You will use these on a regular basis.
 3. Open a terminal, click on the top left icon and type: `terminal`
 4. Run updates (don’t bother with the software updater). This takes a while:
@@ -175,12 +175,14 @@ $ sudo systemctl status mysql
 ---
 
 ###Install phpMyAdmin
-* **[How To Install and Secure phpMyAdmin on Ubuntu 15.10 by Digital Ocean](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-14-04)**
+* **[How To Install and Secure phpMyAdmin on Ubuntu 16.4 by Digital Ocean](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-16-04)**
 
 1. Install phpMyAdmin:
 
     ```Bash
-$ sudo apt-get install phpmyadmin
+$ sudo apt-get update    
+$ sudo apt-get install phpmyadmin php-mbstring php-gettext
+
 ```
 
 2. **Important!** Press the **spacebar** to choose Apache 2. An ***** will display.   
@@ -188,10 +190,12 @@ $ sudo apt-get install phpmyadmin
 4. Press **Enter**  
 5. Select *Yes* to configure with dbconfig-common  
 6. Follow the rest with your password, and again *root* is a common password used for a local host
-7. Activate the mcrpyt module:
+7. Enable mcrypt and mbstrings extentsions:
+8. restart Apache:
 
     ```Bash
 $ sudo php5enmod mcrypt
+$ sudo phpenmod mbstring
 ```
 
 8. Restart Apache:
@@ -212,7 +216,7 @@ $ chmod 775 /var/www/html
 1. Open the PHP configuration file:
     
     ```Bash
-$ sudo nano /etc/php5/apache2/php.ini
+$ sudo nano /etc/php/7.0/apache2/php.ini
 ```
 
 2. Press **CTRL**+**w** (to search) and type `memory_limit`
@@ -229,7 +233,7 @@ $ sudo nano /etc/php5/apache2/php.ini
 1. Change to root directory:
 
     ```Bash
-$ cd ~
+$ cd /
 ```
 
 2. Creat .ssh directory:
@@ -273,7 +277,7 @@ Enter same passphrase again: [Type passphrase again]
 1. Change to root directory:
 
     ```Bash
-$ cd ~
+$ cd /
 ``` 
 
 2. Install git:
@@ -313,7 +317,7 @@ $ git config --list
 1. Change to root directory:
     
     ```bash
-$ cd ~
+$ cd /
 ```
 
 2. Install cURL:
@@ -354,7 +358,7 @@ source $HOME/.bashrc
 1. Change to root directory:
 
     ```bash
-$ cd ~
+$ cd /
 ```
 
 2. Install Drush:
@@ -514,7 +518,7 @@ $ sudo service apache2 restart
 1. Change to root directory:
 
     ```bash
-$ cd ~
+$ cd /
 ```
 
 2. Change "foo" to your user. (If you are unsure of the name, type `pwd` in the command line):
