@@ -1,14 +1,14 @@
-#Roll-Your-Own Local Drupal Development Environment On Ubuntu 15.10
+#Roll-Your-Own Local Drupal Development Environment On Ubuntu 16.04
 
 ![alt text](http://drupal.org/files/images/DrupalDiver.png "Florida Drupal Users Group")
 **[Florida Drupal Users Group](https://groups.drupal.org/florida)**
 **IRC**: Freenode.org **#drupal-florida**
 
-Complete Ubuntu 15.10 local development environment setup guide for Drupal 8. Includes LAMP, git, Composer, Drush, and RVM. Also, a few optional applications are included. (Sublime Text 3, PhpStorm, Node.js, Gulp.js and HexChat) 
+Complete Ubuntu 16.04 local development environment setup guide for Drupal 8. Includes LAMP, git, Composer, Drush, and RVM. Also, a few optional applications are included. (Sublime Text 3, PhpStorm, Node.js, Gulp.js and HexChat) 
 
-**LOCAL set up only!**  Ubuntu 15.10 / LAMP / Drupal Sites Setup
+**LOCAL set up only!**  Ubuntu 16.04 / LAMP / Drupal Sites Setup
 
-[1. Ubuntu 15.10 Install](#1-ubuntu-1510-install)
+[1. Ubuntu 16.04 Install](#1-ubuntu-1604-install)
 
 [2. Lamp Stack Installation](#2-lamp-stack-installation)
 
@@ -25,11 +25,12 @@ Complete Ubuntu 15.10 local development environment setup guide for Drupal 8. In
 [8. IDE Installation](#8-ide-installation)
 
 [9. Optional Applications](#9-optional-applicationsinformation)
+[10. Optional Database creation and Drupal Installation](#10-optionaldatabcreation)
 
 ---
 
-#1. Ubuntu 15.10 Install
-1. Create a bootable install disk or usb drive, follow directions and install Ubuntu. [Need help installing Ubuntu?](https://github.com/Ky1e/Clean-Install-Ubuntu-15-Guide)
+#1. Ubuntu 16.04 Install
+1. Create a bootable install disk or usb drive, follow directions and install Ubuntu. [Need help installing Ubuntu?](https://github.com/Ky1e/Clean-Install-Ubuntu-16-Guide)
 2. It is very important to write down or remember your username and password. You will use these on a regular basis.
 3. Open a terminal, click on the top left icon and type: `terminal`
 4. Run updates (don’t bother with the software updater). This takes a while:
@@ -74,7 +75,7 @@ $ sudo visudo
 
 ___
 #2. Lamp Stack Installation
-* **[How to install Lamp server on ubuntu 15.10 by Krizna.com](http://www.krizna.com/ubuntu/install-lamp-server-ubuntu-14-04/)**
+* **[How to install Lamp server on ubuntu 15.10 by Krizna.com (this works for 16.04 as well)](http://www.krizna.com/ubuntu/install-lamp-server-ubuntu-14-04/)**
 
 1. Install Apache:
 
@@ -137,7 +138,7 @@ $ sudo /etc/init.d/mysql status
 1. Install PHP: 
 
     ```bash
-$ sudo apt-get install php5 php5-mysql
+$ apt-get -y install php7.0 libapache2-mod-php7.0
 ```  
 
 2. Create a PHP file. 
@@ -191,7 +192,7 @@ $ sudo apt-get install phpmyadmin
 7. Activate the mcrpyt module:
 
     ```Bash
-$ sudo php5enmod mcrypt
+$ sudo phpenmod mcrypt
 ```
 
 8. Restart Apache:
@@ -212,7 +213,7 @@ $ chmod 775 /var/www/html
 1. Open the PHP configuration file:
     
     ```Bash
-$ sudo nano /etc/php5/apache2/php.ini
+$ sudo nano /etc/php/7.0/apache2/php.ini
 ```
 
 2. Press **CTRL**+**w** (to search) and type `memory_limit`
@@ -573,7 +574,6 @@ $ sudo nano /etc/hosts
 
 #7. Database Creation And Drupal Installation
 ###Create Database And Site Via GUI/git
-**(Scroll down for cli/Drush alternate.)**
 ####Create Database
 1. Open browser and navigate to *http://localhost/phpMyAdmin*
 2. Create new database called **newsite**
@@ -631,222 +631,7 @@ $ chmod 777 settings.php
 
 *Rinse and repeat this section for __new__ drupal sites you may create*
 
----
 
-###Create site via drush (works with Drupal 7, but still needs testing on Drupal 8)
-1. Change to your sites directory: (Hopefully you created a symlink. If you didn’t then use $ cd /var/www/html):
-
-    ```Bash
-$ cd sites
-```
-
-2. Download Drupal (can also do drupal-8.x):
-
-    ```Bash
-$ drush dl drupal --drupal-project-rename=site_directory_name
-```
-
-3. Change to the site_directory_name
-    
-    ```Bash
-$ cd site_directory_name
-```
-
-4. Drupal Site Install. This will also create your settings.php file:
-    
-    ```Bash
-$ drush si standard --account-name=admin --account-pass=admin --db-url=mysql://database_user_name:database_user_password@localhost/database_name
-```
-
----
-
-###Get an old site up and running
-####You will need:
-1. Compressed database dump from old site in (mysql.zip or mysql.gz)
-2. All of the files or ability to git clone the files of the old site 
-** If you are not able to get a db dump and need to use backup and migrate module, Please follow a different set of directions, posted on page 10.
-
-####Create database
-1. Open browser and navigate to localhost/phpMyAdmin
-2. Create new database for your site. Example: oldsite or old_site
-3. Click on the newly created database
-4. Choose import, navigate to the compressed db file (mysql.gz) and click go
-
-####Configure Apache2 for the old site
-1. Open the Hosts file:
-
-    ```bash
-$ sudo nano /etc/hosts
-```
-
-2. Add under the last line
-
-    ```
-# Drupal sites
-127.0.0.1 oldsite.dev
-```
-
-3. Press **CTRL**+**o** (to save)
-
-4. Press **Enter**
-
-5. Press **CTRL**+**x** (to exit)
-
-####Place the oldsite folder in /var/www/html (or git clone the oldsite to this folder)
-1. Navigate to /sites (or /var/www/html if you didn’t create a symlink)
-2. Change the name of your folder to **oldsite.dev** (basically we are adding .dev and making sure the name of this folder matches the oldsite.dev name in the hosts file)
-3. Navigate into the sites/default folder and delete any old settings.php
-4. Copy default.settings.php and rename it: **settings.php**
-
-####Manually link your oldsite to the new database
-1. Open the settings.php file:
-
-    ```bash
-$ sudo nano sites/default/settings.php
-```
-
-2. You can copy/paste this into settings.php around line 219. Look for:
-
-    ```php
-    $databases = array();
-    
-    $databases = array (
-    
-      'default' =>
-    
-      array (
-    
-        'default' =>
-    
-        array (
-    
-        'database' => 'DATABASENAME',
-    
-        'username' => 'root',
-    
-        'password' => 'root',
-    
-        'host' => 'localhost',
-    
-        'port' => '',
-    
-        'driver' => 'mysql',
-    
-        'prefix' => '',
-    
-       ),
-    
-     ),
-    
-   );
-   ```  
-
-3. Change `'database' => 'DATABASENAME',` to your oldsite database name
-4. If your local phpMyAdmin has a different pw than root/root then change that too
-5. Press **CTRL**+**o** (to save)
-6. Press **Enter**
-7. Press **CTRL**+**x** (to exit)
-
-####Hope for the best! We all know that getting an old site up and running locally can be challenging
-1. Navigate to localhost/oldsite.dev
-2. You will need your old username/password as it is stored in the database to log in
-
----
-
-###Specific Install for using backup_migrate module
-####You will need:
-1. All of the files or ability to git clone the files of the old site 
-2. Backup of the oldsite using backup_migrate module
-
-####Create an empty database
-1. Open browser and navigate to localhost/phpmyadmin
-2. Create new database for your site. example: oldsite or old_site
-
-####Configure Apache2 for the old site
-1. Open the Hosts file:
-
-    ```bash
-$ sudo nano /etc/hosts
-```
-
-2. Add under the last line
-
-    ```
-# Drupal sites
-127.0.0.1 oldsite.dev
-```
-
-3. Press **CTRL**+**o** (to save)
-4. Press **Enter**
-5. Press **CTRL**+**x** (to exit)
-
-####Place the oldsite folder in /var/www/html (or git clone the oldsite to this folder)
-1. Navigate to /sites (or /var/www/html if you didn’t create a symlink)
-2. Change the name of your folder to **oldsite.dev** (basically we are adding .dev and making sure the name of this folder matches the oldsite.dev name in the hosts file)
-3. Navigate into the sites/default folder and delete any old settings.php
-4. Copy default.settings.php and rename it: **settings.php**
-5. In your browser, navigate to *localhost/oldsite.dev*
-6. Complete the install process, making sure to complete the section when it asks for the database name and password.
-
-####Install backup_migrate module
-1. cd into the root of the oldsite.dev
-2. Download the backup_migrate module:
-
-    ```Bash
-$ drush dl backup_migrate
-```
-
-3. Enable the backup_migrate module:
-    
-    ```Bash
-$ drush en backup_migrate
-```
-
-4. Log into your site, go to configuration management, and restore backup_migrate database as usual
-
----
-
-###Common troubleshooting stuff when working with older sites
-1. Reset the admin username/password (assuming admin is the username)
-  1. cd to the root of your oldsite.dev
-  2. Set username and password: 
-
-    ```bash
-$ drush user-password admin --password=newpassword
-```
-
-2. Only the front page shows, 404 on any other nodes
-  1. Make sure there is an .htaccess file in the root of the site
-    * If it is missing, simply copy/paste .htaccess into the root of your oldsite.dev from another drupal site
-  2. If .htaccess is there and still having issues, check for clean urls
-        2. In the browser, navigate to *localhost/oldsite.dev/?q=admin/config/search/clean-urls*
-        3. There should be a checkmark and option to run clean urls
-        4. For additional clean url troubleshooting: [https://www.drupal.org/node/15365](https://www.drupal.org/node/15365)
-        5. In the meantime, you can still painfully navigate the site with /?q=
-  3. Missing images
-    * If you git cloned, your files folder will be empty. Grab the files folder from the old site and place in sites/default/
-  4. White screen of death (WOD):
-
-	```bash
-$ drush updb
-```
-
----
-
-###Important drush command change
-####Drupal 7:
-
-```bash
-	$ drush cc all
-```
-
-####Drupal 8:
-
-```bash
-	$ drush cr all
-```
-
----
 
 #8. IDE Installation
 
@@ -1196,3 +981,222 @@ $ sudo apt-get update
     ```Bash
 $ sudo apt-get install hexchat
 ```
+
+#10 Optional Database Creation and Drupal installation
+
+---
+
+###Create site via drush (works with Drupal 7, but still needs testing on Drupal 8)
+1. Change to your sites directory: (Hopefully you created a symlink. If you didn’t then use $ cd /var/www/html):
+
+    ```Bash
+$ cd sites
+```
+
+2. Download Drupal (can also do drupal-8.x):
+
+    ```Bash
+$ drush dl drupal --drupal-project-rename=site_directory_name
+```
+
+3. Change to the site_directory_name
+    
+    ```Bash
+$ cd site_directory_name
+```
+
+4. Drupal Site Install. This will also create your settings.php file:
+    
+    ```Bash
+$ drush si standard --account-name=admin --account-pass=admin --db-url=mysql://database_user_name:database_user_password@localhost/database_name
+```
+
+---
+
+###Get an old site up and running
+####You will need:
+1. Compressed database dump from old site in (mysql.zip or mysql.gz)
+2. All of the files or ability to git clone the files of the old site 
+** If you are not able to get a db dump and need to use backup and migrate module, Please follow a different set of directions, posted on page 10.
+
+####Create database
+1. Open browser and navigate to localhost/phpMyAdmin
+2. Create new database for your site. Example: oldsite or old_site
+3. Click on the newly created database
+4. Choose import, navigate to the compressed db file (mysql.gz) and click go
+
+####Configure Apache2 for the old site
+1. Open the Hosts file:
+
+    ```bash
+$ sudo nano /etc/hosts
+```
+
+2. Add under the last line
+
+    ```
+# Drupal sites
+127.0.0.1 oldsite.dev
+```
+
+3. Press **CTRL**+**o** (to save)
+
+4. Press **Enter**
+
+5. Press **CTRL**+**x** (to exit)
+
+####Place the oldsite folder in /var/www/html (or git clone the oldsite to this folder)
+1. Navigate to /sites (or /var/www/html if you didn’t create a symlink)
+2. Change the name of your folder to **oldsite.dev** (basically we are adding .dev and making sure the name of this folder matches the oldsite.dev name in the hosts file)
+3. Navigate into the sites/default folder and delete any old settings.php
+4. Copy default.settings.php and rename it: **settings.php**
+
+####Manually link your oldsite to the new database
+1. Open the settings.php file:
+
+    ```bash
+$ sudo nano sites/default/settings.php
+```
+
+2. You can copy/paste this into settings.php around line 219. Look for:
+
+    ```php
+    $databases = array();
+    
+    $databases = array (
+    
+      'default' =>
+    
+      array (
+    
+        'default' =>
+    
+        array (
+    
+        'database' => 'DATABASENAME',
+    
+        'username' => 'root',
+    
+        'password' => 'root',
+    
+        'host' => 'localhost',
+    
+        'port' => '',
+    
+        'driver' => 'mysql',
+    
+        'prefix' => '',
+    
+       ),
+    
+     ),
+    
+   );
+   ```  
+
+3. Change `'database' => 'DATABASENAME',` to your oldsite database name
+4. If your local phpMyAdmin has a different pw than root/root then change that too
+5. Press **CTRL**+**o** (to save)
+6. Press **Enter**
+7. Press **CTRL**+**x** (to exit)
+
+####Hope for the best! We all know that getting an old site up and running locally can be challenging
+1. Navigate to localhost/oldsite.dev
+2. You will need your old username/password as it is stored in the database to log in
+
+---
+
+###Specific Install for using backup_migrate module
+####You will need:
+1. All of the files or ability to git clone the files of the old site 
+2. Backup of the oldsite using backup_migrate module
+
+####Create an empty database
+1. Open browser and navigate to localhost/phpmyadmin
+2. Create new database for your site. example: oldsite or old_site
+
+####Configure Apache2 for the old site
+1. Open the Hosts file:
+
+    ```bash
+$ sudo nano /etc/hosts
+```
+
+2. Add under the last line
+
+    ```
+# Drupal sites
+127.0.0.1 oldsite.dev
+```
+
+3. Press **CTRL**+**o** (to save)
+4. Press **Enter**
+5. Press **CTRL**+**x** (to exit)
+
+####Place the oldsite folder in /var/www/html (or git clone the oldsite to this folder)
+1. Navigate to /sites (or /var/www/html if you didn’t create a symlink)
+2. Change the name of your folder to **oldsite.dev** (basically we are adding .dev and making sure the name of this folder matches the oldsite.dev name in the hosts file)
+3. Navigate into the sites/default folder and delete any old settings.php
+4. Copy default.settings.php and rename it: **settings.php**
+5. In your browser, navigate to *localhost/oldsite.dev*
+6. Complete the install process, making sure to complete the section when it asks for the database name and password.
+
+####Install backup_migrate module
+1. cd into the root of the oldsite.dev
+2. Download the backup_migrate module:
+
+    ```Bash
+$ drush dl backup_migrate
+```
+
+3. Enable the backup_migrate module:
+    
+    ```Bash
+$ drush en backup_migrate
+```
+
+4. Log into your site, go to configuration management, and restore backup_migrate database as usual
+
+---
+
+###Common troubleshooting stuff when working with older sites
+1. Reset the admin username/password (assuming admin is the username)
+  1. cd to the root of your oldsite.dev
+  2. Set username and password: 
+
+    ```bash
+$ drush user-password admin --password=newpassword
+```
+
+2. Only the front page shows, 404 on any other nodes
+  1. Make sure there is an .htaccess file in the root of the site
+    * If it is missing, simply copy/paste .htaccess into the root of your oldsite.dev from another drupal site
+  2. If .htaccess is there and still having issues, check for clean urls
+        2. In the browser, navigate to *localhost/oldsite.dev/?q=admin/config/search/clean-urls*
+        3. There should be a checkmark and option to run clean urls
+        4. For additional clean url troubleshooting: [https://www.drupal.org/node/15365](https://www.drupal.org/node/15365)
+        5. In the meantime, you can still painfully navigate the site with /?q=
+  3. Missing images
+    * If you git cloned, your files folder will be empty. Grab the files folder from the old site and place in sites/default/
+  4. White screen of death (WOD):
+
+	```bash
+$ drush updb
+```
+
+---
+
+###Important drush command change
+####Drupal 7:
+
+```bash
+	$ drush cc all
+```
+
+####Drupal 8:
+
+```bash
+	$ drush cr all
+```
+
+---
