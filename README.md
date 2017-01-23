@@ -34,7 +34,7 @@ Complete Ubuntu 16.04 local development environment setup guide for Drupal 8. In
 
 
 #1. Ubuntu 16.04 Install
-1. Create a bootable install disk or usb drive, follow directions and install Ubuntu. [Need help installing Ubuntu?](https://github.com/Lucius1024/Clean-Install-Ubuntu-15-Guide/edit/master/README.md)
+1. Create a bootable install disk or usb drive, follow directions and install Ubuntu. [Need help installing Ubuntu?](https://github.com/Lucius1024/Clean-Install-Ubuntu-15-Guide)
 2. It is very important to write down or remember your username and password. You will use these on a regular basis.
 3. Open a terminal, click on the top left icon and type: `terminal`
 4. Run updates (don’t bother with the software updater). This takes a while:
