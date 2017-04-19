@@ -11,7 +11,7 @@ Complete Ubuntu 16.04 local development environment setup guide for Drupal 8. In
 
 **LOCAL set up only!**  Ubuntu 16.04 / LAMP / Drupal Sites Setup
 
-[1. Ubuntu 16.04 Install](#1-ubuntu-1604-install)
+[1. Ubuntu 16.04 Install](#1-download-ubuntu)
 
 [2. Lamp Stack Installation](#2-lamp-stack-installation)
 
@@ -28,163 +28,119 @@ Complete Ubuntu 16.04 local development environment setup guide for Drupal 8. In
 [8. IDE Installation](#8-ide-installation)
 
 [9. Optional Applications](#9-optional-applicationsinformation)
+
 [10. Optional Database creation and Drupal Installation](#10-optionaldatabcreation)
 
 ---
 
 
-#1. Ubuntu 16.04 Install
-1. Create a bootable install disk or usb drive, follow directions and install Ubuntu. [Need help installing Ubuntu?](https://github.com/Lucius1024/Clean-Install-Ubuntu-15-Guide)
-2. It is very important to write down or remember your username and password. You will use these on a regular basis.
-3. Open a terminal, click on the top left icon and type: `terminal`
-4. Run updates (don’t bother with the software updater). This takes a while:
+# 1. Download Ubuntu
 
-	```bash
+1. Create a bootable install disk or usb drive, follow directions and install Ubuntu. [Need help installing Ubuntu?](https://github.com/Lucius1024/Clean-Install-Ubuntu-15-Guide)
+2. Open terminal: `Ctrl+Alt+T`
+3. Run updates:
+```bash
 $ sudo apt-get update
 ```
 
-5. If you want to use a text editor, it is called gedit. Open it the same way as the terminal. Once it is in the sidebar launcher, you can left click and lock.  
-6. You can also remove most of the other annoying icons from the launcher so they are not in your way.  
-
-####Give Your User Permissions!
+## Give Your User Permissions!
 
 1. Add your username to the sudo group:
-
-    ```bash
+```bash
 $ sudo adduser yourusername sudo
 ```
 
 2. Add your username to the www-data group:
 
-    ```bash
+```bash
 $ sudo adduser yourusername www-data
 ```
 
-####Permission Issues
 
-If you are having permission issues, you can also do the following. I do not believe this method is recommended.  
-
-1. Edit the sudoers file with the "visudo" text editor:
-**(This is much safer than editing the `/etc/sudoers` file manually).**
-
-    ```bash
-$ sudo visudo
-```
-
-2. Using the arrow keys, or the 'j' key,  scroll down until you see # User privilege specification
-3. Place cursor under: `root ALL=(ALL:ALL) ALL`
-4. Add: `yourusername ALL=(ALL:ALL) ALL`
-5. Press **Esc**
-6. Type: `:wq`
-
-___
-#2. Lamp Stack Installation
-* **[How to install Lamp server on ubuntu 15.10 by Krizna.com (this works for 16.04 as well)](http://www.krizna.com/ubuntu/install-lamp-server-ubuntu-14-04/)**
+# 2. Lamp Stack Installation
 
 1. Install Apache:
-
-    ```bash
+```bash
 $ sudo apt-get install apache2
 ``` 
 
 2. Open Apache main configuration file:
-
-    ```bash
+```bash
 $ sudo nano /etc/apache2/apache2.conf
 ```
 
-3. Use the arrow key to scroll down to the end of the file and type in: 
-`ServerName localhost`  
+3. Use the arrow key to scroll down to the end of the file and type in: `ServerName localhost`  
 4. Press **CTRL**+**o** (to save)  
 5. Press **Enter**   
 6. Press **CTRL**+**x** (to exit)  
-7. You can check to make sure that it saved with
-
-    ```bash
+7. You can check to make sure that it saved with:
+```bash
 $ cat /etc/apache2/apache2.conf
 ```
 
 8. Restart apache:
-
-    ```bash
+```bash
 $ sudo service apache2 restart
 ```
 
-9. Change the ownership of /var/www/html to your username
-
-    ```bash
+9. Change the ownership of /var/www/html to your username:
+```bash
 $ sudo chown yourusername:www-data /var/www/html -R
 ```
 
-10. You can check to make sure it works properly by opening the browser and typing: */var/www/html*
+## Install MySQL server
 
----
-
-###Install MySQL server
 1. Install MySQL:
-
-    ```bash
+```bash
 $ sudo apt-get install mysql-server mysql-client
 ```
 
-2. It will ask you to create a password. Generally for localhost it is root/root.   
+2. Create a password   
 3. Check the service status with:
-
-    ```bash
+```bash
 $ sudo /etc/init.d/mysql status
 ```
 
-4. If your prompt is `mysql>` after checking the status, you can escape by typing: `exit`
+## Install PHP
 
----
-
-###Install PHP
 1. Install PHP: 
-
-    ```bash
+```bash
 $ apt-get -y install php7.0 libapache2-mod-php7.0
 ```  
 
-2. Create a PHP file. 
-
-    ```bash
+2. Create a PHP file: 
+```bash
 $ sudo nano /var/www/html/phpinfo.php
 ```
 
 3. Add the following code:  
-
-    ```PHP
+```PHP
     <?php  
     
     phpinfo();
     
     ?>
-    ```
+```
 
 4. Press **CTRL**+**o** (to save)  
 5. Press **Enter**  
 6. Press **CTRL**+**x** (to exit)  
 7. Restart Apache:  
-
-    ```bash
+```bash
 $ sudo service apache2 restart
 ```
 
-8. Open browser and navigate to: *localhost/phpinfo.php*  
-   Or enter the following in Terminal:
-
-    ```bash
+8. Open browser and navigate to: `localhost/phpinfo.php` r enter the following in Terminal:
+```bash
 $ sudo systemctl status mysql
 ```
 
 ---
 
-###Install phpMyAdmin
-* **[How To Install and Secure phpMyAdmin on Ubuntu 16.4 by Digital Ocean](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-16-04)**
+## Install phpMyAdmin
 
 1. Install phpMyAdmin:
-
-    ```Bash
+```Bash
 $ sudo apt-get update    
 $ sudo apt-get install phpmyadmin php-mbstring php-gettext
 
@@ -194,33 +150,28 @@ $ sudo apt-get install phpmyadmin php-mbstring php-gettext
 3. Press **Tab** (to navigate down the menu to ok)   
 4. Press **Enter**  
 5. Select *Yes* to configure with dbconfig-common  
-6. Follow the rest with your password, and again *root* is a common password used for a local host
+6. Follow the prompts
 7. Enable mcrypt and mbstrings extentsions:
-8. restart Apache:
-
-    ```Bash
+```Bash
 $ sudo php5enmod mcrypt
 $ sudo phpenmod mbstring
 ```
 
 8. Restart Apache:
-
-    ```Bash
+```Bash
 $ sudo service apache2 restart
 ```
 
-9. Test by navigating in the browser to: *localhost/phpmyadmin*  
-10. You can follow the rest of the tutorial for additional securities if you want. I am not sure if this is necessary for local. Of course it would be for a cloud server  
+9. Test by navigating in the browser to: `localhost/phpmyadmin`
+10. You can follow the rest of the tutorial for additional security; not required for local development  
 11. Don’t *ever* do this on a live server but local is fine. Drupal php needs access:
-
-    ```Bash
+```Bash
 $ chmod 775 /var/www/html
 ```
 
-####Increase Max Limit In php.ini
+### Increase Max Limit In php.ini
 1. Open the PHP configuration file:
-    
-    ```Bash
+```Bash
 $ sudo nano /etc/php/7.0/apache2/php.ini
 ```
 
@@ -230,32 +181,26 @@ $ sudo nano /etc/php/7.0/apache2/php.ini
 5. Press **Enter**   
 6. Press **CTRL**+**x** (to exit)  
 
----
 
-###Create SSH key
-**(you can replace keys with your old ones after initial set up)**
+### Create SSH key
 
 1. Change to root directory:
-
-    ```Bash
-$ cd /
+```Bash
+$ cd ~
 ```
 
-2. Creat .ssh directory:
-    
-    ```Bash
+2. Create .ssh directory:
+```Bash
 $ mkdir .ssh
 ```
 
-3. Protect the directory against any access from other users, while you still has full access:
-
-    ```Bash
+3. Change directory permissions:
+```Bash
 $ chmod 700 .ssh
 ```
 
-4. Create an RSA Key Pair:
-
-    ```Bash
+4. Create an RSA Key Pair (skip if you already have a key):
+```Bash
 $ ssh-keygen -t rsa
 ```
 
@@ -272,115 +217,93 @@ Enter passphrase (empty for no passphrase): [Type a passphrase]
 Enter same passphrase again: [Type passphrase again]
 ```
 
-*Extra* - If you want your old keys - put your old keys on a usb drive, navigate to the .ssh folder and replace them  
+# 3. Server Applications Setup 
 
----
-
-#3. Server Applications Setup 
-###Install git
+## Install git
 
 1. Change to root directory:
-
-    ```Bash
-$ cd /
+```Bash
+$ cd ~
 ``` 
 
 2. Install git:
-    
-    ```Bash
+```Bash
 $ sudo apt-get install git
 ```
 
 3. Set your name for git identity:
-    
-    ```Bash
+```Bash
 $ git config --global user.name yourname
 ```
-**NOTE: Yourname may be entered as “firstname lastname”, use apostrophes around yourname if using a space between first and last names.  Example:  `$ git config –global user.name “Jane Smith” `**
 
 4. Set your email for git identity:
-
-    ```Bash
+```Bash
 $ git config --global user.email youremail@domain.com
 ```
 
 5. To add color to git use this command:
-
-    ```Bash
+```Bash
 $ git config --global color.ui auto
 ```
 
 6. See all current values:
-    ```Bash
+```Bash
 $ git config --list
 ```
----
 
-###Install Composer
+## Install Composer
 **Note! You must install composer before installing drush**
 
 1. Change to root directory:
-    
-    ```bash
-$ cd /
+```bash
+$ cd ~
 ```
 
 2. Install cURL:
-    
-    ```bash
+```bash
 $ sudo apt-get install curl
 ```
 
 3. Download Composer:
-    
-    ```bash
+```bash
 $ curl -sS https://getcomposer.org/installer | php
 ```
 
-4. Move composer.phar to /usr/loca/bin composer"
-    
-    ```bash
+4. Move composer to bin:
+```bash
 $ sudo mv composer.phar /usr/local/bin/composer
 ```
 
-5. Adds the proper path to the .bashrc file:
-    
-    ```bash
+5. Add path to the .bashrc:
+```bash
 $ sed -i '1i export PATH="$HOME/.composer/vendor/bin:$PATH"' $HOME/.bashrc
 ```
 
-6. Reloading/Rrefreshing the .bashrc file:
-
-    ```bash
+6. Source the .bashrc file:
+```bash
 source $HOME/.bashrc
 ```
 
----
-
-###Install Drush (must install composer first) 
+## Install Drush (must install composer first) 
 **For additional drush commands visit [www.drushcommands.com](http://www.drushcommands.com)**
 
 1. Change to root directory:
-
-    ```bash
-$ cd /
+```bash
+$ cd ~
 ```
 
 2. Install Drush:
-
-    ```bash
+```bash
 $ composer global require drush/drush:dev-master
 ```
 
 3. Update everything:
-
-    ```bash
+```bash
 $ composer global update
 ```
 
----
 
-#4. Apache Configuration
+# 4. Apache Configuration
 ###Configure Apache To Preference .php Files Over .html Files
 1. Open /etc/apache2/mods-enabled/dir.conf for editing:
 
