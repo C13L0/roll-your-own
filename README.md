@@ -16,7 +16,7 @@ Complete Ubuntu 16.04 local development environment setup guide for Drupal 8. In
 
 **LOCAL set up only!**  Ubuntu 16.04 / LAMP / Drupal Sites Setup
 
-[1. Ubuntu 16.04 Install](#1. Ubuntu 16.04 Install)
+[1. Ubuntu 16.04 Install](#1.-Ubuntu-16.04-Install)
 
 [2. Lamp Stack Installation](#2-lamp-stack-installation)
 
