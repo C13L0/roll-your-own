@@ -3,13 +3,8 @@
 
 
 ![alt text](http://drupal.org/files/images/DrupalDiver.png "Florida Drupal Users Group")
-
-
 **[Florida Drupal Users Group](https://groups.drupal.org/florida)**
-
 **IRC**: Freenode.org **#drupal-florida**
-
-**SLACK**: Drupalslack.herokuapp.co **#florida**
 
 
 Complete Ubuntu 16.04 local development environment setup guide for Drupal 8. Includes LAMP, git, Composer, Drush, and RVM. Also, a few optional applications are included. (Sublime Text 3, PhpStorm, Node.js, Gulp.js and HexChat) 
@@ -33,13 +28,12 @@ Complete Ubuntu 16.04 local development environment setup guide for Drupal 8. In
 [8. IDE Installation](#8-ide-installation)
 
 [9. Optional Applications](#9-optional-applicationsinformation)
-
 [10. Optional Database creation and Drupal Installation](#10-optionaldatabcreation)
 
 ---
 
 
-#1. Ubuntu 16.04 Install
+#1 Ubuntu 16.04 Install
 1. Create a bootable install disk or usb drive, follow directions and install Ubuntu. [Need help installing Ubuntu?](https://github.com/Lucius1024/Clean-Install-Ubuntu-15-Guide)
 2. It is very important to write down or remember your username and password. You will use these on a regular basis.
 3. Open a terminal, click on the top left icon and type: `terminal`
