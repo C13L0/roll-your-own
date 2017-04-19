@@ -6,7 +6,9 @@
 
 
 **[Florida Drupal Users Group](https://groups.drupal.org/florida)**
+
 **IRC**: Freenode.org **#drupal-florida**
+
 **SLACK**: [#florida](http://drupalslack.herokuapp.com/)
 
 
