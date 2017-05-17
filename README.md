@@ -105,7 +105,7 @@ $ sudo /etc/init.d/mysql status
 
 1. Install PHP: 
 ```bash
-$ apt-get -y install php7.0 libapache2-mod-php7.0
+$ sudo apt-get -y install php7.0 libapache2-mod-php7.0
 ```  
 
 2. Create a PHP file: 
@@ -153,7 +153,7 @@ $ sudo apt-get install phpmyadmin php-mbstring php-gettext
 6. Follow the prompts
 7. Enable mcrypt and mbstrings extentsions:
 ```Bash
-$ sudo php5enmod mcrypt
+$ sudo phpenmod mcrypt
 $ sudo phpenmod mbstring
 ```
 
@@ -446,7 +446,7 @@ $ sudo service apache2 restart
 1. Change to root directory:
 
 ```bash
-$ cd /
+$ cd ~
 ```
 
 2. Change "foo" to your user. (If you are unsure of the name, type `pwd` in the command line):
