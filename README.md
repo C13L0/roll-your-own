@@ -1,5 +1,5 @@
 
-#Roll-Your-Own Local Drupal Development Environment On Ubuntu 16.04
+# Roll-Your-Own Local Drupal Development Environment On Ubuntu 16.04
 
 
 ![alt text](http://drupal.org/files/images/DrupalDiver.png "Florida Drupal Users Group")
@@ -304,7 +304,7 @@ $ composer global update
 
 
 # 4. Apache Configuration
-###Configure Apache To Preference .php Files Over .html Files
+### Configure Apache To Preference .php Files Over .html Files
 1. Open /etc/apache2/mods-enabled/dir.conf for editing:
 
 ```bash
@@ -332,7 +332,7 @@ $ sudo service apache2 restart
 
 ---
 
-###Enable Global Site Clean URL’s
+### Enable Global Site Clean URL’s
 1. Enable the rewrite module for Apache:
 
 ```Bash
@@ -387,7 +387,7 @@ $ sudo service apache2 restart
 
 ---
 
-#5. vhost Setup and Configuration
+# 5. vhost Setup and Configuration
 
 1. Change to the /etc/apache2/sites-available directory:
 
@@ -441,7 +441,7 @@ $ sudo service apache2 restart
 
 ---
 
-###Easy Navigate To Sites Directory By Creating A Symlink To /var/www/html
+### Easy Navigate To Sites Directory By Creating A Symlink To /var/www/html
 
 1. Change to root directory:
 
@@ -470,7 +470,7 @@ $ ln -s /what/is/being/linked /where/symlink/goes/nameofsymlink
 To remove a symlink: unlink **sites** (symlink name)
 
 ---
-#6. Hosts File Configuration
+# 6. Hosts File Configuration
 Configure Apache For Sites **(Follow this for either site creation methods.)**
 
 1. Open /etc/hosts file for editing:
@@ -503,13 +503,13 @@ $ sudo nano /etc/hosts
 
 ---
 
-#7. Database Creation And Drupal Installation
-###Create Database And Site Via GUI/git
-####Create Database
+# 7. Database Creation And Drupal Installation
+### Create Database And Site Via GUI/git
+#### Create Database
 1. Open browser and navigate to *http://localhost/phpMyAdmin*
 2. Create new database called **newsite**
 
-####Git Clone Site
+#### Git Clone Site
 1. Change to your sites directory: (Hopefully you created a symlink. If you didn’t then use `$ cd /var/www/html`):
 
 ```Bash
@@ -556,7 +556,7 @@ $ chmod 777 files
 $ chmod 777 settings.php
 ```
 
-####Complete Install
+#### Complete Install
 1. Open browser and navigate to *localhost/newsite.dev*
 2. Complete install, making sure to fill in database name and password
 
@@ -564,9 +564,9 @@ $ chmod 777 settings.php
 
 
 
-#8. IDE Installation
+# 8. IDE Installation
 
-###Install IDE (Sublime Text 3)
+### Install IDE (Sublime Text 3)
 Sublime Text is a sophisticated text editor for code, html and prose. 
 
 1. Change to root directory:
@@ -597,15 +597,15 @@ $ sudo apt-get install sublime-text-installer
 
 ---
 
-###Configuration Information For PhpStorm Users
+### Configuration Information For PhpStorm Users
 * **[Setting up PhpStorm for Drupal's Coding Standards (Drupal.org)](https://www.drupal.org/node/1962108)**
 * **[Drupal Development using PhpStorm (PhpStorm Documentation)](https://confluence.jetbrains.com/display/PhpStorm/Drupal+Development+using+PhpStorm#DrupalDevelopmentusingPhpStorm-CoderandPHPCodeSnifferIntegration)**
 
 ---
 
-#9. Optional Applications/Information
+# 9. Optional Applications/Information
 
-###Install Terminator
+### Install Terminator
 
 1. Change to root directory:
 
@@ -631,8 +631,8 @@ $ sudo apt-get update
 $ sudo apt-get install terminator
 ```
 
-###Alternate Database And Site Creation Using Command Line And Drush
-####Create Database
+### Alternate Database And Site Creation Using Command Line And Drush
+#### Create Database
 1. Create a database, Replace database_name with the name of your choice.
     
 ```Bash
@@ -643,7 +643,7 @@ $ mysqladmin -u root -p create database_name
 
 ---
 
-####Create database user for site via command line
+#### Create database user for site via command line
 1. Open the mySQL client using root:
     
 ```Bash
@@ -678,7 +678,7 @@ mysql> quit
 
 ---
 
-###Install RVM
+### Install RVM
 
 RVM (“Ruby Version Manager”) Required for theming with sass/compass
 RVM allows you to install and manage multiple installations of Ruby on your system. It can also manage different gemsets. It is available for OS X, Linux, or other UNIX-like operating systems.
@@ -726,7 +726,7 @@ $ ruby -v
 
 ---
 
-###Install Node.js
+### Install Node.js
 * **[http://www.hostingadvice.com/how-to/install-nodejs-ubuntu-14-04/#ubuntu-package-manager](http://www.hostingadvice.com/how-to/install-nodejs-ubuntu-14-04/#ubuntu-package-manager)**
 
 Install Options
@@ -734,7 +734,7 @@ Install Options
 * Option 1 is the recommended method for the masses, as it should be stable and secure. 
 * Options 2, 3, and 4 have the advantage of keeping your node and npm packages the most curren
 
-####Option 1: Install the standard Debian/Ubuntu packages for “node” and “npm”.
+#### Option 1: Install the standard Debian/Ubuntu packages for “node” and “npm”.
 1. To install Node.js, open a terminal and type the following command:
 
 ```bash
@@ -764,7 +764,7 @@ v0.10.25
    1.3.10
 ```
 
-####Option 2: Install from Debian/Ubuntu packages created by the Node.js (associated) team.
+#### Option 2: Install from Debian/Ubuntu packages created by the Node.js (associated) team.
 The process below is described here, too.
 
 1. Add the Node.js maintained repositories to your Ubuntu package source list with this command:
@@ -794,7 +794,7 @@ $ npm -v
 1.4.28
 ```
 
-####Option 3: Install Node.js manually from standard binary packages on the official website.
+#### Option 3: Install Node.js manually from standard binary packages on the official website.
 Go to the official Node.js download page and download either the 32-bit or 64-bit Linux binary file, depending on your system type.
 
 1. You can check what CPU architecture your server has with these commands:
@@ -825,8 +825,8 @@ $ ls -l /usr/local/bin/node
 $ ls -l /usr/local/bin/npm
 ```
 
-####Option 4: Install Node.js from the [Github source repository](https://github.com/joyent/node).
-####Useful Note Regarding Older "node" Packages When Updating
+#### Option 4: Install Node.js from the [Github source repository](https://github.com/joyent/node).
+#### Useful Note Regarding Older "node" Packages When Updating
 
 On Ubuntu, the “nodejs” package has a similar name to the older one named “node”. The old one is an amateur packet radio program you can more than likely remove.
 
@@ -850,7 +850,7 @@ $ sudo apt-get remove --purge node
 
 ---
 
-###Gulp.js Streaming Build System
+### Gulp.js Streaming Build System
 * **[Gulp Documentation on GitHub](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md)**
 * **[Automated Theming Workflow With Gulp](http://www.blinkreaction.com/blog/automated-theming-workflow-with-gulp)**
 
@@ -894,7 +894,7 @@ The gulp community is growing, with new plugins being added daily. See the [main
 
 ---
 
-###Install IRC (HexChat)
+### Install IRC (HexChat)
 1. Add the HexChat PPA:
     
 ```Bash
@@ -913,11 +913,11 @@ $ sudo apt-get update
 $ sudo apt-get install hexchat
 ```
 
-#10 Optional Database Creation and Drupal installation
+# 10 Optional Database Creation and Drupal installation
 
 ---
 
-###Create site via drush (works with Drupal 7, but still needs testing on Drupal 8)
+### Create site via drush (works with Drupal 7, but still needs testing on Drupal 8)
 1. Change to your sites directory: (Hopefully you created a symlink. If you didn’t then use $ cd /var/www/html):
 
 ```Bash
@@ -944,19 +944,19 @@ $ drush si standard --account-name=admin --account-pass=admin --db-url=mysql://d
 
 ---
 
-###Get an old site up and running
-####You will need:
+### Get an old site up and running
+#### You will need:
 1. Compressed database dump from old site in (mysql.zip or mysql.gz)
 2. All of the files or ability to git clone the files of the old site 
 ** If you are not able to get a db dump and need to use backup and migrate module, Please follow a different set of directions, posted on page 10.
 
-####Create database
+#### Create database
 1. Open browser and navigate to localhost/phpMyAdmin
 2. Create new database for your site. Example: oldsite or old_site
 3. Click on the newly created database
 4. Choose import, navigate to the compressed db file (mysql.gz) and click go
 
-####Configure Apache2 for the old site
+#### Configure Apache2 for the old site
 1. Open the Hosts file:
 
 ```bash
@@ -976,13 +976,13 @@ $ sudo nano /etc/hosts
 
 5. Press **CTRL**+**x** (to exit)
 
-####Place the oldsite folder in /var/www/html (or git clone the oldsite to this folder)
+#### Place the oldsite folder in /var/www/html (or git clone the oldsite to this folder)
 1. Navigate to /sites (or /var/www/html if you didn’t create a symlink)
 2. Change the name of your folder to **oldsite.dev** (basically we are adding .dev and making sure the name of this folder matches the oldsite.dev name in the hosts file)
 3. Navigate into the sites/default folder and delete any old settings.php
 4. Copy default.settings.php and rename it: **settings.php**
 
-####Manually link your oldsite to the new database
+#### Manually link your oldsite to the new database
 1. Open the settings.php file:
 
 ```bash
@@ -1031,22 +1031,22 @@ $ sudo nano sites/default/settings.php
 6. Press **Enter**
 7. Press **CTRL**+**x** (to exit)
 
-####Hope for the best! We all know that getting an old site up and running locally can be challenging
+#### Hope for the best! We all know that getting an old site up and running locally can be challenging
 1. Navigate to localhost/oldsite.dev
 2. You will need your old username/password as it is stored in the database to log in
 
 ---
 
-###Specific Install for using backup_migrate module
-####You will need:
+### Specific Install for using backup_migrate module
+#### You will need:
 1. All of the files or ability to git clone the files of the old site 
 2. Backup of the oldsite using backup_migrate module
 
-####Create an empty database
+#### Create an empty database
 1. Open browser and navigate to localhost/phpmyadmin
 2. Create new database for your site. example: oldsite or old_site
 
-####Configure Apache2 for the old site
+#### Configure Apache2 for the old site
 1. Open the Hosts file:
 
 ```bash
@@ -1064,7 +1064,7 @@ $ sudo nano /etc/hosts
 4. Press **Enter**
 5. Press **CTRL**+**x** (to exit)
 
-####Place the oldsite folder in /var/www/html (or git clone the oldsite to this folder)
+#### Place the oldsite folder in /var/www/html (or git clone the oldsite to this folder)
 1. Navigate to /sites (or /var/www/html if you didn’t create a symlink)
 2. Change the name of your folder to **oldsite.dev** (basically we are adding .dev and making sure the name of this folder matches the oldsite.dev name in the hosts file)
 3. Navigate into the sites/default folder and delete any old settings.php
@@ -1072,7 +1072,7 @@ $ sudo nano /etc/hosts
 5. In your browser, navigate to *localhost/oldsite.dev*
 6. Complete the install process, making sure to complete the section when it asks for the database name and password.
 
-####Install backup_migrate module
+#### Install backup_migrate module
 1. cd into the root of the oldsite.dev
 2. Download the backup_migrate module:
 
@@ -1090,7 +1090,7 @@ $ drush en backup_migrate
 
 ---
 
-###Common troubleshooting stuff when working with older sites
+### Common troubleshooting stuff when working with older sites
 1. Reset the admin username/password (assuming admin is the username)
   1. cd to the root of your oldsite.dev
   2. Set username and password: 
@@ -1117,14 +1117,14 @@ $ drush updb
 
 ---
 
-###Important drush command change
-####Drupal 7:
+### Important drush command change
+#### Drupal 7:
 
 ```bash
 	$ drush cc all
 ```
 
-####Drupal 8:
+#### Drupal 8:
 
 ```bash
 	$ drush cr all
