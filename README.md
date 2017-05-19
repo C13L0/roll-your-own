@@ -517,9 +517,13 @@ $ cd sites
 ```
 
 2. Clone Drupal 8:
-    
+    A. Go to https://drupal.org/project/drupal to verify the latest version.
+    B. Click the "Version Control" tab.
+    C. Select the correct version from the "Version to work from" drop down.
+    D. Your git clone will look similar to the following:
 ```Bash
-$ sudo git clone --branch 8.0.x http://git.drupal.org/project/drupal.git
+$ git clone --branch 8.3.x
+https://git.drupal.org/project/drupal.git
 ```
 
 3. Change the name of the cloned drupal directory to the name of the new site:
