@@ -95,7 +95,7 @@ $ sudo chown yourusername:www-data /var/www/html -R
 $ sudo apt-get install mysql-server mysql-client
 ```
 
-2. Create a password   
+2. Create a password. If this is your first time taking these steps, a sample user and password to use would be "root" (without quotes). Proceed to use this for the rest of the guide
 3. Check the service status with:
 ```bash
 $ sudo /etc/init.d/mysql status
@@ -196,7 +196,7 @@ $ mkdir .ssh
 
 3. Change directory permissions:
 ```Bash
-$ chmod 700 .ssh
+$ sudo chmod 700 .ssh
 ```
 
 4. Create an RSA Key Pair (skip if you already have a key):
@@ -519,13 +519,13 @@ $ cd sites
 2. Clone Drupal 8:
     
 ```Bash
-$ git clone --branch 8.0.x http://git.drupal.org/project/drupal.git
+$ sudo git clone --branch 8.0.x http://git.drupal.org/project/drupal.git
 ```
 
 3. Change the name of the cloned drupal directory to the name of the new site:
     
 ```Bash
-$ mv drupal newsite.dev
+$ sudo mv drupal newsite.dev
 ```
 
 4. Change to newsite.dev/sites/default directory:
@@ -537,23 +537,23 @@ $ cd newsite.dev/sites/default
 5. Copy default.settings.php
     
 ```Bash
-$ cp default.settings.php settings.php
+$ sudo cp default.settings.php settings.php
 ```
 
 6. Create the Directory Files
     
 ```Bash
-$ mkdir files
+$ sudo mkdir files
 ```
 
 7. Change file permissions
     
 ```Bash
-$ chmod 777 files
+$ sudo chmod 777 files
 ```
     
 ```Bash
-$ chmod 777 settings.php
+$ sudo chmod 777 settings.php
 ```
 
 #### Complete Install
@@ -917,17 +917,17 @@ $ sudo apt-get install hexchat
 
 ---
 
-### Create site via drush (works with Drupal 7, but still needs testing on Drupal 8)
+### Create site via drush
 1. Change to your sites directory: (Hopefully you created a symlink. If you didn’t then use $ cd /var/www/html):
 
 ```Bash
 $ cd sites
 ```
 
-2. Download Drupal (can also do drupal-8.x):
+2. Download Drupal:
 
 ```Bash
-$ drush dl drupal --drupal-project-rename=site_directory_name
+$ sudo drush dl drupal --drupal-project-rename=site_directory_name
 ```
 
 3. Change to the site_directory_name
@@ -941,6 +941,7 @@ $ cd site_directory_name
 ```Bash
 $ drush si standard --account-name=admin --account-pass=admin --db-url=mysql://database_user_name:database_user_password@localhost/database_name
 ```
+Note: as mentioned in previous steps, if this was your first time running through this, replace your account-name, account-pass, database_user_name, and database_user_password with the sample "root"
 
 ---
 
@@ -1118,11 +1119,6 @@ $ drush updb
 ---
 
 ### Important drush command change
-#### Drupal 7:
-
-```bash
-	$ drush cc all
-```
 
 #### Drupal 8:
 
