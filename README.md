@@ -506,7 +506,7 @@ $ sudo nano /etc/hosts
 # 7. Database Creation And Drupal Installation
 ### Create Database And Site Via GUI/git
 #### Create Database
-1. Open browser and navigate to *http://localhost/phpMyAdmin*
+1. Open browser and navigate to *http://localhost/phpmyadmin*
 2. Create new database called **newsite**
 
 #### Git Clone Site
