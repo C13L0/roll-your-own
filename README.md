@@ -166,7 +166,7 @@ $ sudo service apache2 restart
 10. You can follow the rest of the tutorial for additional security; not required for local development  
 11. Don’t *ever* do this on a live server but local is fine. Drupal php needs access:
 ```Bash
-$ chmod 775 /var/www/html
+$ chmod 777 /var/www/html
 ```
 
 ### Increase Max Limit In php.ini
@@ -320,6 +320,7 @@ $ sudo nano /etc/apache2/mods-enabled/dir.conf
     
     </IfModule>
 ```
+Note: index.php may be listed later in the line. Delete the second instance of it.
 
 3. Press **CTRL**+**o** (to save)  
 4. Press **Enter**   
@@ -510,6 +511,7 @@ $ sudo nano /etc/hosts
 2. Create new database called **newsite**
 
 #### Git Clone Site
+Note: you shouldn't need "sudo" for these steps. If you get permission errors, please check the permissions for /var/www/html
 1. Change to your sites directory: (Hopefully you created a symlink. If you didn’t then use `$ cd /var/www/html`):
 
 ```Bash
@@ -522,14 +524,13 @@ $ cd sites
 - Select the correct version from the "Version to work from" drop down.
 - Your git clone will look similar to the following:
 ```Bash
-$ git clone --branch 8.3.x
-https://git.drupal.org/project/drupal.git
+$ git clone --branch 8.3.x https://git.drupal.org/project/drupal.git
 ```
 
 3. Change the name of the cloned drupal directory to the name of the new site:
     
 ```Bash
-$ sudo mv drupal newsite.dev
+$ mv drupal newsite.dev
 ```
 
 4. Change to newsite.dev/sites/default directory:
@@ -541,23 +542,23 @@ $ cd newsite.dev/sites/default
 5. Copy default.settings.php
     
 ```Bash
-$ sudo cp default.settings.php settings.php
+$ cp default.settings.php settings.php
 ```
 
 6. Create the Directory Files
     
 ```Bash
-$ sudo mkdir files
+$ mkdir files
 ```
 
 7. Change file permissions
     
 ```Bash
-$ sudo chmod 777 files
+$ chmod 777 files
 ```
     
 ```Bash
-$ sudo chmod 777 settings.php
+$ chmod 777 settings.php
 ```
 
 #### Complete Install
