@@ -302,6 +302,11 @@ $ composer global require drush/drush:dev-master
 $ composer global update
 ```
 
+4. Verify Drush is installed
+```bash
+$ drush status
+```
+
 
 # 4. Apache Configuration
 ### Configure Apache To Preference .php Files Over .html Files
