@@ -538,32 +538,43 @@ $ git clone --branch 8.3.x https://git.drupal.org/project/drupal.git
 $ mv drupal newsite.dev
 ```
 
-4. Change to newsite.dev/sites/default directory:
+4. Change to newsite.dev/sites directory:
     
 ```
-$ cd newsite.dev/sites/default
+$ cd newsite.dev/sites
+```
+5. For Pantheon.io sites, copy example.settings.local.php to /default and name it settings.local.php
+
+```Bash
+$ cp example.settings.local.php default/settings.local.php
 ```
 
-5. Copy default.settings.php
+6. Change to the /default directory. Copy default.settings.php and rename as settings.php
     
+```Bash
+$ cd /default
+```
 ```Bash
 $ cp default.settings.php settings.php
 ```
 
-6. Create the Directory Files
+7. Create the Directory Files
     
 ```Bash
 $ mkdir files
 ```
 
-7. Change file permissions
+8. Change file permissions
     
 ```Bash
 $ chmod 777 files
 ```
-    
 ```Bash
 $ chmod 777 settings.php
+```
+    
+```Bash
+$ chmod 777 settings.local.php
 ```
 
 #### Complete Install
