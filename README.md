@@ -543,16 +543,16 @@ $ mv drupal newsite.dev
 ```
 $ cd newsite.dev/sites
 ```
-5. For Pantheon.io sites, copy example.settings.local.php to /default and name it settings.local.php
+5. For Pantheon.io sites, copy example.settings.local.php to default and name it settings.local.php
 
 ```Bash
 $ cp example.settings.local.php default/settings.local.php
 ```
 
-6. Change to the /default directory. Copy default.settings.php and rename as settings.php
+6. Change to the default directory. Copy default.settings.php and rename as settings.php
     
 ```Bash
-$ cd /default
+$ cd default
 ```
 ```Bash
 $ cp default.settings.php settings.php
