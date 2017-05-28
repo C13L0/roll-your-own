@@ -166,7 +166,7 @@ $ sudo service apache2 restart
 10. You can follow the rest of the tutorial for additional security; not required for local development  
 11. Don’t *ever* do this on a live server but local is fine. Drupal php needs access:
 ```Bash
-$ chmod 775 /var/www/html
+$ chmod 777 /var/www/html
 ```
 
 ### Increase Max Limit In php.ini
@@ -284,24 +284,99 @@ $ sed -i '1i export PATH="$HOME/.composer/vendor/bin:$PATH"' $HOME/.bashrc
 source $HOME/.bashrc
 ```
 
-## Install Drush (must install composer first) 
+7. (Optional) Check your current version of Composer
+```bash
+composer --version
+```
+
+## Install Drush (must install composer first)
 **For additional drush commands visit [www.drushcommands.com](http://www.drushcommands.com)**
 
-1. Change to root directory:
+### Installing Drush 8 (note, you may or may not need to precede each command with `sudo` based on your user permissions)
+1. Change to your bin directory
 ```bash
-$ cd ~
+$ cd /usr/local/bin
 ```
 
-2. Install Drush:
+2. create the drush-8 directory
 ```bash
-$ composer global require drush/drush:dev-master
+$ mkdir drush-8
 ```
 
-3. Update everything:
+3. Change to the new drush-8 directory
 ```bash
-$ composer global update
+$ cd drush-8
 ```
 
+4. Install Drush 8 in the current directory
+```bash
+$ composer require drush/drush:8.x 
+```
+
+5. Create a symlink to drush-8 to enable global calling of the `drush8` command
+```bash
+$ ln -s /usr/local/bin/drush-8/vendor/bin/drush /usr/local/bin/drush8
+```
+
+6. (Optional) Check your current version of drush8
+```bash
+$ drush8 --version
+```
+
+### Installing Drush 7 (note, you may or may not need to precede each command with `sudo` based on your user permissions)
+1. Change to your bin directory
+```bash
+$ cd /usr/local/bin
+```
+
+2. create the drush-7 directory
+```bash
+$ mkdir drush-7
+```
+
+3. Change to the new drush-7 directory
+```bash
+$ cd drush-7
+```
+
+4. Install Drush 7 in the current directory
+```bash
+$ composer require drush/drush:7.x 
+```
+
+5. Create a symlink to drush-7 to enable global calling of the `drush7` command
+```bash
+$ ln -s /usr/local/bin/drush-7/vendor/bin/drush /usr/local/bin/drush7
+```
+
+6. (Optional) Check your current version of drush7
+```bash
+$ drush7 --version
+```
+
+### Write a script to change between Drush 7 and 8 automatically for your Drupal sites
+1. Change to your bin directory and create a new drush file
+```bash
+$ cd /usr/local/bin
+```
+```bash
+$ sudo nano drush
+```
+
+2. Insert this script in the newly created file
+```Shell
+#!/bin/sh
+version=$(git config --get drush.version)
+if [ "$version" = '7' ];
+then
+drush7 "$@"
+else
+drush8 "$@"
+fi
+```
+Hit Ctrl+O to save the file
+Hit Enter
+Hit Ctrl+X to close the file
 
 # 4. Apache Configuration
 ### Configure Apache To Preference .php Files Over .html Files
@@ -320,6 +395,7 @@ $ sudo nano /etc/apache2/mods-enabled/dir.conf
     
     </IfModule>
 ```
+Note: index.php may be listed later in the line. Delete the second instance of it.
 
 3. Press **CTRL**+**o** (to save)  
 4. Press **Enter**   
@@ -506,10 +582,11 @@ $ sudo nano /etc/hosts
 # 7. Database Creation And Drupal Installation
 ### Create Database And Site Via GUI/git
 #### Create Database
-1. Open browser and navigate to *http://localhost/phpMyAdmin*
+1. Open browser and navigate to *http://localhost/phpmyadmin*
 2. Create new database called **newsite**
 
 #### Git Clone Site
+Note: you shouldn't need "sudo" for these steps. If you get permission errors, please check the permissions for /var/www/html
 1. Change to your sites directory: (Hopefully you created a symlink. If you didn’t then use `$ cd /var/www/html`):
 
 ```Bash
@@ -517,48 +594,68 @@ $ cd sites
 ```
 
 2. Clone Drupal 8:
-    
+- Go to https://drupal.org/project/drupal to verify the latest version.
+- Click the "Version Control" tab.
+- Select the correct version from the "Version to work from" drop down.
+- Your git clone will look similar to the following:
 ```Bash
-$ sudo git clone --branch 8.0.x http://git.drupal.org/project/drupal.git
+$ git clone --branch 8.3.x https://git.drupal.org/project/drupal.git
 ```
 
 3. Change the name of the cloned drupal directory to the name of the new site:
     
 ```Bash
-$ sudo mv drupal newsite.dev
+$ mv drupal newsite.dev
 ```
 
-4. Change to newsite.dev/sites/default directory:
+4. Change to newsite.dev/sites directory:
     
 ```
-$ cd newsite.dev/sites/default
+$ cd newsite.dev/sites
+```
+5. For Pantheon.io sites, copy example.settings.local.php to default and name it settings.local.php
+
+```Bash
+$ cp example.settings.local.php default/settings.local.php
 ```
 
-5. Copy default.settings.php
+6. Change to the default directory. Copy default.settings.php and rename as settings.php
     
 ```Bash
-$ sudo cp default.settings.php settings.php
+$ cd default
+```
+```Bash
+$ cp default.settings.php settings.php
 ```
 
-6. Create the Directory Files
+7. Create the Directory Files
     
 ```Bash
-$ sudo mkdir files
+$ mkdir files
 ```
 
-7. Change file permissions
+8. Change file permissions
     
 ```Bash
-$ sudo chmod 777 files
+$ chmod 777 files
+```
+```Bash
+$ chmod 777 settings.php
 ```
     
 ```Bash
-$ sudo chmod 777 settings.php
+$ chmod 777 settings.local.php
 ```
 
 #### Complete Install
 1. Open browser and navigate to *localhost/newsite.dev*
+Note: If you are getting a blank white screen here (called the White Screen of Death), try using an earlier version of Drupal, such as 8.0.x
 2. Complete install, making sure to fill in database name and password
+3. At any time, to update your Drupal site, run the following Drush command from the root of your site directory (replace X.X.X with the desired version)
+```bash
+$ drush pm-update projects drupal-X.X.X
+```
+
 
 *Rinse and repeat this section for __new__ drupal sites you may create*
 
