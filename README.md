@@ -284,29 +284,99 @@ $ sed -i '1i export PATH="$HOME/.composer/vendor/bin:$PATH"' $HOME/.bashrc
 source $HOME/.bashrc
 ```
 
-## Install Drush (must install composer first) 
+7. (Optional) Check your current version of Composer
+```bash
+composer --version
+```
+
+## Install Drush (must install composer first)
 **For additional drush commands visit [www.drushcommands.com](http://www.drushcommands.com)**
 
-1. Change to root directory:
+### Installing Drush 8 (note, you may or may not need to precede each command with `sudo` based on your user permissions)
+1. Change to your bin directory
 ```bash
-$ cd ~
+$ cd /usr/local/bin
 ```
 
-2. Install Drush:
+2. create the drush-8 directory
 ```bash
-$ composer global require drush/drush:dev-master
+$ mkdir drush-8
 ```
 
-3. Update everything:
+3. Change to the new drush-8 directory
 ```bash
-$ composer global update
+$ cd drush-8
 ```
 
-4. Verify Drush is installed
+4. Install Drush 8 in the current directory
 ```bash
-$ drush status
+$ composer require drush/drush:8.x 
 ```
 
+5. Create a symlink to drush-8 to enable global calling of the `drush8` command
+```bash
+$ ln -s /usr/local/bin/drush-8/vendor/bin/drush /usr/local/bin/drush8
+```
+
+6. (Optional) Check your current version of drush8
+```bash
+$ drush8 --version
+```
+
+### Installing Drush 7 (note, you may or may not need to precede each command with `sudo` based on your user permissions)
+1. Change to your bin directory
+```bash
+$ cd /usr/local/bin
+```
+
+2. create the drush-7 directory
+```bash
+$ mkdir drush-7
+```
+
+3. Change to the new drush-7 directory
+```bash
+$ cd drush-7
+```
+
+4. Install Drush 7 in the current directory
+```bash
+$ composer require drush/drush:7.x 
+```
+
+5. Create a symlink to drush-7 to enable global calling of the `drush7` command
+```bash
+$ ln -s /usr/local/bin/drush-7/vendor/bin/drush /usr/local/bin/drush7
+```
+
+6. (Optional) Check your current version of drush7
+```bash
+$ drush7 --version
+```
+
+### Write a script to change between Drush 7 and 8 automatically for your Drupal sites
+1. Change to your bin directory and create a new drush file
+```bash
+$ cd /usr/local/bin
+```
+```bash
+$ sudo nano drush
+```
+
+2. Insert this script in the newly created file
+```Shell
+#!/bin/sh
+version=$(git config --get drush.version)
+if [ "$version" = '7' ];
+then
+drush7 "$@"
+else
+drush8 "$@"
+fi
+```
+Hit Ctrl+O to save the file
+Hit Enter
+Hit Ctrl+X to close the file
 
 # 4. Apache Configuration
 ### Configure Apache To Preference .php Files Over .html Files
@@ -579,7 +649,13 @@ $ chmod 777 settings.local.php
 
 #### Complete Install
 1. Open browser and navigate to *localhost/newsite.dev*
+Note: If you are getting a blank white screen here (called the White Screen of Death), try using an earlier version of Drupal, such as 8.0.x
 2. Complete install, making sure to fill in database name and password
+3. At any time, to update your Drupal site, run the following Drush command from the root of your site directory (replace X.X.X with the desired version)
+```bash
+$ drush pm-update projects drupal-X.X.X
+```
+
 
 *Rinse and repeat this section for __new__ drupal sites you may create*
 
