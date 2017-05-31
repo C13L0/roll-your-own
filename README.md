@@ -36,6 +36,8 @@ Complete Ubuntu 16.04 local development environment setup guide for Drupal 8. In
 
 # 1. Download Ubuntu
 
+For installing and running Ubuntu on a virtual machine in Windows, [follow this guide](https://github.com/marsalav/Ubuntu-Virtual-Box-Install)
+
 1. Create a bootable install disk or usb drive, follow directions and install Ubuntu. [Need help installing Ubuntu?](https://github.com/Lucius1024/Clean-Install-Ubuntu-15-Guide)
 2. Open terminal: `Ctrl+Alt+T`
 3. Run updates:
