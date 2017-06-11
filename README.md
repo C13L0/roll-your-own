@@ -36,14 +36,28 @@ Complete Ubuntu 16.04 local development environment setup guide for Drupal 8. In
 
 # 1. Download Ubuntu
 
-For installing and running Ubuntu on a virtual machine in Windows, [follow this guide](https://github.com/marsalav/Ubuntu-Virtual-Box-Install)
+#### Installing Ubuntu to your Hard Drive using USB
 
-1. Create a bootable install disk or usb drive, follow directions and install Ubuntu. [Need help installing Ubuntu?](https://github.com/Lucius1024/Clean-Install-Ubuntu-15-Guide)
-2. Open terminal: `Ctrl+Alt+T`
-3. Run updates:
+For help installing and running Ubuntu on a local hard drive using a USB, [follow this guide.](https://github.com/Lucius1024/Clean-Install-Ubuntu-15-Guide)
+
+**pros:**
+
+**cons:**
+
+#### Installing Ubuntu in a Virtual Machine
+
+For help installing and running Ubuntu on a virtual machine in Windows, [follow this guide.](https://github.com/marsalav/Ubuntu-Virtual-Box-Install)
+
+**pros:**
+
+**cons:**
+
+## Updating your System
+1. Open terminal: `Ctrl+Alt+T`
+2. Run updates:
 ```bash
 $ sudo apt-get update
-```
+``
 
 ## Give Your User Permissions!
 
@@ -57,7 +71,6 @@ $ sudo adduser yourusername sudo
 ```bash
 $ sudo adduser yourusername www-data
 ```
-
 
 # 2. Lamp Stack Installation
 
