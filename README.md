@@ -44,13 +44,13 @@ For help installing and running Ubuntu on a local hard drive, [follow this guide
 
 **cons:** Requires additional hardware (USB). Locked into Ubuntu (unless you dualboot, not covered in this guide).
 
-#### Installing Ubuntu in a Virtual Machine
+#### Installing Ubuntu in a Virtual Machine using Virtual Box
 
 For help installing and running Ubuntu on a virtual machine in Windows, [follow this guide.](https://github.com/marsalav/Ubuntu-Virtual-Box-Install)
 
-**pros:**
+**pros:** Can run Ubuntu on any operating system. Can create snapshots to backup virtual machines.
 
-**cons:** 
+**cons:** Slower, and more resource intensive than a container in Docker. 
 
 #### Installing Ubuntu through Docker
 
@@ -65,7 +65,7 @@ For help installing and running Ubuntu through Docker, [follow this guide.](http
 2. Run updates:
 ```bash
 $ sudo apt-get update
-``
+```
 
 ## Give Your User Permissions!
 
