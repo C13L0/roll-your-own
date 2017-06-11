@@ -36,13 +36,13 @@ Complete Ubuntu 16.04 local development environment setup guide for Drupal 8. In
 
 # 1. Download Ubuntu
 
-#### Installing Ubuntu to your Hard Drive using USB
+#### Clean Installation of Ubuntu onto Local Hard Drive using USB
 
-For help installing and running Ubuntu on a local hard drive using a USB, [follow this guide.](https://github.com/Lucius1024/Clean-Install-Ubuntu-15-Guide)
+For help installing and running Ubuntu on a local hard drive, [follow this guide.](https://github.com/Lucius1024/Clean-Install-Ubuntu-15-Guide)
 
-**pros:**
+**pros:** Most straight forward way to install Ubuntu. Easy to install.
 
-**cons:**
+**cons:** Requires additional hardware (USB). Locked into Ubuntu (unless you dualboot, not covered in this guide).
 
 #### Installing Ubuntu in a Virtual Machine
 
@@ -50,7 +50,7 @@ For help installing and running Ubuntu on a virtual machine in Windows, [follow 
 
 **pros:**
 
-**cons:**
+**cons:** 
 
 #### Installing Ubuntu through Docker
 
