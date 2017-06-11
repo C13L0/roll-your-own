@@ -52,6 +52,14 @@ For help installing and running Ubuntu on a virtual machine in Windows, [follow 
 
 **cons:**
 
+#### Installing Ubuntu through Docker
+
+For help installing and running Ubuntu through Docker, [follow this guide.](https://github.com/KevinMech/ubuntu-docker-install)
+
+**pros:** Can run Ubuntu on any operating system. More light weight, and boots up quicker than a virtual machine. Ability to create images allows consistancy between everyone who shares the image. If downloading a drupal image, setting up Drupal is easier and quicker than the other two options.
+
+**cons:** Has more of a learning curve than the other two options.
+
 ## Updating your System
 1. Open terminal: `Ctrl+Alt+T`
 2. Run updates:
