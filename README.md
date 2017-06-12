@@ -36,15 +36,17 @@ Complete Ubuntu 16.04 local development environment setup guide for Drupal 8. In
 
 # 1. Download Ubuntu
 
-#### Clean Installation of Ubuntu onto Local Hard Drive using USB
+There are multiple ways to download and install Ubuntu. Listed here are a couple of methods, along with excellent installation guides, to get you started. Choose one, and proceed to [Updating your System](#updating-your-system).
 
-For help installing and running Ubuntu on a local hard drive, [follow this guide.](https://github.com/Lucius1024/Clean-Install-Ubuntu-15-Guide)
+### Clean Installation of Ubuntu
+
+For help installing Ubuntu onto a local hard drive using a USB, [follow this guide.](https://github.com/Lucius1024/Clean-Install-Ubuntu-15-Guide)
 
 **pros:** Most straight forward way to install Ubuntu. Easy to install.
 
 **cons:** Requires additional hardware (USB). Locked into Ubuntu (unless you dualboot, not covered in this guide).
 
-#### Installing Ubuntu in a Virtual Machine using Virtual Box
+### Installing Ubuntu in a Virtual Machine
 
 For help installing and running Ubuntu on a virtual machine in Windows, [follow this guide.](https://github.com/marsalav/Ubuntu-Virtual-Box-Install)
 
@@ -52,11 +54,11 @@ For help installing and running Ubuntu on a virtual machine in Windows, [follow 
 
 **cons:** Slower, and more resource intensive than a container in Docker. 
 
-#### Installing Ubuntu through Docker
+### Installing Ubuntu through Docker
 
-For help installing and running Ubuntu through Docker, [follow this guide.](https://github.com/KevinMech/ubuntu-docker-install)
+For help installing an Ubuntu image and running it as a container through Docker, [follow this guide.](https://github.com/KevinMech/ubuntu-docker-install)
 
-**pros:** Can run Ubuntu on any operating system. More light weight, and boots up quicker than a virtual machine. Ability to create images allows consistancy between everyone who shares the image. If downloading a drupal image, setting up Drupal is easier and quicker than the other two options.
+**pros:** Can run Ubuntu on any operating system. More light weight, and boots up quicker than a virtual machine. Ability to create images allows consistancy between everyone who shares the image. Containers are disposable. If downloading a drupal image, setting up Drupal is easier and quicker than the other two options.
 
 **cons:** Has more of a learning curve than the other two options.
 
