@@ -36,11 +36,35 @@ Complete Ubuntu 16.04 local development environment setup guide for Drupal 8. In
 
 # 1. Download Ubuntu
 
-For installing and running Ubuntu on a virtual machine in Windows, [follow this guide](https://github.com/marsalav/Ubuntu-Virtual-Box-Install)
+There are multiple ways to download and install Ubuntu. Listed here are a couple of methods, along with excellent installation guides, to get you started. Choose one, and proceed to [Updating your System](#updating-your-system).
 
-1. Create a bootable install disk or usb drive, follow directions and install Ubuntu. [Need help installing Ubuntu?](https://github.com/Lucius1024/Clean-Install-Ubuntu-15-Guide)
-2. Open terminal: `Ctrl+Alt+T`
-3. Run updates:
+### Clean Installation of Ubuntu
+
+For help installing Ubuntu onto a local hard drive using a USB, [follow this guide.](https://github.com/Lucius1024/Clean-Install-Ubuntu-15-Guide)
+
+**pros:** Most straight forward way to install Ubuntu. Easy to install.
+
+**cons:** Requires additional hardware (USB). Locked into Ubuntu (unless you dualboot, not covered in this guide).
+
+### Installing Ubuntu in a Virtual Machine
+
+For help installing and running Ubuntu on a virtual machine in Windows, [follow this guide.](https://github.com/marsalav/Ubuntu-Virtual-Box-Install)
+
+**pros:** Can run Ubuntu on any operating system. Can create snapshots to backup virtual machines.
+
+**cons:** Slower, and more resource intensive than a container in Docker. 
+
+### Installing Ubuntu through Docker
+
+For help installing an Ubuntu image and running it as a container through Docker, [follow this guide.](https://github.com/KevinMech/ubuntu-docker-install)
+
+**pros:** Can run Ubuntu on any operating system. More light weight, and boots up quicker than a virtual machine. Ability to create images allows consistancy between everyone who shares the image. Containers are disposable. If downloading a drupal image, setting up Drupal is easier and quicker than the other two options.
+
+**cons:** Has more of a learning curve than the other two options.
+
+## Updating your System
+1. Open terminal: `Ctrl+Alt+T`
+2. Run updates:
 ```bash
 $ sudo apt-get update
 ```
@@ -57,7 +81,6 @@ $ sudo adduser yourusername sudo
 ```bash
 $ sudo adduser yourusername www-data
 ```
-
 
 # 2. Lamp Stack Installation
 
