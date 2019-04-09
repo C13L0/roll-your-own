@@ -1,5 +1,5 @@
 
-# Roll-Your-Own Local Drupal Development Environment On Ubuntu 16.04
+# Roll-Your-Own Local Drupal Development Environment On Ubuntu 18.04
 
 
 ![alt text](http://drupal.org/files/images/DrupalDiver.png "Florida Drupal Users Group")
@@ -197,7 +197,7 @@ $ chmod 777 /var/www/html
 ### Increase Max Limit In php.ini
 1. Open the PHP configuration file:
 ```Bash
-$ sudo nano /etc/php/7.0/apache2/php.ini
+$ sudo nano /etc/php/7.2/apache2/php.ini
 ```
 
 2. Press **CTRL**+**w** (to search) and type `memory_limit`
