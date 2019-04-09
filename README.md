@@ -130,7 +130,7 @@ $ sudo /etc/init.d/mysql status
 
 1. Install PHP: 
 ```bash
-$ sudo apt-get -y install php7.0 libapache2-mod-php7.0
+$ sudo apt-get -y install php7.2 libapache2-mod-php7.2
 ```  
 
 2. Create a PHP file: 
