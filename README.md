@@ -633,11 +633,7 @@ $ git clone --branch 8.3.x https://git.drupal.org/project/drupal.git
 $ mv drupal newsite.local
 ```
 
-<<<<<<< HEAD
-4. Change to newsite.dev/sites directory:
-=======
 4. Change to newsite.local/sites directory:
->>>>>>> More updates to versions in doc- Ubuntu 18.04 php, node.js, npm, ruby Other packages are now available in the standard Ubuntu repositories and can be installed with apt, so directions have been corrected to reflect that (hexchat)(Ruby is now available in standard repos, updated rvm version to 2.2.2) Terminator is now in standard repos, so instructions could be changed to reflect that, which install latest stable, and avoids 'breakage' mentioned by sourcedevs with the nightlies. Updated many instances of whitespace detected, also. 
 
 ```
 $ cd newsite.local/sites
