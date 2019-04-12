@@ -7,11 +7,11 @@
 **IRC**: Freenode.org **#drupal-florida**
 
 
-Complete Ubuntu 16.04 local development environment setup guide for Drupal 8. Includes LAMP, git, Composer, Drush, and RVM. Also, a few optional applications are included. (Sublime Text 3, PhpStorm, Node.js, Gulp.js and HexChat) 
+Complete Ubuntu 18.04 local development environment setup guide for Drupal 8. Includes LAMP, git, Composer, Drush, and RVM. Also, a few optional applications are included. (Sublime Text 3, PhpStorm, Node.js, Gulp.js Atom, and HexChat)
 
-**LOCAL set up only!**  Ubuntu 16.04 / LAMP / Drupal Sites Setup
+**LOCAL set up only!**  Ubuntu 18.04 / LAMP / Drupal Sites Setup
 
-[1. Ubuntu 16.04 Install](#1-download-ubuntu)
+[1. Ubuntu 18.04 Install](#1-download-ubuntu)
 
 [2. Lamp Stack Installation](#2-lamp-stack-installation)
 
@@ -52,7 +52,7 @@ For help installing and running Ubuntu on a virtual machine in Windows, [follow 
 
 **pros:** Can run Ubuntu on any operating system. Can create snapshots to backup virtual machines.
 
-**cons:** Slower, and more resource intensive than a container in Docker. 
+**cons:** Slower, and more resource intensive than a container in Docker.
 
 ### Installing Ubuntu through Docker
 
@@ -87,7 +87,7 @@ $ sudo adduser yourusername www-data
 1. Install Apache:
 ```bash
 $ sudo apt-get install apache2
-``` 
+```
 
 2. Open Apache main configuration file:
 ```bash
@@ -128,12 +128,12 @@ $ sudo /etc/init.d/mysql status
 
 ## Install PHP
 
-1. Install PHP: 
+1. Install PHP:
 ```bash
 $ sudo apt-get -y install php7.2 libapache2-mod-php7.2
 ```  
 
-2. Create a PHP file: 
+2. Create a PHP file:
 ```bash
 $ sudo nano /var/www/html/phpinfo.php
 ```
@@ -141,9 +141,9 @@ $ sudo nano /var/www/html/phpinfo.php
 3. Add the following code:  
 ```PHP
     <?php  
-    
+
     phpinfo();
-    
+
     ?>
 ```
 
@@ -242,14 +242,14 @@ Enter passphrase (empty for no passphrase): [Type a passphrase]
 Enter same passphrase again: [Type passphrase again]
 ```
 
-# 3. Server Applications Setup 
+# 3. Server Applications Setup
 
 ## Install git
 
 1. Change to root directory:
 ```Bash
 $ cd ~
-``` 
+```
 
 2. Install git:
 ```Bash
@@ -335,7 +335,7 @@ $ cd drush-8
 
 4. Install Drush 8 in the current directory
 ```bash
-$ composer require drush/drush:8.x 
+$ composer require drush/drush:8.x
 ```
 
 5. Create a symlink to drush-8 to enable global calling of the `drush8` command
@@ -366,7 +366,7 @@ $ cd drush-7
 
 4. Install Drush 7 in the current directory
 ```bash
-$ composer require drush/drush:7.x 
+$ composer require drush/drush:7.x
 ```
 
 5. Create a symlink to drush-7 to enable global calling of the `drush7` command
@@ -415,9 +415,9 @@ $ sudo nano /etc/apache2/mods-enabled/dir.conf
 
 ```PHP
     <IfModule mod_dir.c>
-    
+
               DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm
-    
+
     </IfModule>
 ```
 Note: index.php may be listed later in the line. Delete the second instance of it.
@@ -426,7 +426,7 @@ Note: index.php may be listed later in the line. Delete the second instance of i
 4. Press **Enter**   
 5. Press **CTRL**+**x** (to exit)
 6. Restart Apache:
-    
+
 ```Bash
 $ sudo service apache2 restart
 ```
@@ -441,7 +441,7 @@ $ sudo a2enmod rewrite
 ```
 
 2. Restart Apache:
-    
+
 ```Bash
 $ sudo service apache2 restart
 ```
@@ -456,13 +456,13 @@ $ sudo nano /etc/apache2/apache2.conf
 
 ```Apache
     <Directory /var/www/>
-    
+
 		    Options Indexes FollowSymLinks
-    
+
 	    	AllowOverride None
-        
+
 	    	Require all granted
-    
+
     </Directory>
 ```
 
@@ -472,11 +472,11 @@ $ sudo nano /etc/apache2/apache2.conf
     <Directory /var/www/>
 
 	    	Options Indexes FollowSymLinks
-    
+
 		    AllowOverride All
-    
+
 		    Require all granted
-    
+
     </Directory>
 ```
 
@@ -497,7 +497,7 @@ $ cd /etc/apache2/sites-available
 ```
 
 2. Create and open a new vhost config file just for drupal:
-    
+
 ```Bash
 $ sudo nano drupal
 ```
@@ -506,13 +506,13 @@ $ sudo nano drupal
 
 ```Apache
     NameVirtualHost *:80
-    
+
     <VirtualHost *:80>
-    
+
        DocumentRoot /var/www
-    
+
        ServerName localhost
-    
+
     </VirtualHost>
 ```
 
@@ -523,7 +523,7 @@ $ sudo nano drupal
 Create Symlinks for the drupal file in the sites-enabled directory
 
 1. Change to the /etc/apache2/sites-enabled directory:
-    
+
 ```Bash
 $ cd /etc/apache2/sites-enabled
 ```
@@ -535,7 +535,7 @@ $ sudo ln -s ../sites-available/drupal .
 ```
 
 3. Restart Apache
-    
+
 ```Bash
 $ sudo service apache2 restart
 ```
@@ -551,7 +551,7 @@ $ cd ~
 ```
 
 2. Change "foo" to your user. (If you are unsure of the name, type `pwd` in the command line):
-    
+
 ```Bash
 $ ln -s  /var/www/html /home/foo/sites
 ```
@@ -563,7 +563,7 @@ Now you can easily cd sites and you will be directly in the html folder
 * The second path is **where** the link will be
 
 Example:
-    
+
 ```Bash
 $ ln -s /what/is/being/linked /where/symlink/goes/nameofsymlink
 ```
@@ -581,10 +581,10 @@ $ sudo nano /etc/hosts
 ```
 
 2. Add the follow to the last line:
-    
+
 ```
 # Drupal sites
-127.0.0.1 newsite.dev
+127.0.0.1 newsite.local
 ```
 
 3. Press **CTRL**+**o** (to save)  
@@ -595,11 +595,11 @@ $ sudo nano /etc/hosts
 
 ```
 # Drupal sites
-127.0.0.1 newsite.dev
+127.0.0.1 newsite.local
 
-127.0.0.1 newsite2.dev
+127.0.0.1 newsite2.local
 
-127.0.0.1 newsite3.dev
+127.0.0.1 newsite3.local
 ```
 
 ---
@@ -628,15 +628,15 @@ $ git clone --branch 8.3.x https://git.drupal.org/project/drupal.git
 ```
 
 3. Change the name of the cloned drupal directory to the name of the new site:
-    
+
 ```Bash
-$ mv drupal newsite.dev
+$ mv drupal newsite.local
 ```
 
-4. Change to newsite.dev/sites directory:
-    
+4. Change to newsite.local/sites directory:
+
 ```
-$ cd newsite.dev/sites
+$ cd newsite.local/sites
 ```
 5. For Pantheon.io sites, copy example.settings.local.php to default and name it settings.local.php
 
@@ -645,7 +645,7 @@ $ cp example.settings.local.php default/settings.local.php
 ```
 
 6. Change to the default directory. Copy default.settings.php and rename as settings.php
-    
+
 ```Bash
 $ cd default
 ```
@@ -654,26 +654,26 @@ $ cp default.settings.php settings.php
 ```
 
 7. Create the Directory Files
-    
+
 ```Bash
 $ mkdir files
 ```
 
 8. Change file permissions
-    
+
 ```Bash
 $ chmod 777 files
 ```
 ```Bash
 $ chmod 777 settings.php
 ```
-    
+
 ```Bash
 $ chmod 777 settings.local.php
 ```
 
 #### Complete Install
-1. Open browser and navigate to *localhost/newsite.dev*
+1. Open browser and navigate to *localhost/newsite.local*
 Note: If you are getting a blank white screen here (called the White Screen of Death), try using an earlier version of Drupal, such as 8.0.x
 2. Complete install, making sure to fill in database name and password
 3. At any time, to update your Drupal site, run the following Drush command from the root of your site directory (replace X.X.X with the desired version)
@@ -689,30 +689,31 @@ $ drush pm-update projects drupal-X.X.X
 # 8. IDE Installation
 
 ### Install IDE (Sublime Text 3)
-Sublime Text is a sophisticated text editor for code, html and prose. 
+Sublime Text is a sophisticated text editor for code, html and prose.
 
-1. Change to root directory:
+1.  Install the GPG key:
 
 ```bash
-$ cd ~
+$ wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
 ```
 
-2. Add the WebUpd8 Sublime Text 3 (beta) PPA:
-    
+2. Ensure apt is set up to work with https sources:
+
 ```bash
-$ sudo add-apt-repository ppa:webupd8team/sublime-text-3
+$ sudo apt-get install apt-transport-https
 ```
 
-3. Download the package lists from the repositories and "update" them to get information on the newest versions of packages and their dependencies. It will do this for all repositories and PPAs.
+3. Select 'stable' repository
+
+```bash
+$ echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+```
+
+4. Update apt sources and install Sublime Text
 
 ```bash
 $ sudo apt-get update
-```
-
-4. Install Sublime Text 3:
-    
-```bash
-$ sudo apt-get install sublime-text-installer
+$ sudo apt-get install sublime-text
 ```
 
 5. Add in drupal specific preferences [https://drupal.org/node/1346890](https://drupal.org/node/1346890)
@@ -736,7 +737,7 @@ $ cd ~
 ```
 
 2. Add the Terminator Nightly Builds PPA:
-    
+
 ```bash
 $ sudo add-apt-repository ppa:gnome-terminator/nightly
 ```
@@ -748,7 +749,7 @@ $ sudo apt-get update
 ```
 
 4. Install Terminator:
-    
+
 ```bash
 $ sudo apt-get install terminator
 ```
@@ -756,7 +757,7 @@ $ sudo apt-get install terminator
 ### Alternate Database And Site Creation Using Command Line And Drush
 #### Create Database
 1. Create a database, Replace database_name with the name of your choice.
-    
+
 ```Bash
 $ mysqladmin -u root -p create database_name
 ```
@@ -767,7 +768,7 @@ $ mysqladmin -u root -p create database_name
 
 #### Create database user for site via command line
 1. Open the mySQL client using root:
-    
+
 ```Bash
 $ mysql -u root -p
 ```
@@ -781,19 +782,19 @@ mysql> CREATE USER 'name_of_new_user'@'localhost' IDENTIFIED BY 'password_of_new
 ```
 
 4. Grant *name_of_new_user* privileges to *database_name*:
-    
+
 ```mySQL
 mysql> GRANT ALL PRIVILEGES ON 'database_name'.* TO 'name_of_new_user'@'localhost';
 ```
 
 5. Reload the grant tables:
-    
+
 ```mySQL
 mysql> FLUSH PRIVILEGES;
 ```
 
 6. Exit mySQL
-    
+
 ```mySQL
 mysql> quit
 ```
@@ -841,7 +842,7 @@ $ rvm use 2.2.2
 ```
 
 11. Verify Ruby version:
-    
+
 ```Bash
 $ ruby -v
 ```
@@ -853,8 +854,8 @@ $ ruby -v
 
 Install Options
 
-* Option 1 is the recommended method for the masses, as it should be stable and secure. 
-* Options 2, 3, and 4 have the advantage of keeping your node and npm packages the most curren
+* Option 1 is the recommended method for the masses, as it should be stable and secure.
+* Options 2, 3, and 4 have the advantage of keeping your node and npm packages the most current
 
 #### Option 1: Install the standard Debian/Ubuntu packages for “node” and “npm”.
 1. To install Node.js, open a terminal and type the following command:
@@ -878,12 +879,12 @@ $ sudo ln -s /usr/bin/nodejs /usr/bin/node
 
 ```bash
 $ node -v
-v0.10.25
+v8.10.0
 ```
 
 ```bash
    $ npm -v
-   1.3.10
+   3.5.2
 ```
 
 #### Option 2: Install from Debian/Ubuntu packages created by the Node.js (associated) team.
@@ -911,12 +912,13 @@ $ sudo ln -s /usr/bin/nodejs /usr/bin/node
 
 ```bash
 $ node -v
-v0.10.35
+v8.10.0
 $ npm -v
-1.4.28
+3.5.2
 ```
 
 #### Option 3: Install Node.js manually from standard binary packages on the official website.
+
 Go to the official Node.js download page and download either the 32-bit or 64-bit Linux binary file, depending on your system type.
 
 1. You can check what CPU architecture your server has with these commands:
@@ -1017,22 +1019,48 @@ The gulp community is growing, with new plugins being added daily. See the [main
 ---
 
 ### Install IRC (HexChat)
-1. Add the HexChat PPA:
-    
-```Bash
-$ sudo add-apt-repository ppa:gwendal-lebihan-dev/hexchat-stable
-```
+1. Update apt sources.
 
-2. Download the package lists from the repositories and "update" them to get information on the newest versions of packages and their dependencies. It will do this for all repositories and PPAs
-    
-```Bash
+```bash
 $ sudo apt-get update
 ```
 
-3. Install HexChat:
-    
-```Bash
+2. Install Hexchat with apt
+
+```bash
 $ sudo apt-get install hexchat
+```
+
+### Added Install Atom
+Debian and Ubuntu (deb/apt)
+
+To install Atom on Debian, Ubuntu, or related distributions, add our official package repository to your system by running the following commands:
+
+1. Install key
+
+```bash
+$ wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
+```
+
+```bash
+$ sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'
+```
+
+3. Update apt sources
+
+```bash
+$ sudo apt-get update
+```
+
+4. You can now install Atom using apt-get (or apt on Ubuntu):
+
+# Install Atom
+```bash
+$ sudo apt-get install atom
+```
+# Install Atom Beta
+```bash
+$ sudo apt-get install atom-beta
 ```
 
 # 10 Optional Database Creation and Drupal installation
@@ -1053,13 +1081,13 @@ $ sudo drush dl drupal --drupal-project-rename=site_directory_name
 ```
 
 3. Change to the site_directory_name
-    
+
 ```Bash
 $ cd site_directory_name
 ```
 
 4. Drupal Site Install. This will also create your settings.php file:
-    
+
 ```Bash
 $ drush si standard --account-name=admin --account-pass=admin --db-url=mysql://database_user_name:database_user_password@localhost/database_name
 ```
@@ -1070,7 +1098,7 @@ Note: as mentioned in previous steps, if this was your first time running throug
 ### Get an old site up and running
 #### You will need:
 1. Compressed database dump from old site in (mysql.zip or mysql.gz)
-2. All of the files or ability to git clone the files of the old site 
+2. All of the files or ability to git clone the files of the old site
 ** If you are not able to get a db dump and need to use backup and migrate module, Please follow a different set of directions, posted on page 10.
 
 #### Create database
@@ -1090,7 +1118,7 @@ $ sudo nano /etc/hosts
 
 ```
 # Drupal sites
-127.0.0.1 oldsite.dev
+127.0.0.1 oldsite.local
 ```
 
 3. Press **CTRL**+**o** (to save)
@@ -1101,7 +1129,7 @@ $ sudo nano /etc/hosts
 
 #### Place the oldsite folder in /var/www/html (or git clone the oldsite to this folder)
 1. Navigate to /sites (or /var/www/html if you didn’t create a symlink)
-2. Change the name of your folder to **oldsite.dev** (basically we are adding .dev and making sure the name of this folder matches the oldsite.dev name in the hosts file)
+2. Change the name of your folder to **oldsite.local** (basically we are adding .local and making sure the name of this folder matches the oldsite.local name in the hosts file)
 3. Navigate into the sites/default folder and delete any old settings.php
 4. Copy default.settings.php and rename it: **settings.php**
 
@@ -1116,35 +1144,35 @@ $ sudo nano sites/default/settings.php
 
 ```php
     $databases = array();
-    
+
     $databases = array (
-    
+
       'default' =>
-    
+
       array (
-    
+
         'default' =>
-    
+
         array (
-    
+
         'database' => 'DATABASENAME',
-    
+
         'username' => 'root',
-    
+
         'password' => 'root',
-    
+
         'host' => 'localhost',
-    
+
         'port' => '',
-    
+
         'driver' => 'mysql',
-    
+
         'prefix' => '',
-    
+
        ),
-    
+
      ),
-    
+
    );
 ```  
 
@@ -1155,14 +1183,14 @@ $ sudo nano sites/default/settings.php
 7. Press **CTRL**+**x** (to exit)
 
 #### Hope for the best! We all know that getting an old site up and running locally can be challenging
-1. Navigate to localhost/oldsite.dev
+1. Navigate to localhost/oldsite.local
 2. You will need your old username/password as it is stored in the database to log in
 
 ---
 
 ### Specific Install for using backup_migrate module
 #### You will need:
-1. All of the files or ability to git clone the files of the old site 
+1. All of the files or ability to git clone the files of the old site
 2. Backup of the oldsite using backup_migrate module
 
 #### Create an empty database
@@ -1180,7 +1208,7 @@ $ sudo nano /etc/hosts
 
 ```
 # Drupal sites
-127.0.0.1 oldsite.dev
+127.0.0.1 oldsite.local
 ```
 
 3. Press **CTRL**+**o** (to save)
@@ -1189,14 +1217,14 @@ $ sudo nano /etc/hosts
 
 #### Place the oldsite folder in /var/www/html (or git clone the oldsite to this folder)
 1. Navigate to /sites (or /var/www/html if you didn’t create a symlink)
-2. Change the name of your folder to **oldsite.dev** (basically we are adding .dev and making sure the name of this folder matches the oldsite.dev name in the hosts file)
+2. Change the name of your folder to **oldsite.local** (basically we are adding .local and making sure the name of this folder matches the oldsite.local name in the hosts file)
 3. Navigate into the sites/default folder and delete any old settings.php
 4. Copy default.settings.php and rename it: **settings.php**
-5. In your browser, navigate to *localhost/oldsite.dev*
+5. In your browser, navigate to *localhost/oldsite.local*
 6. Complete the install process, making sure to complete the section when it asks for the database name and password.
 
 #### Install backup_migrate module
-1. cd into the root of the oldsite.dev
+1. cd into the root of the oldsite.local  
 2. Download the backup_migrate module:
 
 ```Bash
@@ -1204,7 +1232,7 @@ $ drush dl backup_migrate
 ```
 
 3. Enable the backup_migrate module:
-    
+
 ```Bash
 $ drush en backup_migrate
 ```
@@ -1215,8 +1243,8 @@ $ drush en backup_migrate
 
 ### Common troubleshooting stuff when working with older sites
 1. Reset the admin username/password (assuming admin is the username)
-  1. cd to the root of your oldsite.dev
-  2. Set username and password: 
+  1. cd to the root of your oldsite.local
+  2. Set username and password:
 
 ```bash
 $ drush user-password admin --password=newpassword
@@ -1224,9 +1252,9 @@ $ drush user-password admin --password=newpassword
 
 2. Only the front page shows, 404 on any other nodes
   1. Make sure there is an .htaccess file in the root of the site
-    * If it is missing, simply copy/paste .htaccess into the root of your oldsite.dev from another drupal site
+    * If it is missing, simply copy/paste .htaccess into the root of your oldsite.local  from another drupal site
   2. If .htaccess is there and still having issues, check for clean urls
-        2. In the browser, navigate to *localhost/oldsite.dev/?q=admin/config/search/clean-urls*
+        2. In the browser, navigate to *localhost/oldsite.local/?q=admin/config/search/clean-urls*
         3. There should be a checkmark and option to run clean urls
         4. For additional clean url troubleshooting: [https://www.drupal.org/node/15365](https://www.drupal.org/node/15365)
         5. In the meantime, you can still painfully navigate the site with /?q=
@@ -1247,5 +1275,4 @@ $ drush updb
 ```bash
 	$ drush cr all
 ```
-
 ---
