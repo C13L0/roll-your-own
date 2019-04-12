@@ -1031,6 +1031,38 @@ $ sudo apt-get update
 $ sudo apt-get install hexchat
 ```
 
+### Added Install Atom
+Debian and Ubuntu (deb/apt)
+
+To install Atom on Debian, Ubuntu, or related distributions, add our official package repository to your system by running the following commands:
+
+1. Install key
+
+```bash
+$ wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
+```
+
+```bash
+$ sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'
+```
+
+3. Update apt sources
+
+```bash
+$ sudo apt-get update
+```
+
+4. You can now install Atom using apt-get (or apt on Ubuntu):
+
+# Install Atom
+```bash
+$ sudo apt-get install atom
+```
+# Install Atom Beta
+```bash
+$ sudo apt-get install atom-beta
+```
+
 # 10 Optional Database Creation and Drupal installation
 
 ---
@@ -1086,7 +1118,7 @@ $ sudo nano /etc/hosts
 
 ```
 # Drupal sites
-127.0.0.1 oldsite.dev
+127.0.0.1 oldsite.local
 ```
 
 3. Press **CTRL**+**o** (to save)
@@ -1097,7 +1129,7 @@ $ sudo nano /etc/hosts
 
 #### Place the oldsite folder in /var/www/html (or git clone the oldsite to this folder)
 1. Navigate to /sites (or /var/www/html if you didn’t create a symlink)
-2. Change the name of your folder to **oldsite.dev** (basically we are adding .dev and making sure the name of this folder matches the oldsite.dev name in the hosts file)
+2. Change the name of your folder to **oldsite.local** (basically we are adding .local and making sure the name of this folder matches the oldsite.local name in the hosts file)
 3. Navigate into the sites/default folder and delete any old settings.php
 4. Copy default.settings.php and rename it: **settings.php**
 
@@ -1151,7 +1183,7 @@ $ sudo nano sites/default/settings.php
 7. Press **CTRL**+**x** (to exit)
 
 #### Hope for the best! We all know that getting an old site up and running locally can be challenging
-1. Navigate to localhost/oldsite.dev
+1. Navigate to localhost/oldsite.local
 2. You will need your old username/password as it is stored in the database to log in
 
 ---
@@ -1176,7 +1208,7 @@ $ sudo nano /etc/hosts
 
 ```
 # Drupal sites
-127.0.0.1 oldsite.dev
+127.0.0.1 oldsite.local
 ```
 
 3. Press **CTRL**+**o** (to save)
@@ -1185,14 +1217,14 @@ $ sudo nano /etc/hosts
 
 #### Place the oldsite folder in /var/www/html (or git clone the oldsite to this folder)
 1. Navigate to /sites (or /var/www/html if you didn’t create a symlink)
-2. Change the name of your folder to **oldsite.dev** (basically we are adding .dev and making sure the name of this folder matches the oldsite.dev name in the hosts file)
+2. Change the name of your folder to **oldsite.local** (basically we are adding .local and making sure the name of this folder matches the oldsite.local name in the hosts file)
 3. Navigate into the sites/default folder and delete any old settings.php
 4. Copy default.settings.php and rename it: **settings.php**
-5. In your browser, navigate to *localhost/oldsite.dev*
+5. In your browser, navigate to *localhost/oldsite.local*
 6. Complete the install process, making sure to complete the section when it asks for the database name and password.
 
 #### Install backup_migrate module
-1. cd into the root of the oldsite.dev
+1. cd into the root of the oldsite.local  
 2. Download the backup_migrate module:
 
 ```Bash
@@ -1211,7 +1243,7 @@ $ drush en backup_migrate
 
 ### Common troubleshooting stuff when working with older sites
 1. Reset the admin username/password (assuming admin is the username)
-  1. cd to the root of your oldsite.dev
+  1. cd to the root of your oldsite.local
   2. Set username and password:
 
 ```bash
@@ -1220,9 +1252,9 @@ $ drush user-password admin --password=newpassword
 
 2. Only the front page shows, 404 on any other nodes
   1. Make sure there is an .htaccess file in the root of the site
-    * If it is missing, simply copy/paste .htaccess into the root of your oldsite.dev from another drupal site
+    * If it is missing, simply copy/paste .htaccess into the root of your oldsite.local  from another drupal site
   2. If .htaccess is there and still having issues, check for clean urls
-        2. In the browser, navigate to *localhost/oldsite.dev/?q=admin/config/search/clean-urls*
+        2. In the browser, navigate to *localhost/oldsite.local/?q=admin/config/search/clean-urls*
         3. There should be a checkmark and option to run clean urls
         4. For additional clean url troubleshooting: [https://www.drupal.org/node/15365](https://www.drupal.org/node/15365)
         5. In the meantime, you can still painfully navigate the site with /?q=
@@ -1242,36 +1274,5 @@ $ drush updb
 
 ```bash
 	$ drush cr all
-```
-### Added Install Atom
-Debian and Ubuntu (deb/apt)
-
-To install Atom on Debian, Ubuntu, or related distributions, add our official package repository to your system by running the following commands:
-
-1. Install key
-
-```bash
-$ wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
-```
-
-```bash
-$ sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'
-```
-
-3. Update apt sources
-
-```bash
-$ sudo apt-get update
-```
-
-4. You can now install Atom using apt-get (or apt on Ubuntu):
-
-# Install Atom
-```bash
-$ sudo apt-get install atom
-```
-# Install Atom Beta
-```bash
-$ sudo apt-get install atom-beta
 ```
 ---
