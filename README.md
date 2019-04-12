@@ -584,7 +584,7 @@ $ sudo nano /etc/hosts
 
 ```
 # Drupal sites
-127.0.0.1 newsite.dev
+127.0.0.1 newsite.local
 ```
 
 3. Press **CTRL**+**o** (to save)  
@@ -595,11 +595,11 @@ $ sudo nano /etc/hosts
 
 ```
 # Drupal sites
-127.0.0.1 newsite.dev
+127.0.0.1 newsite.local
 
-127.0.0.1 newsite2.dev
+127.0.0.1 newsite2.local
 
-127.0.0.1 newsite3.dev
+127.0.0.1 newsite3.local
 ```
 
 ---
@@ -630,13 +630,17 @@ $ git clone --branch 8.3.x https://git.drupal.org/project/drupal.git
 3. Change the name of the cloned drupal directory to the name of the new site:
 
 ```Bash
-$ mv drupal newsite.dev
+$ mv drupal newsite.local
 ```
 
+<<<<<<< HEAD
 4. Change to newsite.dev/sites directory:
+=======
+4. Change to newsite.local/sites directory:
+>>>>>>> More updates to versions in doc- Ubuntu 18.04 php, node.js, npm, ruby Other packages are now available in the standard Ubuntu repositories and can be installed with apt, so directions have been corrected to reflect that (hexchat)(Ruby is now available in standard repos, updated rvm version to 2.2.2) Terminator is now in standard repos, so instructions could be changed to reflect that, which install latest stable, and avoids 'breakage' mentioned by sourcedevs with the nightlies. Updated many instances of whitespace detected, also. 
 
 ```
-$ cd newsite.dev/sites
+$ cd newsite.local/sites
 ```
 5. For Pantheon.io sites, copy example.settings.local.php to default and name it settings.local.php
 
@@ -673,7 +677,7 @@ $ chmod 777 settings.local.php
 ```
 
 #### Complete Install
-1. Open browser and navigate to *localhost/newsite.dev*
+1. Open browser and navigate to *localhost/newsite.local*
 Note: If you are getting a blank white screen here (called the White Screen of Death), try using an earlier version of Drupal, such as 8.0.x
 2. Complete install, making sure to fill in database name and password
 3. At any time, to update your Drupal site, run the following Drush command from the root of your site directory (replace X.X.X with the desired version)
