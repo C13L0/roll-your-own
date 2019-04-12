@@ -7,7 +7,7 @@
 **IRC**: Freenode.org **#drupal-florida**
 
 
-Complete Ubuntu 18.04 local development environment setup guide for Drupal 8. Includes LAMP, git, Composer, Drush, and RVM. Also, a few optional applications are included. (Sublime Text 3, PhpStorm, Node.js, Gulp.js and HexChat)
+Complete Ubuntu 18.04 local development environment setup guide for Drupal 8. Includes LAMP, git, Composer, Drush, and RVM. Also, a few optional applications are included. (Sublime Text 3, PhpStorm, Node.js, Gulp.js Atom, and HexChat)
 
 **LOCAL set up only!**  Ubuntu 18.04 / LAMP / Drupal Sites Setup
 
