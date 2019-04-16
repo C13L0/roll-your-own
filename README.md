@@ -730,19 +730,7 @@ $ sudo apt-get install sublime-text
 
 ### Install Terminator
 
-1. Change to root directory:
-
-```bash
-$ cd ~
-```
-
-2. Add the Terminator Nightly Builds PPA:
-
-```bash
-$ sudo add-apt-repository ppa:gnome-terminator/nightly
-```
-
-3. Download the package lists from the repositories and "update" them to get information on the newest versions of packages and their dependencies. It will do this for all repositories and PPAs.
+1. Update apt sources
 
 ```bash
 $ sudo apt-get update
